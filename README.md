@@ -19,7 +19,7 @@ https://drive.google.com/file/d/1d7BcFiKVPYsTxansa8Ux1SCbrsXCDQhO/view?usp=share
 ## Using your CLI (terminal), navigate to the projects repository
 
 ```
-cd <filePath>/recipe-generator
+cd Desktop
 ```
 
 ## Ensure that you have MongoDb installed on your machine
