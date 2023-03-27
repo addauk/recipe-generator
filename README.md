@@ -33,7 +33,7 @@ brew install mongodb-community@6.0
 Run this command in the project repository on your local machine (recipe-generator)
 
 ```
-mongoimport --host localhost --port 27017 --db Makers_Academy --collection Recipe_Generator --type json --headerline --file recipes.json
+mongoimport --host localhost --port 27017 --db Makers_Academy --collection Recipe_Generator --type csv --headerline --file recipes.csv
 ```
 
 ## Checking the data is imported
