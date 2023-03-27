@@ -30,7 +30,7 @@ brew install mongodb-community@6.0
 [^1]: If you already know that MongoDb is installed, skip this step
 ## Importing the file to MongoDb
 
-Run this command in the project repository on your local machine (recipe-generator)
+Run this command in the Desktop directory
 
 ```
 mongoimport --host localhost --port 27017 --db Makers_Academy --collection Recipe_Generator --type csv --headerline --file recipes.csv
