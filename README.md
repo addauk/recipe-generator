@@ -4,9 +4,9 @@
 
 Here is a set of instructions for you to follow in order to load the data into your local MongoDb Database.
 
-The file containing the data will be stored in the git repository, it will be called 'recipes.json'.
+The file containing the data will be stored in the git repository, it will be called 'recipes.csv'.
 
-## Download and Save the 'recipes.json' file
+## Download and Save the 'recipes.csv' file
 
 Follow this link to downnload the file.
 
@@ -33,7 +33,7 @@ brew install mongodb-community@6.0
 Run this command in the project repository on your local machine (recipe-generator)
 
 ```
-mongoimport --host localhost --port 27017 --db Makers_Academy --collection Recipe_Generator --type json --headerline --file recipes.json
+mongoimport --host localhost --port 27017 --db Makers_Academy --collection Recipe_Generator --type json --headerline --file recipes.csv
 ```
 
 ## Checking the data is imported
