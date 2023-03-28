@@ -9,10 +9,20 @@ describe("Ingredeint", () => {
 
     cy.get('input[value="Chicken"]').check();
     cy.get('input[value="Mushroom"]').check();
-
-    //cy.get('input[type="checkbox"]').check(["Chicken", "Mushroom"]);
-    //cy.get('input[type="checkbox"]').should("be.checked");
     cy.contains("Items checked are: Chicken, Mushroom");
+  });
+
+  it("unchecks all the items selected", () => {
+    cy.mount(<Ingredient navigate={navigate} />);
+
+    cy.intercept("POST", "/");
+
+    cy.get("input[type='checkbox']").eq(0).check();
+    cy.get("input[type='checkbox']").eq(1).check();
+    cy.contains("Uncheck All").click();
+    cy.get("input[type='checkbox']").each((checkbox) => {
+      expect(checkbox).to.not.be.checked;
+    });
   });
 
   it("generates recipes that match the ingredients selected", () => {
