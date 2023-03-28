@@ -4,7 +4,6 @@
   "private": true,
   "proxy": "http://localhost:8080",
   "dependencies": {
-    "cypress": "^12.8.1",
     "mongoose": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -38,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress": "^12.8.1"
   }
 }
