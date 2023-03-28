@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 
 
 const SignUpForm = ({ navigate }) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,8 +25,7 @@ const SignUpForm = ({ navigate }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
+        userName: userName,
         email: email,
         password: password,
       }),
@@ -50,12 +48,8 @@ const SignUpForm = ({ navigate }) => {
     setPassword(event.target.value);
   };
 
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  };
-
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
+  const handleUserNameChange = (event) => {
+    setUserName(event.target.value);
   };
 
   return (
@@ -69,26 +63,13 @@ const SignUpForm = ({ navigate }) => {
         <div>
           <div>
             <input
-              placeholder="First Name"
-              id="firstName"
+              placeholder="Username"
+              id="userName"
               type="text"
-              value={firstName}
-              onChange={handleFirstNameChange}
+              value={userName}
+              onChange={handleUserNameChange}
             />
           </div>
-        </div>
-        <div>
-          <div>
-            <input
-              placeholder="Last Name"
-              id="lastName"
-              type="text"
-              value={lastName}
-              onChange={handleLastNameChange}
-            />
-          </div>
-        </div>
-        <div>
           <div>
             <input
               placeholder="Email"

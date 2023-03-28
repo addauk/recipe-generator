@@ -3,8 +3,6 @@ const router = express.Router();
 
 const UsersController = require("../controllers/users");
 
-router.post("/", UsersController.Create);
-
 // const { MongoClient, ObjectId } = require("mongodb");
 // const uri = "mongodb://localhost:27017/Makers_Adacemy"; // replace with your MongoDB URI
 
@@ -19,6 +17,8 @@ router.post("/", UsersController.Create);
 //   const collection = db.collection(collectionName);
 //   return { client, collection };
 // }
+
+router.post("/", UsersController.Create);
 
 // // Define the Create route to insert a new user document
 // router.post("/", async (req, res) => {

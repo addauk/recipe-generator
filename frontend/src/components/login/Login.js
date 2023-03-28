@@ -9,8 +9,7 @@ const LogInForm = ({ navigate }) => {
       window.localStorage.getItem("token") &&
       window.localStorage.getItem("token") !== "undefined"
     ) {
-      navigate("/"); //this will route through to the internal main page (at the
-      // moment it routes back to login because I've configured '/' to route to login)
+      navigate("/"); //this will eventually route through to the profile page (at the moment it routes back to login because I've configured '/' to route to login)
     } else {
       navigate("/signup")
     }
@@ -36,7 +35,7 @@ const LogInForm = ({ navigate }) => {
       window.localStorage.setItem("token", data.token);
     //   storeUserData(data.user);
     //   window.localStorage.setItem("userData", JSON.stringify(data.user));
-      navigate("/"); //this will route through to the internal main page
+      navigate("/"); //this will eventually route through to the user's profile page
     }
   };
 

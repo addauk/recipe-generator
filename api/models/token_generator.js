@@ -12,6 +12,5 @@ class TokenGenerator {
     }, secret);
   }
 }
-console.log(secret)
 
 module.exports = TokenGenerator;
