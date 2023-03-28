@@ -66,3 +66,6 @@ cypress/videos
 
 #vscode
 .vscode
+
+#database file
+./database/recipes.json
