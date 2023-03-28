@@ -8,7 +8,7 @@ const AllRecipes = (props) => {
         <Recipe
           key={index}
           src={recipe.image}
-          food={recipe.title}
+          title={recipe.title}
           cookingTime={recipe.cookingTime}
           rating={recipe.rating}
           image={"2"}
