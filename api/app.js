@@ -14,7 +14,6 @@ const app = express();
 
 // setup for receiving JSON
 app.use(express.json());
-
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));

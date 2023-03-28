@@ -12,7 +12,8 @@ const SignUpForm = ({ navigate }) => {
       window.localStorage.getItem("token") &&
       window.localStorage.getItem("token") !== "undefined"
     ) {
-      navigate("/signup");
+      navigate("/signup"); 
+      // This will need to change to navigate to the homepage when a token is present
     }
   }, []);
 
@@ -33,8 +34,10 @@ const SignUpForm = ({ navigate }) => {
     }).then((response) => {
       if (response.status === 201) {
         navigate("/login");
+        console.log("SUCCESSFUL SIGN UP FORM SUBMISSION")
       } else {
         navigate("/signup");
+        console.log("FAILED SIGN UP FORM SUBMISSION")
       }
     });
   };

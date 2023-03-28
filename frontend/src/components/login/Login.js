@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const LogInForm = ({ navigate, storeUserData }) => {
+const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -9,7 +9,10 @@ const LogInForm = ({ navigate, storeUserData }) => {
       window.localStorage.getItem("token") &&
       window.localStorage.getItem("token") !== "undefined"
     ) {
-      navigate("/");
+      navigate("/"); //this will route through to the internal main page (at the
+      // moment it routes back to login because I've configured '/' to route to login)
+    } else {
+      navigate("/signup")
     }
   }, []);
 
@@ -23,17 +26,17 @@ const LogInForm = ({ navigate, storeUserData }) => {
       },
       body: JSON.stringify({ email: email, password: password }),
     });
-
+    console.log("Generating token")
     if (response.status !== 201) {
-      console.log("yay");
+      console.log("oop");
       navigate("/login");
     } else {
-      console.log("oop");
+      console.log("yay");
       let data = await response.json();
       window.localStorage.setItem("token", data.token);
-      storeUserData(data.user);
-      window.localStorage.setItem("userData", JSON.stringify(data.user));
-      navigate("/");
+    //   storeUserData(data.user);
+    //   window.localStorage.setItem("userData", JSON.stringify(data.user));
+      navigate("/"); //this will route through to the internal main page
     }
   };
 
