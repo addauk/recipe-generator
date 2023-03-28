@@ -33,6 +33,10 @@ const handleCheck = (event) => {
    setChecked(updatedList);
  };
 
+const handleUncheckAll = () => {
+  setChecked([]);
+}
+
    const findRecipe = () => {
     const selectedIngredients = new Set(checked);
     const matchedRecipes = recipeList.filter(recipe => {
@@ -72,16 +76,17 @@ return (
   <div className="ingredient-header"></div>
   <div className="list-container">
     <h2>Ingredients</h2>
-
+    
       {ingredientList.map((item, index) => (
          <div key={index}>
-         <input value={item} type="checkbox" onChange={handleCheck} />
+         <input value={item} type="checkbox" onChange={handleCheck} checked={checked.includes(item)}/>
          <span className={isChecked(item)}>{item}</span>
        </div>
       ))}
     <div>
       {`Items checked are: ${checkedItems}`}
     </div>
+    <button type="button" onClick={handleUncheckAll}>Uncheck All</button>
     <button type="submit" onClick={handleSubmit}>Submit</button>
             {matchedRecipes.length > 0 && (
           <div className="matched-recipes">
