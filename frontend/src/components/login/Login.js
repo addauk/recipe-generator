@@ -11,7 +11,7 @@ const LogInForm = ({ navigate }) => {
     ) {
       navigate("/"); //this will eventually route through to the profile page (at the moment it routes back to login because I've configured '/' to route to login)
     } else {
-      navigate("/signup")
+      navigate("/login")
     }
   }, []);
 

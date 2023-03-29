@@ -14,7 +14,7 @@ const SignUpForm = ({ navigate }) => {
       navigate("/signup"); 
       // This will need to change to navigate to the homepage when a token is present
     }
-  }, []);
+  }, [navigate]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
