@@ -7,7 +7,7 @@ const Recipe = (props) => {
         class="mt-3 w-60 border border-red-700"
       ></img>
       <h1
-        class="mt-2 w-20 rounded-md  font-bold text-red-800"
+        class="mt-2 w-40 rounded-md  font-bold text-red-800"
         data-cy="foodName"
       >
         {props.title}

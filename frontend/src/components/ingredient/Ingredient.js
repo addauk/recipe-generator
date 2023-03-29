@@ -42,6 +42,60 @@ const Ingredient = ({ navigate }) => {
     },
     {
       image:
+        "https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/39/picM9Mhnw.jpg",
+      title: "Chicken Casserole",
+      cookingTime: "60",
+      rating: "3",
+      ingredients: [
+        "Chicken",
+        "Carrot",
+        "Mushroom",
+        "Flour",
+        "Garlic",
+        "Celery",
+        "Onion",
+      ],
+      instructions:
+        "Heat a knob of butter and ½ tbsp rapeseed or olive oil in a large frying pan.",
+    },
+    {
+      image:
+        "https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/39/picM9Mhnw.jpg",
+      title: "Chicken Casserole",
+      cookingTime: "60",
+      rating: "3",
+      ingredients: [
+        "Chicken",
+        "Carrot",
+        "Mushroom",
+        "Flour",
+        "Garlic",
+        "Celery",
+        "Onion",
+      ],
+      instructions:
+        "Heat a knob of butter and ½ tbsp rapeseed or olive oil in a large frying pan.",
+    },
+    {
+      image:
+        "https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/39/picM9Mhnw.jpg",
+      title: "Chicken Casserole",
+      cookingTime: "60",
+      rating: "3",
+      ingredients: [
+        "Chicken",
+        "Carrot",
+        "Mushroom",
+        "Flour",
+        "Garlic",
+        "Celery",
+        "Onion",
+      ],
+      instructions:
+        "Heat a knob of butter and ½ tbsp rapeseed or olive oil in a large frying pan.",
+    },
+    {
+      image:
         "https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/47/picfnmxck.jpg",
       title: "Beef lasagne",
       cookingTime: "90",
@@ -112,44 +166,74 @@ const Ingredient = ({ navigate }) => {
   };
 
   return (
-    <>
+    <div class="bg-orange-200">
       <div className="recipe-generator"></div>
-      <div className="ingredient-header"></div>
-      <div className="list-container">
-        <h2>Ingredients</h2>
-
+      <div
+        className="ingredient-header"
+        class="flex justify-center font-bold text-2xl mt-16 mb-8"
+      >
+        <h1>Ingredients</h1>
+      </div>
+      <div
+        className="list-container"
+        class="flex grid grid-rows-4 grid-flow-col gap-4 pl-4"
+      >
         {ingredientList.map((item, index) => (
-          <div key={index}>
+          <div key={index} className="flex items-center">
             <input
               value={item}
               type="checkbox"
               onChange={handleCheck}
               checked={checked.includes(item)}
+              class="mr-2"
             />
             <span className={isChecked(item)}>{item}</span>
           </div>
         ))}
-        <div>{`Items checked are: ${checkedItems}`}</div>
-        <button type="button" onClick={handleUncheckAll}>
+
+        <div />
+      </div>
+      <div className="flex gap-10 mt-5 mb-4">
+        <div>
+          <div>{`Items checked are: ${checkedItems}`}</div>
+        </div>
+      </div>
+      <div>
+        <button
+          type="button"
+          class="mr-5 w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600 "
+          onClick={handleUncheckAll}
+        >
           Uncheck All
         </button>
-        <button type="submit" onClick={handleSubmit}>
+        <button
+          type="submit"
+          class="w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600"
+          onClick={handleSubmit}
+        >
           Submit
         </button>
+      </div>
+
+      <div>
         {matchedRecipes.length > 0 && (
-          <div className="matched-recipes">
-            <h2>Matched Recipes</h2>
+          <div className="matched-recipes" class=" mt-4 grid grid-auto-rows">
+            <h2 class="flex justify-center font-bold text-2xl">
+              Matched Recipes
+            </h2>
             <AllRecipes recipes={matchedRecipes} />
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
 export default Ingredient;
 
-// {matchedRecipes.map((recipe, index) => (
+{
+  /* // {matchedRecipes.map((recipe, index) => ( */
+}
 //   <div key={index}>
 //     <h3>{recipe.title}</h3>
 //   <ul>{recipe.ingredients.join(", ")}</ul>

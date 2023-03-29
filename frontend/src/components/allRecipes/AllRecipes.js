@@ -3,7 +3,7 @@ import React from "react";
 
 const AllRecipes = (props) => {
   return (
-    <div>
+    <div class="mt-4 grid grid-cols-4 gap-4">
       {props.recipes.map((recipe, index) => (
         <Recipe
           key={index}
