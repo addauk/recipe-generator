@@ -4,6 +4,7 @@ const SignUpForm = ({ navigate }) => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     if (
@@ -34,6 +35,7 @@ const SignUpForm = ({ navigate }) => {
         console.log("SUCCESSFUL SIGN UP FORM SUBMISSION")
       } else {
         navigate("/signup");
+        setErrorMessage("Invalid form submission, please complete all fields");
         console.log("FAILED SIGN UP FORM SUBMISSION")
       }
     });
@@ -92,6 +94,7 @@ const SignUpForm = ({ navigate }) => {
           <input id="submit" type="submit" value="Submit" />
         </div>
       </form>
+      {errorMessage && <p role="error">{errorMessage}</p>}
     </div>
   </div>
 </div>

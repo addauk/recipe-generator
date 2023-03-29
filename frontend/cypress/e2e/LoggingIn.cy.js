@@ -4,7 +4,7 @@ describe("LogInForm component", () => {
       cy.location("pathname").should("equal", "/login");
     });
   
-    xit("should show error message when login fails", () => {
+    it("should show error message when login fails", () => {
       cy.visit("/login");
 
       cy.intercept("POST", "/tokens", (req) => {
@@ -18,7 +18,7 @@ describe("LogInForm component", () => {
       cy.wait("@loginRequest");
       
       cy.location("pathname").should("equal", "/login");
-      cy.get("[role=alert]").should("be.visible");
+      cy.get("[role=error]").should("be.visible");
     });
 
     it("should redirect to homepage when login succeeds", () => {

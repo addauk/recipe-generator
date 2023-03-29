@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     if (
@@ -27,10 +28,11 @@ const LogInForm = ({ navigate }) => {
     });
     console.log("Generating token")
     if (response.status !== 201) {
-      console.log("oop");
+      console.log("Invalid username or password");
       navigate("/login");
+      setErrorMessage("Invalid username or password");
     } else {
-      console.log("yay");
+      console.log("Successful login");
       let data = await response.json();
       window.localStorage.setItem("token", data.token);
     //   storeUserData(data.user);
@@ -91,6 +93,7 @@ const LogInForm = ({ navigate }) => {
         onClick={handleSignUp}
       />
     </div>
+    {errorMessage && <p role="error">{errorMessage}</p>}
   </div>
 </form>
   );

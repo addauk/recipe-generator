@@ -6,11 +6,11 @@ describe("Signing up", () => {
       cy.get("#password").should("exist");
     });
   
-    xit("should require all fields to be filled in before submitting the form", () => {
+    it("should require all fields to be filled in before submitting the form", () => {
       cy.visit("/signup");
       cy.get("#submit").click();
       cy.url().should("contain", "/signup");
-      cy.get(".error-message").should("exist");
+      cy.get("[role=error]").should("exist");
       cy.get("#userName").type("testuser");
       cy.get("#email").type("testuser@example.com");
       cy.get("#password").type("password");
