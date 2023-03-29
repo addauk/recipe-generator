@@ -1,6 +1,30 @@
 import React, { useState, useEffect } from "react";
 import Recipe from "../recipe/Recipe";
 import AllRecipes from "../allRecipes/AllRecipes";
+// import axios from "axios";
+
+// import { get } from "mongoose";
+
+const trial = () => {
+  fetch(
+    "https://westeurope.azure.data.mongodb-api.com/app/recipe_api-eixns/endpoint/recipes"
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      const result = JSON.parse(JSON.stringify(data));
+      const rec = result.filter((recipe) => {
+        return ["butter"].every((ingredient) =>
+          recipe.Ingredients.includes(ingredient)
+        );
+      });
+      console.log(rec);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+};
 
 const Ingredient = ({ navigate }) => {
   const ingredientList = [
@@ -146,6 +170,28 @@ const Ingredient = ({ navigate }) => {
     return matchedRecipes;
   };
 
+  // const FetchData = (checked) => {
+  //   console.log(checked);
+  //   axios
+  //     .get(
+  //       "https://westeurope.azure.data.mongodb-api.com/app/recipe_api-eixns/endpoint/recipes"
+  //     )
+  //     .then(function (res) {
+  //       const result = JSON.parse(JSON.stringify(res.data));
+  //     })
+  //     .then(() => {})
+  //     .catch(function (err) {
+  //       console.log(err);
+  //     })
+  //     .finally(function (result) {
+  //       const rec = result.filter((recipe) => {
+  //         return checked.every((ingredient) =>
+  //           recipe.Ingredients.includes(ingredient)
+  //         );
+  //       });
+  //     });
+  // };
+
   let checkedItems = checked.length
     ? checked.reduce((total, item) => {
         return total + ", " + item;
@@ -160,83 +206,75 @@ const Ingredient = ({ navigate }) => {
     if (checked.length === 0) {
       throw "No Items Checked";
     } else {
-      const matchedRecipes = findRecipe();
-      setMatchedRecipes(matchedRecipes);
+      trial();
+      //   const matchedRecipes = findRecipe();
+      //   setMatchedRecipes(matchedRecipes);
+      // }
     }
-  };
 
-  return (
-    <div class="bg-orange-200">
-      <div className="recipe-generator"></div>
-      <div
-        className="ingredient-header"
-        class="flex justify-center font-bold text-2xl mt-16 mb-8"
-      >
-        <h1>Ingredients</h1>
-      </div>
-      <div
-        className="list-container"
-        class="flex grid grid-rows-4 grid-flow-col gap-4 pl-4"
-      >
-        {ingredientList.map((item, index) => (
-          <div key={index} className="flex items-center">
-            <input
-              value={item}
-              type="checkbox"
-              onChange={handleCheck}
-              checked={checked.includes(item)}
-              class="mr-2"
-            />
-            <span className={isChecked(item)}>{item}</span>
+    return (
+      <div class="bg-orange-200">
+        <div className="recipe-generator"></div>
+        <div
+          className="ingredient-header"
+          class="flex justify-center font-bold text-2xl mt-16 mb-8"
+        >
+          <h1>Ingredients</h1>
+        </div>
+        <div
+          className="list-container"
+          class="flex grid grid-rows-4 grid-flow-col gap-4 pl-4"
+        >
+          {ingredientList.map((item, index) => (
+            <div key={index} className="flex items-center">
+              <input
+                value={item}
+                type="checkbox"
+                onChange={handleCheck}
+                checked={checked.includes(item)}
+                class="mr-2"
+              />
+              <span className={isChecked(item)}>{item}</span>
+            </div>
+          ))}
+
+          <div />
+        </div>
+        <div className="flex gap-10 mt-5 mb-4">
+          <div>
+            <div>{`Items checked are: ${checkedItems}`}</div>
           </div>
-        ))}
-
-        <div />
-      </div>
-      <div className="flex gap-10 mt-5 mb-4">
+        </div>
         <div>
-          <div>{`Items checked are: ${checkedItems}`}</div>
+          <button
+            type="button"
+            class="mr-5 w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600 "
+            onClick={handleUncheckAll}
+          >
+            Uncheck All
+          </button>
+          <button
+            type="submit"
+            class="w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600"
+            onClick={handleSubmit}
+          >
+            Submit
+          </button>
+        </div>
+
+        <div>
+          {matchedRecipes.length > 0 && (
+            <div className="matched-recipes" class=" mt-4 grid grid-auto-rows">
+              <h2 class="flex justify-center font-bold text-2xl">
+                Matched Recipes
+              </h2>
+              <AllRecipes recipes={matchedRecipes} />
+            </div>
+          )}
         </div>
       </div>
-      <div>
-        <button
-          type="button"
-          class="mr-5 w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600 "
-          onClick={handleUncheckAll}
-        >
-          Uncheck All
-        </button>
-        <button
-          type="submit"
-          class="w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600"
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>
-      </div>
-
-      <div>
-        {matchedRecipes.length > 0 && (
-          <div className="matched-recipes" class=" mt-4 grid grid-auto-rows">
-            <h2 class="flex justify-center font-bold text-2xl">
-              Matched Recipes
-            </h2>
-            <AllRecipes recipes={matchedRecipes} />
-          </div>
-        )}
-      </div>
-    </div>
-  );
+    );
+  };
 };
 
 export default Ingredient;
-
-{
-  /* // {matchedRecipes.map((recipe, index) => ( */
-}
-//   <div key={index}>
-//     <h3>{recipe.title}</h3>
-//   <ul>{recipe.ingredients.join(", ")}</ul>
-//   <p>{recipe.instructions}</p>
-//   </div>
-// })
