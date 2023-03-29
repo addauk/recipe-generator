@@ -5,7 +5,7 @@ import Recipe from "../recipe/Recipe";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Recipe navigate={useNavigate()} />} />
+      <Route path="/recipe/:id" element={<Recipe navigate={useNavigate()} />} />
     </Routes>
   );
 }
