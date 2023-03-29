@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
 const SignUpForm = ({ navigate }) => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");

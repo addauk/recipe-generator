@@ -20,14 +20,13 @@ app.set("port", port);
  * Connect to MongoDB
  **/
 
-var mongoDbUrl = "mongodb://5.0.14/Makers_Adacemy";
+var mongoDbUrl = process.env.MONGODB_URL || "mongodb://0.0.0.0/Makers_Adacemy";
 mongoose.connect(mongoDbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-console.log("MIKE") 
-console.log(process.env.PORT)
+// console.log(process.env)
 
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));

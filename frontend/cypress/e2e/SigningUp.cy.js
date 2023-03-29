@@ -15,7 +15,7 @@ describe("Signing up", () => {
       cy.get("#email").type("testuser@example.com");
       cy.get("#password").type("password");
       cy.get("#submit").click();
-      cy.url().should("contain", "/");
+      cy.url().should("contain", "/login");
     });
   
     it("should navigate to the login page upon successful form submission", () => {
@@ -24,7 +24,7 @@ describe("Signing up", () => {
       cy.get("#email").type("testuser@example.com");
       cy.get("#password").type("password");
       cy.get("#submit").click();
-      cy.url().should("contain", "/");
+      cy.url().should("contain", "/login");
     });
   
     it("should navigate to the homepage if a token is already present", () => {
