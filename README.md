@@ -13,13 +13,13 @@ Follow this link to downnload the file.
 Make sure you save it to your local project directory (recipe-generator)
 
 ```
-https://drive.google.com/file/d/1d7BcFiKVPYsTxansa8Ux1SCbrsXCDQhO/view?usp=share_link
+https://drive.google.com/file/d/1tnHKo_kU382op-C-BN9WEHmPg5KuCRlG/view?usp=share_link
 ```
 
 ## Using your CLI (terminal), navigate to the projects repository
 
 ```
-cd <filePath>/recipe-generator
+cd Desktop
 ```
 
 ## Ensure that you have MongoDb installed on your machine
@@ -27,13 +27,15 @@ cd <filePath>/recipe-generator
 ```
 brew install mongodb-community@6.0
 ```
+
 [^1]: If you already know that MongoDb is installed, skip this step
+
 ## Importing the file to MongoDb
 
-Run this command in the project repository on your local machine (recipe-generator)
+Run this command in the Desktop directory
 
 ```
-mongoimport --host localhost --port 27017 --db Makers_Adacemy --collection Recipe_Generator --type csv --headerline --file recipes.csv
+mongoimport --host localhost --port 27017 --db Makers_Academy --collection Recipe_Generator --type csv --headerline --file recipes.csv
 ```
 
 ## Checking the data is imported
