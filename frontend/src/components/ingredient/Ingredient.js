@@ -151,8 +151,12 @@ const Ingredient = ({ navigate }) => {
 
       <div>
         {matchedRecipes.length > 0 && unchecked === false && (
-          <div className="matched-recipes" class=" grid-auto-rows mt-4 grid">
-            <h2 class="flex justify-center text-2xl font-bold">
+          <div
+            className="matched-recipes"
+            data-cy="matched-recipes"
+            class=" grid-auto-rows mt-4 grid"
+          >
+            <h2 className="flex justify-center text-2xl font-bold">
               Matched Recipes
             </h2>
             <AllRecipes recipes={matchedRecipes} />
