@@ -1,4 +1,12 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
 const Recipe = (props) => {
+  const navigate = useNavigate();
+
+  const handlePress = () => {
+    navigate("/recipe/" + props.recipe._id, { state: props });
+  };
   return (
     <div class="ml-4 py-1">
       <img
@@ -24,9 +32,10 @@ const Recipe = (props) => {
         Calories: {props.calories}
       </p>
       <button
-        type="submit"
+        type="press"
         class="mb-4 ml-10 mt-3 w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600"
-        data-cy="submit"
+        data-cy="press"
+        onClick={handlePress}
       >
         View Recipe
       </button>
