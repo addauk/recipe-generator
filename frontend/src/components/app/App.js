@@ -12,7 +12,7 @@ function App() {
       <Route path="/login" element={<LoginForm navigate={useNavigate()} />} />
       <Route path="/signup" element={<SignUpForm navigate={useNavigate()} />} />
       <Route
-        path="/user/:userId"
+        path="/user/:_id"
         element={<UserProfile navigate={useNavigate()} />}
       />
       <Route path="/" element={<Ingredient navigate={useNavigate()} />} />

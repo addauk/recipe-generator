@@ -1,7 +1,6 @@
 const User = require("../models/user");
 const TokenGenerator = require("../models/token_generator");
-const bcrypt = require('bcrypt')
-
+const bcrypt = require("bcrypt");
 
 const SessionsController = {
   Create: (req, res) => {
@@ -9,6 +8,7 @@ const SessionsController = {
     const password = req.body.password;
 
     User.findOne({ email: email }).then(async (user) => {
+      console.log(user);
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!user) {
         console.log("auth error: user not found");
@@ -17,7 +17,7 @@ const SessionsController = {
         console.log("auth error: passwords do not match");
         res.status(401).json({ message: "auth error" });
       } else {
-        console.log("Successful token generation for login")
+        console.log("Successful token generation for login");
         const token = await TokenGenerator.jsonwebtoken(user.id);
         res.status(201).json({ token: token, message: "OK", user: user });
       }
