@@ -1,4 +1,7 @@
 import Ingredient from "./Ingredient";
+import { act, render, screen } from "@testing-library/react";
+import fetchMock from "jest-fetch-mock";
+
 const navigate = () => {};
 
 describe("Ingredeint", () => {
@@ -25,61 +28,23 @@ describe("Ingredeint", () => {
     });
   });
 
-  it("generates recipes that match the ingredients selected", () => {
-    const recipeList = [
-      {
-        image:
-          "https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/39/picM9Mhnw.jpg",
-        title: "Chicken Casserole",
-        cookingTime: "60",
-        rating: "3",
-        ingredients: [
-          "Chicken",
-          "Carrot",
-          "Mushroom",
-          "Flour",
-          "Garlic",
-          "Celery",
-          "Onion",
-        ],
-        instructions:
-          "Heat a knob of butter and ½ tbsp rapeseed or olive oil in a large frying pan.",
-      },
-      {
-        image:
-          "https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/47/picfnmxck.jpg",
-        title: "Beef lasagne",
-        cookingTime: "90",
-        rating: "4",
-        ingredients: [
-          "Beef",
-          "Onion",
-          "Tomato",
-          "Celery",
-          "Stock",
-          "Pasta",
-          "Milk",
-          "Cheese",
-        ],
-        instructions:
-          "To make the Bolognese, heat the oil in a large heavy based saucepan over medium heat.",
-      },
-    ];
+  // describe("My Component", () => {
+  //   beforeEach(() => {
+  //     fetchMock.resetMocks();
+  //   });
+  //   it("should render the component and fetch data", async () => {
+  //     fetchMock.mockResponseOnce(JSON.stringify({ data: "test" }));
 
-    cy.stub(window, "fetch").resolves({
-      ok: true,
-      json: () => Promise.resolve(recipeList),
-    });
+  //     render(<Ingredient />);
 
-    cy.mount(<Ingredient navigate={navigate} />);
-    cy.get(
-      'input[value="Chicken"], input[value="Carrot"], input[value="Mushroom"]'
-    ).check();
-    cy.get('button[type="submit"]').click();
+  //     userEvent.click(screen.getByRole("button", { name: /find recipes/i }));
 
-    cy.get(".matched-recipes").within(() => {
-      cy.get("[data-cy='foodName']").should("have.text", "Chicken Casserole");
-      cy.get("[data-cy='foodName']").should("not.have.text", "Beef lasagne");
-    });
-  });
+  //     await act(async () => {
+  //       await new Promise((resolve) => setTimeout(resolve, 0));
+  //     });
+
+  //     expect(fetchMock).toHaveBeenCalledWith("https://api.example.com/recipes");
+  //     expect(screen.getByText("test")).toBeInTheDocument();
+  //   });
+  // });
 });

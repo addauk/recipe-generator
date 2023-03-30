@@ -1,196 +1,66 @@
 import React, { useState, useEffect } from "react";
 import Recipe from "../recipe/Recipe";
 import AllRecipes from "../allRecipes/AllRecipes";
-// import axios from "axios";
-
-// import { get } from "mongoose";
-
-const trial = () => {
-  fetch(
-    "https://westeurope.azure.data.mongodb-api.com/app/recipe_api-eixns/endpoint/recipes"
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      const result = JSON.parse(JSON.stringify(data));
-      const rec = result.filter((recipe) => {
-        return ["butter"].every((ingredient) =>
-          recipe.Ingredients.includes(ingredient)
-        );
-      });
-      console.log(rec);
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
-};
+import Spinner from "../spinner/spinner";
+import IngredientList from "../ingredientList/IngredientList";
 
 const Ingredient = ({ navigate }) => {
-  const ingredientList = [
-    "Chicken",
-    "Turkey",
-    "Bacon",
-    "Pepper",
-    "Potato",
-    "Milk",
-    "Cheese",
-    "Beef",
-    "Pork",
-    "Fish",
-    "Shrimp",
-    "Rice",
-    "Pasta",
-    "Carrot",
-    "Mushroom",
-    "Onion",
-  ];
-  const recipeList = [
-    {
-      image:
-        "https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/39/picM9Mhnw.jpg",
-      title: "Chicken Casserole",
-      cookingTime: "60",
-      rating: "3",
-      ingredients: [
-        "Chicken",
-        "Carrot",
-        "Mushroom",
-        "Flour",
-        "Garlic",
-        "Celery",
-        "Onion",
-      ],
-      instructions:
-        "Heat a knob of butter and ½ tbsp rapeseed or olive oil in a large frying pan.",
-    },
-    {
-      image:
-        "https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/39/picM9Mhnw.jpg",
-      title: "Chicken Casserole",
-      cookingTime: "60",
-      rating: "3",
-      ingredients: [
-        "Chicken",
-        "Carrot",
-        "Mushroom",
-        "Flour",
-        "Garlic",
-        "Celery",
-        "Onion",
-      ],
-      instructions:
-        "Heat a knob of butter and ½ tbsp rapeseed or olive oil in a large frying pan.",
-    },
-    {
-      image:
-        "https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/39/picM9Mhnw.jpg",
-      title: "Chicken Casserole",
-      cookingTime: "60",
-      rating: "3",
-      ingredients: [
-        "Chicken",
-        "Carrot",
-        "Mushroom",
-        "Flour",
-        "Garlic",
-        "Celery",
-        "Onion",
-      ],
-      instructions:
-        "Heat a knob of butter and ½ tbsp rapeseed or olive oil in a large frying pan.",
-    },
-    {
-      image:
-        "https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/39/picM9Mhnw.jpg",
-      title: "Chicken Casserole",
-      cookingTime: "60",
-      rating: "3",
-      ingredients: [
-        "Chicken",
-        "Carrot",
-        "Mushroom",
-        "Flour",
-        "Garlic",
-        "Celery",
-        "Onion",
-      ],
-      instructions:
-        "Heat a knob of butter and ½ tbsp rapeseed or olive oil in a large frying pan.",
-    },
-    {
-      image:
-        "https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/47/picfnmxck.jpg",
-      title: "Beef lasagne",
-      cookingTime: "90",
-      rating: "4",
-      ingredients: [
-        "Beef",
-        "Onion",
-        "Tomato",
-        "Celery",
-        "Stock",
-        "Pasta",
-        "Milk",
-        "Cheese",
-      ],
-      instructions:
-        "To make the Bolognese, heat the oil in a large heavy based saucepan over medium heat.",
-    },
-  ];
-
   const [checked, setChecked] = useState([]);
   const [matchedRecipes, setMatchedRecipes] = useState([]);
+  const [searchIngredients, setSearchIngredients] = useState([]);
+  const [collapse, setCollapse] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [unchecked, setUnchecked] = useState(true);
+
+  const FetchData = () => {
+    setLoading(true);
+    fetch(
+      "https://westeurope.azure.data.mongodb-api.com/app/recipe_api-eixns/endpoint/recipes"
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        const result = JSON.parse(JSON.stringify(data));
+        setChecked(
+          checked.map((str) => {
+            return str.toLowerCase();
+          })
+        );
+        const rec = result.filter((recipe) => {
+          return searchIngredients.every((ingredient) =>
+            recipe.Ingredients.includes(ingredient)
+          );
+        });
+        setLoading(false);
+        setMatchedRecipes(rec);
+        setSearchIngredients([]);
+        setChecked([]);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  };
 
   const handleCheck = (event) => {
     let updatedList = [...checked];
+    let lowerCaseList = [...searchIngredients];
+
     if (event.target.checked) {
       updatedList = [...checked, event.target.value];
+      lowerCaseList = [...searchIngredients, event.target.value.toLowerCase()];
     } else {
       updatedList.splice(checked.indexOf(event.target.value), 1);
     }
     setChecked(updatedList);
+    setSearchIngredients(lowerCaseList);
   };
 
   const handleUncheckAll = () => {
     setChecked([]);
+    setCollapse(false);
+    setUnchecked(true);
   };
-
-  const findRecipe = () => {
-    const selectedIngredients = new Set(checked);
-    const matchedRecipes = recipeList.filter((recipe) => {
-      const recipeIngredients = new Set(recipe.ingredients);
-      for (const ingredient of selectedIngredients) {
-        if (!recipeIngredients.has(ingredient)) {
-          return false;
-        }
-      }
-      return true;
-    });
-    return matchedRecipes;
-  };
-
-  // const FetchData = (checked) => {
-  //   console.log(checked);
-  //   axios
-  //     .get(
-  //       "https://westeurope.azure.data.mongodb-api.com/app/recipe_api-eixns/endpoint/recipes"
-  //     )
-  //     .then(function (res) {
-  //       const result = JSON.parse(JSON.stringify(res.data));
-  //     })
-  //     .then(() => {})
-  //     .catch(function (err) {
-  //       console.log(err);
-  //     })
-  //     .finally(function (result) {
-  //       const rec = result.filter((recipe) => {
-  //         return checked.every((ingredient) =>
-  //           recipe.Ingredients.includes(ingredient)
-  //         );
-  //       });
-  //     });
-  // };
 
   let checkedItems = checked.length
     ? checked.reduce((total, item) => {
@@ -206,75 +76,91 @@ const Ingredient = ({ navigate }) => {
     if (checked.length === 0) {
       throw "No Items Checked";
     } else {
-      trial();
-      //   const matchedRecipes = findRecipe();
-      //   setMatchedRecipes(matchedRecipes);
-      // }
+      FetchData();
+
+      setCollapse(true);
+      setUnchecked(false);
     }
+  };
 
-    return (
-      <div class="bg-orange-200">
-        <div className="recipe-generator"></div>
-        <div
-          className="ingredient-header"
-          class="flex justify-center font-bold text-2xl mt-16 mb-8"
-        >
-          <h1>Ingredients</h1>
-        </div>
-        <div
-          className="list-container"
-          class="flex grid grid-rows-4 grid-flow-col gap-4 pl-4"
-        >
-          {ingredientList.map((item, index) => (
-            <div key={index} className="flex items-center">
-              <input
-                value={item}
-                type="checkbox"
-                onChange={handleCheck}
-                checked={checked.includes(item)}
-                class="mr-2"
-              />
-              <span className={isChecked(item)}>{item}</span>
-            </div>
-          ))}
-
-          <div />
-        </div>
-        <div className="flex gap-10 mt-5 mb-4">
-          <div>
-            <div>{`Items checked are: ${checkedItems}`}</div>
+  const onclick = () => {
+    setCollapse(!collapse);
+  };
+  return (
+    <div class="bg-orange-200">
+      <div className="recipe-generator"></div>
+      <div
+        className="ingredient-header"
+        class="mt-16 mb-8 flex justify-center text-2xl font-bold"
+      >
+        <h1 class="mx-auto">Ingredients</h1>
+        <p class="ml-auto" style={{ cursor: "pointer" }} onClick={onclick}>
+          {" "}
+          {collapse ? "+" : "-"}{" "}
+        </p>
+      </div>
+      <div
+        className="list-container"
+        style={{
+          height: collapse ? "0px" : "200px",
+          transition: "height 0.5s ease-in",
+        }}
+        class={
+          collapse
+            ? "flex grid grid-flow-col grid-rows-5 gap-4 truncate pl-4"
+            : "flex grid grid-flow-col grid-rows-5 gap-4 pl-4"
+        }
+      >
+        {IngredientList.map((item, index) => (
+          <div key={index} className="flex items-center">
+            <input
+              value={item}
+              type="checkbox"
+              onChange={handleCheck}
+              checked={checked.includes(item)}
+              class="mr-2"
+            />
+            <span className={isChecked(item)}>{item}</span>
           </div>
-        </div>
-        <div>
-          <button
-            type="button"
-            class="mr-5 w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600 "
-            onClick={handleUncheckAll}
-          >
-            Uncheck All
-          </button>
-          <button
-            type="submit"
-            class="w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600"
-            onClick={handleSubmit}
-          >
-            Submit
-          </button>
-        </div>
+        ))}
 
+        <div />
+      </div>
+      <div className="mt-5 mb-4 flex gap-10">
         <div>
-          {matchedRecipes.length > 0 && (
-            <div className="matched-recipes" class=" mt-4 grid grid-auto-rows">
-              <h2 class="flex justify-center font-bold text-2xl">
-                Matched Recipes
-              </h2>
-              <AllRecipes recipes={matchedRecipes} />
-            </div>
-          )}
+          <div>{`Items checked are: ${checkedItems}`}</div>
         </div>
       </div>
-    );
-  };
+      <div>
+        <button
+          type="button"
+          class="mr-5 w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600 "
+          onClick={handleUncheckAll}
+        >
+          Uncheck All
+        </button>
+        <button
+          type="submit"
+          class="w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600"
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
+        {loading === true && <Spinner></Spinner>}
+      </div>
+
+      <div>
+        {matchedRecipes.length > 0 && unchecked === false && (
+          <div className="matched-recipes" class=" grid-auto-rows mt-4 grid">
+            <h2 class="flex justify-center text-2xl font-bold">
+              Matched Recipes
+            </h2>
+            <AllRecipes recipes={matchedRecipes} />
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Ingredient;
