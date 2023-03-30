@@ -5,16 +5,25 @@ const LogInForm = ({ navigate }) => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
-    if (
-      window.localStorage.getItem("token") &&
-      window.localStorage.getItem("token") !== "undefined"
-    ) {
-      navigate("/"); //this will eventually route through to the profile page (at the moment it routes back to login because I've configured '/' to route to login)
-    } else {
-      navigate("/login");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (
+  //     window.localStorage.getItem("token") &&
+  //     window.localStorage.getItem("token") !== "undefined"
+  //   ) {
+  //     const data = JSON.parse(window.localStorage.getItem("userData"));
+  //     console.log(data);
+  //     navigate(`/user/${getUserId(data)}`);
+  //   } else {
+  //     navigate("/login");
+  //   }
+  // }, [navigate]);
+
+  const getUserId = async (data) => {
+    let userResponse = await fetch(`/users/${data._id}`); // replace `/users/${data.userId}` with the actual endpoint to fetch user data
+    let userData = await userResponse.json();
+    let userId = userData._id;
+    return userId;
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,11 +40,11 @@ const LogInForm = ({ navigate }) => {
       setErrorMessage("Invalid username or password");
     } else {
       console.log("Successful login");
-      let data = await response.json();
+      const data = await response.json();
       window.localStorage.setItem("token", data.token);
-      //   storeUserData(data.user);
-      //   window.localStorage.setItem("userData", JSON.stringify(data.user));
-      navigate("/"); //this will eventually route through to the user's profile page
+      window.localStorage.setItem("userData", JSON.stringify(data.user));
+      // navigate to user profile page with user ID
+      navigate(`/user/${getUserId(data.user)}`);
     }
   };
 
