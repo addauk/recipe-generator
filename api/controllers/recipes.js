@@ -1,7 +1,9 @@
 const Recipe = require("../models/recipe");
+
 const RecipesController = {
   Index: (req, res) => {
     Recipe.findOne({ _id: req.params.id }).exec(async (err, recipe) => {
+      console.log(req.params.id);
       if (err) {
         throw err;
       }
@@ -10,4 +12,5 @@ const RecipesController = {
     });
   },
 };
+
 module.exports = RecipesController;

@@ -3,6 +3,7 @@
 /**
  * Module dependencies.
  */
+require("dotenv").config();
 
 var app = require("../app");
 var debug = require("debug")("recipe-generator:server");
@@ -19,17 +20,17 @@ app.set("port", port);
 /**
  * Connect to MongoDB
  **/
-console.log(process.env.DB_CONNECT);
-var mongoDbUrl =
-  process.env.MONGODB_URL ||
-  mongoose.connect(
-    mongoDbUrl,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    },
-    () => console.log("mongoose connected")
-  );
+
+var mongoDbUrl = process.env.DB_CONNECT;
+mongoose.connect(
+  mongoDbUrl,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  () => console.log("mongoose connected")
+);
+mongoose.set("debug", true);
 
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
