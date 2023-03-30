@@ -10,7 +10,6 @@ const SessionsController = {
 
     User.findOne({ email: email }).then(async (user) => {
       const isPasswordValid = await bcrypt.compare(password, user.password);
-      console.log(user.password)
       if (!user) {
         console.log("auth error: user not found");
         res.status(401).json({ message: "auth error" });

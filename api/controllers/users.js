@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt')
 const UsersController = {
   Create: async (req, res) => {
     console.log("CREATING USER")
-    // const user = new User(req.body);
 
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
 

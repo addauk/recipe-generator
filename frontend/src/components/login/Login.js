@@ -26,9 +26,7 @@ const LogInForm = ({ navigate }) => {
       },
       body: JSON.stringify({ email: email, password: password }),
     });
-    console.log("Generating token")
     if (response.status !== 201) {
-      console.log("Invalid username or password");
       navigate("/login");
       setErrorMessage("Invalid username or password");
     } else {
@@ -41,9 +39,9 @@ const LogInForm = ({ navigate }) => {
     }
   };
 
-  const handleEmailChange = (event) => {
+  function handleEmailChange(event) {
     setEmail(event.target.value);
-  };
+  }
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);

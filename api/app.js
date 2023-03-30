@@ -38,8 +38,6 @@ const tokenChecker = (req, res, next) => {
   });
 };
 
-console.log(process.env.PORT)
-
 // route setup - route, follows to middleware and then accesses server side Router eg:
 //app.use("/recipes",  recipesRouter);
 

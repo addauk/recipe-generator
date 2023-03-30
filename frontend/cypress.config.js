@@ -15,7 +15,3 @@ module.exports = defineConfig({
     baseUrl: "http://localhost:3000",
   },
 });
-
-// Cypress.on('uncaught:exception', (err, runnable) => {
-//     return false
-// })
