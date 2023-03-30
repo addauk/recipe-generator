@@ -19,12 +19,17 @@ app.set("port", port);
 /**
  * Connect to MongoDB
  **/
-
-var mongoDbUrl = process.env.MONGODB_URL || DB_CONNECT;
-mongoose.connect(mongoDbUrl, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+console.log(process.env.DB_CONNECT);
+var mongoDbUrl =
+  process.env.MONGODB_URL ||
+  mongoose.connect(
+    mongoDbUrl,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+    () => console.log("mongoose connected")
+  );
 
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));

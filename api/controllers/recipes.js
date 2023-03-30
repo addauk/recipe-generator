@@ -5,6 +5,7 @@ const RecipesController = {
       if (err) {
         throw err;
       }
+      console.log(recipe);
       res.status(200).json(recipe);
     });
   },
