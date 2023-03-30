@@ -12,7 +12,7 @@ const LogInForm = ({ navigate }) => {
     ) {
       navigate("/"); //this will eventually route through to the profile page (at the moment it routes back to login because I've configured '/' to route to login)
     } else {
-      navigate("/login")
+      navigate("/login");
     }
   }, []);
 
@@ -33,8 +33,8 @@ const LogInForm = ({ navigate }) => {
       console.log("Successful login");
       let data = await response.json();
       window.localStorage.setItem("token", data.token);
-    //   storeUserData(data.user);
-    //   window.localStorage.setItem("userData", JSON.stringify(data.user));
+      //   storeUserData(data.user);
+      //   window.localStorage.setItem("userData", JSON.stringify(data.user));
       navigate("/"); //this will eventually route through to the user's profile page
     }
   };
@@ -53,47 +53,47 @@ const LogInForm = ({ navigate }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-  <div>
-    <div>
-      <label htmlFor="email"></label>
-      <input
-        id="email"
-        type="text"
-        placeholder="Email"
-        value={email}
-        onChange={handleEmailChange}
-      />
-    </div>
-    <div>
-      <label htmlFor="password"></label>
-      <input
-        id="password"
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={handlePasswordChange}
-      />
-    </div>
-    <div>
-      <input
-        role="submit-button"
-        id="submit"
-        type="submit"
-        value="Log In"
-      />
-    </div>
-    <div>
-      <input
-        role="signup-button"
-        id="signup"
-        type="button"
-        value="Sign Up"
-        onClick={handleSignUp}
-      />
-    </div>
-    {errorMessage && <p role="error">{errorMessage}</p>}
-  </div>
-</form>
+      <div>
+        <div>
+          <label htmlFor="email"></label>
+          <input
+            id="email"
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="password"></label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </div>
+        <div>
+          <input
+            role="submit-button"
+            id="submit"
+            type="submit"
+            value="Log In"
+          />
+        </div>
+        <div>
+          <input
+            role="signup-button"
+            id="signup"
+            type="button"
+            value="Sign Up"
+            onClick={handleSignUp}
+          />
+        </div>
+        {errorMessage && <p role="error">{errorMessage}</p>}
+      </div>
+    </form>
   );
 };
 

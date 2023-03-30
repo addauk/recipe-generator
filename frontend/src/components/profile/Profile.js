@@ -47,17 +47,6 @@ const UserProfile = ({ user }) => {
           <button onClick={handleEdit}>Edit Bio</button>
         </>
       )}
-      <ul>
-        <li>
-          <strong>Location:</strong> {user.location}
-        </li>
-        <li>
-          <strong>Email:</strong> {user.email}
-        </li>
-        <li>
-          <strong>Website:</strong> {user.website}
-        </li>
-      </ul>
     </div>
   );
 };
