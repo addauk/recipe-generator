@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-const Recipe = ({ navigate }) => {
+const RecipeDetail = ({ navigate }) => {
   const [recipe, setRecipe] = useState({});
   //const [token, setToken] = useState(window.localStorage.getItem("token"));
   //const params = useParams();
@@ -148,4 +148,4 @@ const Recipe = ({ navigate }) => {
   return <div class="recipe">{recipe && <RenderRecipe />}</div>;
 };
 
-export default Recipe;
+export default RecipeDetail;
