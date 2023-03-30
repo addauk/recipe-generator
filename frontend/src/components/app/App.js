@@ -1,4 +1,5 @@
 import "./App.css";
+import Ingredient from "../ingredient/Ingredient";
 import { useNavigate, Routes, Route } from "react-router-dom";
 import LoginForm from "../login/Login";
 import SignUpForm from "../signup/SignUpForm";
@@ -14,6 +15,7 @@ function App() {
         path="/user/:userId"
         element={<UserProfile navigate={useNavigate()} />}
       />
+      <Route path="/" element={<Ingredient navigate={useNavigate()} />} />
     </Routes>
   );
 }
