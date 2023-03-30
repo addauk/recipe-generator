@@ -4,6 +4,7 @@ import { useNavigate, Routes, Route } from "react-router-dom";
 import LoginForm from "../login/Login";
 import SignUpForm from "../signup/SignUpForm";
 import UserProfile from "../profile/Profile";
+import RecipeDetail from "../recipeDetail/RecipeDetail";
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
         element={<UserProfile navigate={useNavigate()} />}
       />
       <Route path="/" element={<Ingredient navigate={useNavigate()} />} />
+      <Route
+        path="/recipe/:id"
+        element={<RecipeDetail navigate={useNavigate()} />}
+      />
     </Routes>
   );
 }

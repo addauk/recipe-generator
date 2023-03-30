@@ -28,6 +28,7 @@ const AllRecipes = (props) => {
           title={recipe.Name}
           cookingTime={extractTime(recipe.CookTime)}
           calories={recipe.Calories}
+          recipe={recipe}
         />
       ))}
     </div>
