@@ -7,7 +7,6 @@ const bcrypt = require("bcryptjs");
 
 // require routers here eg:
 const recipesRouter = require("./routes/recipes");
-const getRecipesRouter = require("./routes/getRecipes");
 
 const app = express();
 
@@ -20,7 +19,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // route setup - route, follows to middleware (if exists) and then accesses server side Router eg:
 app.use("/recipes", recipesRouter);
-app.use("/", getRecipesRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
