@@ -1,10 +1,10 @@
-const Recipe = require("../models/recipe");
+const GetRecipe = require("../models/getRecipe");
 const mongoose = require("mongoose");
 
 const GetRecipesController = async (req, res) => {
   const { targetIngredients } = req.body;
   try {
-    const result = await Recipe.find(
+    const result = await GetRecipe.find(
       { Ingredients: { $all: ["butter", "egg"] } }
       //   {
       //     projection: {
@@ -16,7 +16,7 @@ const GetRecipesController = async (req, res) => {
       //       Ingredients: 1,
       //     },
       //   }
-    ).limit(1);
+    ).limit(20);
     //   .toArray();
     res.status(200).json({ result });
   } catch (error) {
