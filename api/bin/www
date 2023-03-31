@@ -28,7 +28,7 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
-  () => console.log("mongoose connected")
+  () => console.log("mongoose connected to " + mongoDbUrl)
 );
 mongoose.set("debug", true);
 

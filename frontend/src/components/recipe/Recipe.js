@@ -5,7 +5,7 @@ const Recipe = (props) => {
   const navigate = useNavigate();
 
   const handlePress = () => {
-    navigate("/recipes/" + props.recipe._id, { state: props });
+    navigate("/recipe/" + props.recipe._id);
   };
   return (
     <div class="ml-4 py-1">

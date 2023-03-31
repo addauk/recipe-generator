@@ -2,9 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const RecipesController = require("../controllers/recipes");
-const GetRecipesController = require("../controllers/getRecipes");
 
-router.get("/:RecipeId", RecipesController.Index);
-router.post("/", GetRecipesController);
+router.get("/:id", RecipesController.Index);
+router.post("/", RecipesController.Search);
 
 module.exports = router;
