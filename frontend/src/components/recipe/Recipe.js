@@ -5,7 +5,7 @@ const Recipe = (props) => {
   const navigate = useNavigate();
 
   const handlePress = () => {
-    navigate("/recipe/" + props.recipe._id, { state: props });
+    navigate("/recipes/" + props.recipe._id, { state: props });
   };
   return (
     <div class="ml-4 py-1">
@@ -43,3 +43,7 @@ const Recipe = (props) => {
   );
 };
 export default Recipe;
+
+// Navigate View recipe to recipe detail
+// Fetch from backend by feeding the recipe ID
+// Return recipe detail components

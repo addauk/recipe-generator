@@ -1,14 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
+
 const RecipeDetail = ({ navigate }) => {
   const [recipe, setRecipe] = useState({});
   const location = useLocation();
   //const [token, setToken] = useState(window.localStorage.getItem("token"));
-  const params = useParams();
-
+  const RecipeId = useParams();
+  // console.log(RecipeId);
   useEffect(() => {
-    fetchRecipe();
+    getRecipe();
   }, []);
+
+  const getRecipe = async () => {
+    try {
+      const response = await fetch(`/recipes/${RecipeId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        // body: JSON.stringify({
+        //   targetId: RecipeId,
+        // }),
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      await console.log(data);
+      // if (!Array.isArray(data.result)) {
+      //   throw new Error("Data is not an array");
+      // }
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  };
 
   async function fetchRecipe() {
     //setRecipe(location.state.recipe);
@@ -76,81 +101,82 @@ const RecipeDetail = ({ navigate }) => {
     //     "Pour into plastic mold and freeze overnight. Let soften slightly to serve.",
     //   ],
     // });}
-    const url = "/recipes/" + params.id;
-    const response = await fetch(url, {
-      // headers: {
-      //   Authorization: `Bearer ${token}`,
-      // },
-    });
+    // const url = "/recipes/" + params.id;
+    // const response = await fetch(url, {
+    // headers: {
+    //   Authorization: `Bearer ${token}`,
+    // },
+    // });
 
-    const data = await response.json();
-    // window.localStorage.setItem("token", data.token);
-    // setToken(window.localStorage.getItem("token"));
-    setRecipe(data.recipe);
-  }
+    //   const data = await response.json();
+    //   // window.localStorage.setItem("token", data.token);
+    //   // setToken(window.localStorage.getItem("token"));
+    //   setRecipe(data.recipe);
+    // }
 
-  function RenderRecipe() {
-    return (
-      <>
-        <div class="recipeHeader">
-          {Array.isArray(recipe.ImageLinks) && recipe.ImageLinks[0] !== "" ? (
-            <img class="recipeImage" src={recipe.ImageLinks[0]} alt="" />
-          ) : (
-            <img
-              class="recipeImage"
-              src="https://img.freepik.com/premium-vector/404-error-design-with-donut_76243-30.jpg"
-              alt="error"
-            />
-          )}
-          <h1 class="recipeTitle">{recipe.Name}</h1>
-          <h3 class="recipeSubtitle">{recipe.RecipeCategory}</h3>
-          <p class="recipeDescription">{recipe.Description}</p>
-          <p class="servings">Serves: {recipe.RecipeServings}</p>
-          <div class="dietTags">
-            <ul>{recipe.Tags && recipe.Tags.map((tag) => <li>{tag}</li>)}</ul>
+    function RenderRecipe() {
+      return (
+        <>
+          <div class="recipeHeader">
+            {Array.isArray(recipe.ImageLinks) && recipe.ImageLinks[0] !== "" ? (
+              <img class="recipeImage" src={recipe.ImageLinks[0]} alt="" />
+            ) : (
+              <img
+                class="recipeImage"
+                src="https://img.freepik.com/premium-vector/404-error-design-with-donut_76243-30.jpg"
+                alt="error"
+              />
+            )}
+            <h1 class="recipeTitle">{recipe.Name}</h1>
+            <h3 class="recipeSubtitle">{recipe.RecipeCategory}</h3>
+            <p class="recipeDescription">{recipe.Description}</p>
+            <p class="servings">Serves: {recipe.RecipeServings}</p>
+            <div class="dietTags">
+              <ul>{recipe.Tags && recipe.Tags.map((tag) => <li>{tag}</li>)}</ul>
+            </div>
+            <div class="nutrition">
+              <ul>
+                <li>Calories: {recipe.Calories}</li>
+                <li>Fat: {recipe.FatContent}</li>
+                <li>Saturated Fat: {recipe.SaturatedFatContent}</li>
+                <li>Cholestorol: {recipe.CholestorolContent}</li>
+                <li>Salt: {recipe.SodiumContent}</li>
+                <li>Carbs: {recipe.CarbohydrateContent}</li>
+                <li>Fiber: {recipe.FiberContent}</li>
+                <li>Sugar: {recipe.SugarContent}</li>
+                <li>Protein: {recipe.ProteinContent}</li>
+              </ul>
+            </div>
+            <div class="rating"></div>
           </div>
-          <div class="nutrition">
-            <ul>
-              <li>Calories: {recipe.Calories}</li>
-              <li>Fat: {recipe.FatContent}</li>
-              <li>Saturated Fat: {recipe.SaturatedFatContent}</li>
-              <li>Cholestorol: {recipe.CholestorolContent}</li>
-              <li>Salt: {recipe.SodiumContent}</li>
-              <li>Carbs: {recipe.CarbohydrateContent}</li>
-              <li>Fiber: {recipe.FiberContent}</li>
-              <li>Sugar: {recipe.SugarContent}</li>
-              <li>Protein: {recipe.ProteinContent}</li>
-            </ul>
+          <div class="mainRecipe">
+            <div class="ingredients">
+              <h2>Ingredients</h2>
+              <ul>
+                {recipe.Ingredients &&
+                  recipe.Ingredients.map((ingredient, index) => (
+                    <li class="ingredient">
+                      {recipe.IngredientQuantities[index]} {ingredient}
+                    </li>
+                  ))}
+              </ul>
+            </div>
+            <div class="method">
+              <h2>Method</h2>
+              <ol>
+                {recipe.Instructions &&
+                  recipe.Instructions.map((instruction) => (
+                    <li class="instruction">{instruction}</li>
+                  ))}
+              </ol>
+            </div>
           </div>
-          <div class="rating"></div>
-        </div>
-        <div class="mainRecipe">
-          <div class="ingredients">
-            <h2>Ingredients</h2>
-            <ul>
-              {recipe.Ingredients &&
-                recipe.Ingredients.map((ingredient, index) => (
-                  <li class="ingredient">
-                    {recipe.IngredientQuantities[index]} {ingredient}
-                  </li>
-                ))}
-            </ul>
-          </div>
-          <div class="method">
-            <h2>Method</h2>
-            <ol>
-              {recipe.Instructions &&
-                recipe.Instructions.map((instruction) => (
-                  <li class="instruction">{instruction}</li>
-                ))}
-            </ol>
-          </div>
-        </div>
-      </>
-    );
+        </>
+      );
+    }
+    //return <div>testing</div>;
+    return <div class="recipe">{recipe && <RenderRecipe />}</div>;
   }
-  //return <div>testing</div>;
-  return <div class="recipe">{recipe && <RenderRecipe />}</div>;
 };
 
 export default RecipeDetail;

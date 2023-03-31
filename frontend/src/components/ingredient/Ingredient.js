@@ -12,34 +12,34 @@ const Ingredient = ({ navigate }) => {
   const [loading, setLoading] = useState(false);
   const [unchecked, setUnchecked] = useState(true);
 
-  const FetchData = () => {
+  const getRecipes = async () => {
     setLoading(true);
-    fetch(
-      "https://westeurope.azure.data.mongodb-api.com/app/recipe_api-eixns/endpoint/recipes"
-    )
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        const result = JSON.parse(JSON.stringify(data));
-        setChecked(
-          checked.map((str) => {
-            return str.toLowerCase();
-          })
-        );
-        const rec = result.filter((recipe) => {
-          return searchIngredients.every((ingredient) =>
-            recipe.Ingredients.includes(ingredient)
-          );
-        });
-        setLoading(false);
-        setMatchedRecipes(rec);
-        setSearchIngredients([]);
-        setChecked([]);
-      })
-      .catch(function (err) {
-        console.log(err);
+    try {
+      const response = await fetch("http://localhost:3000/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          targetIngredients: searchIngredients,
+        }),
       });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      if (!Array.isArray(data.result)) {
+        throw new Error("Data is not an array");
+      }
+
+      await setMatchedRecipes(data.result);
+      console.log(matchedRecipes);
+      setLoading(false);
+      setSearchIngredients([]);
+      setChecked([]);
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
   };
 
   const handleCheck = (event) => {
@@ -76,7 +76,7 @@ const Ingredient = ({ navigate }) => {
     if (checked.length === 0) {
       throw "No Items Checked";
     } else {
-      FetchData();
+      getRecipes();
 
       setCollapse(true);
       setUnchecked(false);
@@ -168,3 +168,32 @@ const Ingredient = ({ navigate }) => {
 };
 
 export default Ingredient;
+// const FetchData = () => {
+//   setLoading(true);
+//   fetch(
+//     "https://westeurope.azure.data.mongodb-api.com/app/recipe_api-eixns/endpoint/recipes"
+//   )
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       const result = JSON.parse(JSON.stringify(data));
+//       setChecked(
+//         checked.map((str) => {
+//           return str.toLowerCase();
+//         })
+//       );
+//       const rec = result.filter((recipe) => {
+//         return searchIngredients.every((ingredient) =>
+//           recipe.Ingredients.includes(ingredient)
+//         );
+//       });
+//       setLoading(false);
+//       setMatchedRecipes(rec);
+//       setSearchIngredients([]);
+//       setChecked([]);
+//     })
+//     .catch(function (err) {
+//       console.log(err);
+//     });
+// }
