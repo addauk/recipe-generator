@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -6,26 +6,18 @@ const LogInForm = ({ navigate }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
 
-  // useEffect(() => {
-  //   if (
-  //     window.localStorage.getItem("token") &&
-  //     window.localStorage.getItem("token") !== "undefined"
-  //   ) {
-  //     const data = JSON.parse(window.localStorage.getItem("userData"));
-  //     console.log(data);
-  //     navigate(`/user/${getUserId(data)}`);
-  //   } else {
-  //     navigate("/login");
-  //   }
-  // }, [navigate]);
-
-  // const getUserId = async (data) => {
-  //   let userResponse = await fetch(`/users/${data._id}`); // replace `/users/${data.userId}` with the actual endpoint to fetch user data
-  //   let userData = await userResponse.json();
-  //   let userId = userData._id;
-  //   console.log("DATA ID: " + data._id);
-  //   return userId;
-  // };
+  useEffect(() => {
+    if (
+      window.localStorage.getItem("token") &&
+      window.localStorage.getItem("token") !== "undefined"
+    ) {
+      const data = JSON.parse(window.localStorage.getItem("userData"));
+      console.log(data._id);
+      navigate(`/users/${data._id}`);
+    } else {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

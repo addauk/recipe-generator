@@ -47,4 +47,21 @@ describe("UserProfile component", () => {
       .should("contain", user.bio)
       .should("not.contain", "This is the new bio");
   });
+
+  it("should log out the user and redirect to login page", () => {
+    cy.window().then((win) => {
+      win.localStorage.setItem("token", "fake_token");
+      win.localStorage.setItem("userData", JSON.stringify(user));
+    });
+
+    cy.get("button").contains("Logout").click();
+    cy.wait(1000);
+
+    cy.url().should("include", "/login");
+
+    cy.window().then((win) => {
+      expect(win.localStorage.getItem("token")).to.be.null;
+      expect(win.localStorage.getItem("userData")).to.be.null;
+    });
+  });
 });

@@ -8,7 +8,6 @@ const SessionsController = {
     const password = req.body.password;
 
     User.findOne({ email: email }).then(async (user) => {
-      console.log("IN TOKEN CONTROLLER" + user.email);
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!user) {
         console.log("auth error: user not found");
