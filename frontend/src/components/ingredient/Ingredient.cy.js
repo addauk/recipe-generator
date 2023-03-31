@@ -1,6 +1,6 @@
 import Ingredient from "./Ingredient";
-import { act, render, screen } from "@testing-library/react";
-import fetchMock from "jest-fetch-mock";
+// import { act, render, screen } from "@testing-library/react";
+// import fetchMock from "jest-fetch-mock";
 
 const navigate = () => {};
 
