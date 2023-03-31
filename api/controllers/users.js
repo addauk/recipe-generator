@@ -26,12 +26,31 @@ const UsersController = {
   },
   GetUser: async (req, res) => {
     try {
-      const email = req.query.email;
-      const user = await User.findOne({ email: email });
+      console.log("GETTING USER" + req.params.id);
+      const _id = req.params.id;
+      const user = await User.findOne({ _id: _id }).select("userName bio");
       if (!user) {
         return res.status(404).json({ error: "User not found" });
       }
-      res.json(user.userName);
+      res.json(user);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Server error" });
+    }
+  },
+
+  UpdateUserBio: async (req, res) => {
+    try {
+      console.log("UPDATING USER BIO" + req.params.id);
+      const _id = req.params.id;
+      const user = await User.findOne({ _id: _id });
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      user.bio = req.body.bio;
+      await user.save();
+      res.json({ message: "OK" });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Server error" });

@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const TokensController = require("../controllers/tokens");
+const SessionsController = require("../controllers/tokens");
 
-router.post("/", TokensController.Create);
+router.post("/", SessionsController.Create);
 
 module.exports = router;

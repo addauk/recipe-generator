@@ -9,7 +9,8 @@ const UserProfile = ({ user }) => {
   };
 
   const handleSave = () => {
-    fetch(`/api/users/${user.id}`, {
+    console.log("USER INFO ENTERING PUT REQUEST: " + user);
+    fetch(`/users/${user._id}`, {
       method: "PUT",
       body: JSON.stringify({ bio }),
       headers: {
@@ -17,7 +18,7 @@ const UserProfile = ({ user }) => {
       },
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log("AFTER PUT REQUEST: " + data));
     setEditing(false);
   };
 

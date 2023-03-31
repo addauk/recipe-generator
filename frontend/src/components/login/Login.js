@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
 
   // useEffect(() => {
   //   if (
@@ -18,12 +19,13 @@ const LogInForm = ({ navigate }) => {
   //   }
   // }, [navigate]);
 
-  const getUserId = async (data) => {
-    let userResponse = await fetch(`/users/${data._id}`); // replace `/users/${data.userId}` with the actual endpoint to fetch user data
-    let userData = await userResponse.json();
-    let userId = userData._id;
-    return userId;
-  };
+  // const getUserId = async (data) => {
+  //   let userResponse = await fetch(`/users/${data._id}`); // replace `/users/${data.userId}` with the actual endpoint to fetch user data
+  //   let userData = await userResponse.json();
+  //   let userId = userData._id;
+  //   console.log("DATA ID: " + data._id);
+  //   return userId;
+  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -39,12 +41,12 @@ const LogInForm = ({ navigate }) => {
       navigate("/login");
       setErrorMessage("Invalid username or password");
     } else {
-      console.log("Successful login");
       const data = await response.json();
       window.localStorage.setItem("token", data.token);
       window.localStorage.setItem("userData", JSON.stringify(data.user));
-      // navigate to user profile page with user ID
-      navigate(`/user/${getUserId(data.user)}`);
+      await setCurrentUser(data.user);
+      navigate(`/users/${data.user._id}`);
+      console.log("Successful login");
     }
   };
 
