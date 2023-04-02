@@ -21,7 +21,7 @@ app.set("port", port);
  **/
 
 var mongoDbUrl =
-  process.env.MONGODB_URL || "mongodb://0.0.0.0/recipe-generator";
+  process.env.MONGODB_URL || "mongodb+srv://recipe_generator:Makers2023@recipe-generator-cluste.2wl4h.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(mongoDbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
