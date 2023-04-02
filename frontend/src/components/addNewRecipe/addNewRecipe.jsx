@@ -51,6 +51,8 @@ class AddNewRecipe extends Component {
           <input type="submit" value="Submit"/>
         </form>
       </div>
+
+      
     );
   }
 }

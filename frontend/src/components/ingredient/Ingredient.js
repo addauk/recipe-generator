@@ -64,8 +64,8 @@ const Ingredient = ({ navigate }) => {
 
   let checkedItems = checked.length
     ? checked.reduce((total, item) => {
-        return total + ", " + item;
-      })
+      return total + ", " + item;
+    })
     : "";
 
   let isChecked = (item) =>
@@ -158,8 +158,10 @@ const Ingredient = ({ navigate }) => {
             <AllRecipes recipes={matchedRecipes} />
           </div>
         )}
-      </div>
+      </div><br></br>
+      <button class="w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600" onClick={() => { window.location.href = '/recipe/new' }}>Create New Recipe</button>
     </div>
+
   );
 };
 
