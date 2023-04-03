@@ -18,6 +18,7 @@ function App() {
         path="/recipe/:id"
         element={<RecipeDetail navigate={useNavigate()} />}
       />
+      <Route path="/recipe/new" element={<AddNewRecipe navigate={useNavigate()} setCurrentUser={setCurrentUser}/>}/>
     </Routes>
   );
 }
