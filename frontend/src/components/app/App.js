@@ -9,11 +9,17 @@ import RecipeDetail from "../recipeDetail/RecipeDetail";
 import AddNewRecipe from "../addNewRecipe/addNewRecipe";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null); 
+  const [currentUser, setCurrentUser] = useState(null);
 
   return (
     <Routes>
       <Route path="/" element={<Ingredient navigate={useNavigate()} />} />
+           <Route path="/login" element={<LoginForm navigate={useNavigate()} setCurrentUser={setCurrentUser} />} />
+      <Route path="/signup" element={<SignUpForm navigate={useNavigate()} setCurrentUser={setCurrentUser} />} />
+      <Route
+        path="/users/:id"
+        element={<UserPage navigate={useNavigate()} currentUser={currentUser} />}
+      />
       <Route
         path="/recipe/:id"
         element={<RecipeDetail navigate={useNavigate()} />}
