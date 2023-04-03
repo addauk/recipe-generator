@@ -45,7 +45,7 @@ const SignUpForm = ({ navigate }) => {
   };
 
   const handleBioChange = () => {
-    setBio("");
+    setBio("Tell us about yourself!");
   };
 
   const handleEmailChange = (event) => {
