@@ -61,16 +61,17 @@ const SignUpForm = ({ navigate }) => {
   };
 
   return (
-    <div>
+    <div class="p-8">
       <div>
-        <div>
-          <h2>Sign Up</h2>
+        <div class="pb-4">
+          <h2 class="text-2xl font-bold">Sign Up</h2>
         </div>
         <div>
           <form onSubmit={handleSubmit}>
             <div>
-              <div>
+              <div class="pb-4">
                 <input
+                  class="border border-gray-300 rounded-md px-4 py-2 w-75"
                   placeholder="Username"
                   id="userName"
                   type="text"
@@ -78,8 +79,9 @@ const SignUpForm = ({ navigate }) => {
                   onChange={handleUserNameChange}
                 />
               </div>
-              <div>
+              <div class="pb-4">
                 <input
+                  class="border border-gray-300 rounded-md px-4 py-2 w-75"
                   placeholder="Email"
                   id="email"
                   type="text"
@@ -88,8 +90,9 @@ const SignUpForm = ({ navigate }) => {
                 />
               </div>
             </div>
-            <div>
+            <div class="pb-4">
               <input
+                class="border border-gray-300 rounded-md px-4 py-2 w-75"
                 placeholder="Password"
                 id="password"
                 type="password"
@@ -98,7 +101,12 @@ const SignUpForm = ({ navigate }) => {
               />
             </div>
             <div>
-              <input id="submit" type="submit" value="Submit" />
+              <input
+                class="inline-flex rounded-lg justify-center px-4 py-1 w-20 h-8 border border-black font-semibold text-sm mb-8"
+                id="submit"
+                type="submit"
+                value="Submit"
+              />
             </div>
           </form>
           {errorMessage && <p role="error">{errorMessage}</p>}
