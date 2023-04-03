@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "start:test": "MONGODB_URL='mongodb://0.0.0.0/recipe-generator_test' npm start",
+    "start:test": "DB_CONNECT='mongodb://0.0.0.0/recipe-generator_test' npm start",
     "test": "jest"
   },
   "engines": {

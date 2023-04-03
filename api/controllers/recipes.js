@@ -1,3 +1,4 @@
+const AddNewRecipe = require("../models/addNewRecipe");
 const Recipe = require("../models/recipe");
 
 const RecipesController = {
@@ -26,10 +27,14 @@ const RecipesController = {
     }
   },
   Create: async (req, res) => {
-    Recipe.insertOne({
-      Name: req.body.Name,
-      Description: req.body.Description
-    })
+
+    try {
+      const recipe = await AddNewRecipe.create(req.body);
+      console.log(recipe);
+      res.status(200).json({ message: "Recipe Successfully Added To The Database!" })
+    } catch (error) {
+      res.status(500).json({ error: error.message })
+    }
   }
 };
 
