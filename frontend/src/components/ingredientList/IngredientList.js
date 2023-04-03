@@ -5,7 +5,6 @@ const IngredientList = [
   "Chicken",
   "Turkey",
   "Bacon",
-  "Pepper",
   "Potato",
   "Milk",
   "Cheese",

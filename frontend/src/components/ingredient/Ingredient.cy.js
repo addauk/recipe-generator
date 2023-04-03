@@ -1,10 +1,8 @@
 import Ingredient from "./Ingredient";
-// import { act, render, screen } from "@testing-library/react";
-// import fetchMock from "jest-fetch-mock";
 
 const navigate = () => {};
 
-describe("Ingredeint", () => {
+describe("Ingredient", () => {
   it("checks the item/s is checked", () => {
     cy.mount(<Ingredient navigate={navigate} />);
 
@@ -28,23 +26,52 @@ describe("Ingredeint", () => {
     });
   });
 
-  // describe("My Component", () => {
-  //   beforeEach(() => {
-  //     fetchMock.resetMocks();
-  //   });
-  //   it("should render the component and fetch data", async () => {
-  //     fetchMock.mockResponseOnce(JSON.stringify({ data: "test" }));
+  // it.only("generates recipes that match the ingredients selected", () => {
+  //   const recipeList = [
+  //     { Name: "Chicken Casserole", CookingTime: "PT1H23M", Calories: "503" },
+  //     { Name: "Afredo Pasta", CookingTime: "PT1H3M", Calories: "489" },
+  //   ];
 
-  //     render(<Ingredient />);
+  //   cy.intercept(
+  //     "https://westeurope.azure.data.mongodb-api.com/app/recipe_api-eixns/endpoint/recipes",
+  //     recipeList
+  //   ).as("getRecipes");
+  //   console.log(recipeList);
+  //   cy.mount(<Ingredient />);
 
-  //     userEvent.click(screen.getByRole("button", { name: /find recipes/i }));
+  //   cy.get(
+  //     'input[value="Chicken"], input[value="Carrots"], input[value="Mushroom"]'
+  //   ).check();
+  //   cy.get('button[type="submit"]').click();
 
-  //     await act(async () => {
-  //       await new Promise((resolve) => setTimeout(resolve, 0));
-  //     });
-
-  //     expect(fetchMock).toHaveBeenCalledWith("https://api.example.com/recipes");
-  //     expect(screen.getByText("test")).toBeInTheDocument();
-  //   });
+  //   cy.wait("@getRecipes").its("response.statusCode").should("eq", 200);
+  //   cy.get(".matched-recipes").should("exist");
+  //   cy.get(".matched-recipes").contains("Chicken Casserole");
   // });
+
+  it.only("generates recipes that match the ingredients selected", () => {
+    const recipeList = [
+      { Name: "Chicken Casserole", CookingTime: "PT1H23M", Calories: "503" },
+      { Name: "Afredo Pasta", CookingTime: "PT1H3M", Calories: "489" },
+    ];
+
+    cy.intercept(
+      "https://westeurope.azure.data.mongodb-api.com/app/recipe_api-eixns/endpoint/recipes",
+      recipeList
+    ).as("getRecipes");
+
+    cy.mount(<Ingredient />);
+
+    cy.get(
+      'input[value="Chicken"], input[value="Carrots"], input[value="Mushroom"]'
+    ).check();
+    cy.get('button[type="submit"]').click();
+
+    cy.wait("@getRecipes");
+
+    cy.get('[data-cy="matched-recipes"]').should(
+      "contain.text",
+      "Chicken Casserole"
+    );
+  });
 });

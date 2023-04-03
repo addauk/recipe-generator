@@ -6,7 +6,7 @@ const JWT = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 // require routers here eg:
-// const recipesRouter = require("./routes/recipes");
+const recipesRouter = require("./routes/recipes");
 
 const tokensRouter = require("./routes/tokens");
 const usersRouter = require("./routes/users");

@@ -3,6 +3,7 @@
 /**
  * Module dependencies.
  */
+require("dotenv").config();
 
 var app = require("../app");
 var debug = require("debug")("recipe-generator:server");
@@ -20,11 +21,16 @@ app.set("port", port);
  * Connect to MongoDB
  **/
 
-var mongoDbUrl = process.env.MONGODB_URL || "mongodb://0.0.0.0/Makers_Adacemy";
-mongoose.connect(mongoDbUrl, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+var mongoDbUrl = process.env.DB_CONNECT || "mongodb://0.0.0.0/recipeGenerator";
+mongoose.connect(
+  mongoDbUrl,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  () => console.log("mongoose connected to " + mongoDbUrl)
+);
+mongoose.set("debug", true);
 
 // console.log(process.env)
 
