@@ -48,24 +48,59 @@ const UserProfile = ({ user, navigate }) => {
   };
 
   return (
-    <div className="user-profile">
+    <div className="user-profile" class="p-8">
       <h1>{user.userName}</h1>
       <br></br>
       {editing ? (
         <>
-          <textarea value={bio} onChange={handleBioChange} />
-          <div className="buttons">
-            <button onClick={handleSave}>Save</button> <br></br>
-            <button onClick={handleCancel}>Cancel</button>
+          <div>
+            <textarea
+              class="border border-black"
+              value={bio}
+              onChange={handleBioChange}
+            />
+          </div>
+          <div className="save-btn" data-cy="save-btn">
+            <button
+              class="inline-flex rounded-lg justify-center px-4 py-1 w-20 h-8 border border-black font-semibold text-sm mb-8"
+              onClick={handleSave}
+            >
+              Save
+            </button>{" "}
+            <br></br>
+          </div>
+          <div className="cancel-btn" data-cy="cancel-btn">
+            <button
+              class="inline-flex rounded-lg justify-center px-4 py-1 w-20 h-8 border border-black font-semibold text-sm"
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
           </div>
         </>
       ) : (
         <>
-          <p>{bio}</p>
+          <div>
+            <p>{bio}</p>
+            <br></br>
+          </div>
+          <div className="edit-button" data-cy="edit-button">
+            <button
+              class="inline-flex rounded-lg justify-center px-4 py-1 w-20 h-8 border border-black font-semibold text-sm"
+              onClick={handleEdit}
+            >
+              Edit
+            </button>
+          </div>
           <br></br>
-          <button onClick={handleEdit}>Edit Bio</button>
-          <br></br>
-          <button onClick={handleLogout}>Logout</button>
+          <div className="logout-btn" data-cy="logout-btn">
+            <button
+              class="inline-flex rounded-lg justify-center px-4 py-1 w-20 h-8 border border-black font-semibold text-sm"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </div>
         </>
       )}
     </div>
