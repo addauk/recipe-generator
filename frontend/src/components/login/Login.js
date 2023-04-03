@@ -56,10 +56,11 @@ const LogInForm = ({ navigate }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <div>
+      <div className="log-in" class="p-8">
+        <div class="pb-4">
           <label htmlFor="email"></label>
           <input
+            class="border border-gray-300 rounded-md px-4 py-2 w-75"
             id="email"
             type="text"
             placeholder="Email"
@@ -67,9 +68,10 @@ const LogInForm = ({ navigate }) => {
             onChange={handleEmailChange}
           />
         </div>
-        <div>
+        <div class="pb-4">
           <label htmlFor="password"></label>
           <input
+            class="border border-gray-300 rounded-md px-4 py-2 w-75"
             id="password"
             type="password"
             placeholder="Password"
@@ -77,8 +79,9 @@ const LogInForm = ({ navigate }) => {
             onChange={handlePasswordChange}
           />
         </div>
-        <div>
+        <div class="pt-4">
           <input
+            class="inline-flex rounded-lg justify-center px-4 py-1 w-20 h-8 border border-black font-semibold text-sm mb-8"
             role="submit-button"
             id="submit"
             type="submit"
@@ -87,6 +90,7 @@ const LogInForm = ({ navigate }) => {
         </div>
         <div>
           <input
+            class="inline-flex rounded-lg justify-center px-4 py-1 w-20 h-8 border border-black font-semibold text-sm mb-8"
             role="signup-button"
             id="signup"
             type="button"
