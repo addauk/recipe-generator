@@ -21,8 +21,7 @@ app.set("port", port);
  * Connect to MongoDB
  **/
 
-var mongoDbUrl =
-  process.env.DB_CONNECT ||
+var mongoDbUrl = process.env.DB_CONNECT;
 mongoose.connect(
   mongoDbUrl,
   {

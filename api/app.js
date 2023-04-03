@@ -39,8 +39,8 @@ const tokenChecker = (req, res, next) => {
 };
 
 // route setup - route, follows to middleware and then accesses server side Router eg:
-app.use("/recipes", recipesRouter);
 
+app.use("/recipes",  recipesRouter);
 app.use("/tokens", tokensRouter);
 app.use("/users", usersRouter);
 
