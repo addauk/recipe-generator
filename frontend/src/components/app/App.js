@@ -8,16 +8,39 @@ import UserPage from "../profile/UserPage";
 import RecipeDetail from "../recipeDetail/RecipeDetail";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null); 
+  const [currentUser, setCurrentUser] = useState();
+  const [userData, setUserData] = useState(
+    JSON.parse(window.localStorage.getItem("userData"))
+  );
+
+  console.log(currentUser);
 
   return (
     <Routes>
-      <Route path="/" element={<Ingredient navigate={useNavigate()} />} />
-           <Route path="/login" element={<LoginForm navigate={useNavigate()} setCurrentUser={setCurrentUser} />} />
-      <Route path="/signup" element={<SignUpForm navigate={useNavigate()} setCurrentUser={setCurrentUser} />} />
+      <Route
+        path="/"
+        element={
+          <Ingredient navigate={useNavigate()} currentUser={currentUser} />
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <LoginForm navigate={useNavigate()} setCurrentUser={setCurrentUser} />
+        }
+      />
+      <Route
+        path="/signup"
+        element={
+          <SignUpForm
+            navigate={useNavigate()}
+            setCurrentUser={setCurrentUser}
+          />
+        }
+      />
       <Route
         path="/users/:id"
-        element={<UserPage navigate={useNavigate()} currentUser={currentUser} />}
+        element={<UserPage navigate={useNavigate()} userData={userData} />}
       />
       <Route
         path="/recipe/:id"

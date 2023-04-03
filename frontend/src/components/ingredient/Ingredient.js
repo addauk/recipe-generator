@@ -3,6 +3,7 @@ import Recipe from "../recipe/Recipe";
 import AllRecipes from "../allRecipes/AllRecipes";
 import Spinner from "../spinner/spinner";
 import IngredientList from "../ingredientList/IngredientList";
+import Navbar from "../navbar/Navbar";
 
 const Ingredient = ({ navigate }) => {
   const [checked, setChecked] = useState([]);
@@ -88,6 +89,7 @@ const Ingredient = ({ navigate }) => {
   };
   return (
     <div class="bg-orange-200">
+      <Navbar navigate={navigate} />
       <div className="recipe-generator"></div>
       <div
         className="ingredient-header"

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Navbar from "../navbar/Navbar";
 
-const UserProfile = ({ user, navigate }) => {
+const UserProfile = ({ user, navigate, userData, storeUserData }) => {
   const [bio, setBio] = useState(user.bio);
   const [editing, setEditing] = useState(false);
   const [currentUser, setCurrentUser] = useState(user);
@@ -48,26 +49,29 @@ const UserProfile = ({ user, navigate }) => {
   };
 
   return (
-    <div className="user-profile">
-      <h1>{user.userName}</h1>
-      <br></br>
-      {editing ? (
-        <>
-          <textarea value={bio} onChange={handleBioChange} />
-          <div className="buttons">
-            <button onClick={handleSave}>Save</button> <br></br>
-            <button onClick={handleCancel}>Cancel</button>
-          </div>
-        </>
-      ) : (
-        <>
-          <p>{bio}</p>
-          <br></br>
-          <button onClick={handleEdit}>Edit Bio</button>
-          <br></br>
-          <button onClick={handleLogout}>Logout</button>
-        </>
-      )}
+    <div>
+      <Navbar navigate={navigate} currentUser={currentUser} />
+      <div className="user-profile">
+        <h1>{user.userName}</h1>
+        <br></br>
+        {editing ? (
+          <>
+            <textarea value={bio} onChange={handleBioChange} />
+            <div className="buttons">
+              <button onClick={handleSave}>Save</button> <br></br>
+              <button onClick={handleCancel}>Cancel</button>
+            </div>
+          </>
+        ) : (
+          <>
+            <p>{bio}</p>
+            <br></br>
+            <button onClick={handleEdit}>Edit Bio</button>
+            <br></br>
+            <button onClick={handleLogout}>Logout</button>
+          </>
+        )}
+      </div>
     </div>
   );
 };
