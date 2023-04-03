@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Recipe from "../recipe/Recipe";
 import AllRecipes from "../allRecipes/AllRecipes";
 import Spinner from "../spinner/spinner";
 import IngredientList from "../ingredientList/IngredientList";
@@ -27,11 +28,12 @@ const Ingredient = ({ navigate }) => {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      // if (!Array.isArray(data.result)) {
-      //   throw new Error("Data is not an array");
-      // }
+      if (!Array.isArray(data.result)) {
+        throw new Error("Data is not an array");
+      }
 
       await setMatchedRecipes(data.result);
+      console.log(matchedRecipes);
       setLoading(false);
       setSearchIngredients([]);
       setChecked([]);
@@ -72,7 +74,7 @@ const Ingredient = ({ navigate }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (checked.length === 0) {
-      throw new Error("No Items Checked");
+      throw "No Items Checked";
     } else {
       getRecipes();
 
@@ -168,3 +170,32 @@ const Ingredient = ({ navigate }) => {
 };
 
 export default Ingredient;
+// const FetchData = () => {
+//   setLoading(true);
+//   fetch(
+//     "https://westeurope.azure.data.mongodb-api.com/app/recipe_api-eixns/endpoint/recipes"
+//   )
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       const result = JSON.parse(JSON.stringify(data));
+//       setChecked(
+//         checked.map((str) => {
+//           return str.toLowerCase();
+//         })
+//       );
+//       const rec = result.filter((recipe) => {
+//         return searchIngredients.every((ingredient) =>
+//           recipe.Ingredients.includes(ingredient)
+//         );
+//       });
+//       setLoading(false);
+//       setMatchedRecipes(rec);
+//       setSearchIngredients([]);
+//       setChecked([]);
+//     })
+//     .catch(function (err) {
+//       console.log(err);
+//     });
+// }
