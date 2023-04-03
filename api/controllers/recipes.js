@@ -25,6 +25,12 @@ const RecipesController = {
       res.status(500).json({ error: "Internal Server Error" });
     }
   },
+  Create: async (req, res) => {
+    Recipe.insertOne({
+      Name: req.body.Name,
+      Description: req.body.Description
+    })
+  }
 };
 
 module.exports = RecipesController;
