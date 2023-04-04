@@ -116,8 +116,8 @@ const Ingredient = ({ navigate }) => {
           }}
           class={
             collapse
-              ? "flex grid grid-flow-row grid-cols-5 grid-rows-15 truncate pl-4"
-              : "flex grid grid-flow-row grid-cols-5 grid-rows-15 pl-4"
+              ? "flex grid grid-flow-row grid-cols-7 grid-rows-15 truncate pl-4"
+              : "flex grid grid-flow-row grid-cols-7 grid-rows-15 pl-4"
           }
         >
           {IngredientList.map((item, index) => (
@@ -135,15 +135,15 @@ const Ingredient = ({ navigate }) => {
 
           <div />
         </div>
-        <div className="mt-5 mb-4 flex gap-10 justify-center">
+        <div className="mt-5 mb-4 flex gap-5 justify-center">
           <div>
             <div>{`Items checked are: ${checkedItems}`}</div>
           </div>
         </div>
-        <div className="justify-center">
+        <div className="flex justify-center p-3">
           <button
             type="button"
-            class="w-40 rounded-lg border shadow-2xl bg-yellow-300 hover:bg-yellow-600 justify-center flex font-bold"
+            class="w-40 rounded-lg border shadow-2xl bg-yellow-300 hover:bg-yellow-600 justify-center font-bold"
             onClick={handleUncheckAll}
           >
             Uncheck All
@@ -155,6 +155,7 @@ const Ingredient = ({ navigate }) => {
           >
             Submit
           </button>
+          <br></br>
           {loading === true && <Spinner></Spinner>}
         </div>
 
