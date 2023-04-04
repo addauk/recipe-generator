@@ -88,82 +88,90 @@ const Ingredient = ({ navigate }) => {
     setCollapse(!collapse);
   };
   return (
-    <div class="bg-orange-200">
+    <div>
       <Navbar navigate={navigate} />
-      <div className="recipe-generator"></div>
-      <div
-        className="ingredient-header"
-        class="mt-16 mb-8 flex justify-center text-2xl font-bold"
-      >
-        <h1 class="mx-auto">Ingredients</h1>
-        <p class="ml-auto" style={{ cursor: "pointer" }} onClick={onclick}>
-          {" "}
-          {collapse ? "+" : "-"}{" "}
-        </p>
-      </div>
-      <div
-        className="list-container"
-        style={{
-          height: collapse ? "0px" : "200px",
-          transition: "height 0.5s ease-in",
-        }}
-        class={
-          collapse
-            ? "flex grid grid-flow-col grid-rows-5 gap-4 truncate pl-4"
-            : "flex grid grid-flow-col grid-rows-5 gap-4 pl-4"
-        }
-      >
-        {IngredientList.map((item, index) => (
-          <div key={index} className="flex items-center">
-            <input
-              value={item}
-              type="checkbox"
-              onChange={handleCheck}
-              checked={checked.includes(item)}
-              class="mr-2"
-            />
-            <span className={isChecked(item)}>{item}</span>
-          </div>
-        ))}
-
-        <div />
-      </div>
-      <div className="mt-5 mb-4 flex gap-10">
+      <div className="recipe-generator bg-amber-600"></div>
+      <div class="bg-orange-200">
         <div>
-          <div>{`Items checked are: ${checkedItems}`}</div>
-        </div>
-      </div>
-      <div>
-        <button
-          type="button"
-          class="mr-5 w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600 "
-          onClick={handleUncheckAll}
-        >
-          Uncheck All
-        </button>
-        <button
-          type="submit"
-          class="w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600"
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>
-        {loading === true && <Spinner></Spinner>}
-      </div>
-
-      <div>
-        {matchedRecipes.length > 0 && unchecked === false && (
-          <div
-            className="matched-recipes"
-            data-cy="matched-recipes"
-            class=" grid-auto-rows mt-4 grid"
-          >
-            <h2 className="flex justify-center text-2xl font-bold">
-              Matched Recipes
-            </h2>
-            <AllRecipes recipes={matchedRecipes} />
+          <div className="ingredient-header">
+            <h1 class="mb-4 flex justify-left text-2xl font-bold">
+              Ingredients
+            </h1>
           </div>
-        )}
+
+          <p
+            class="ml-auto flex "
+            style={{ cursor: "pointer" }}
+            onClick={onclick}
+          >
+            {" "}
+            {collapse ? "+" : "-"}{" "}
+          </p>
+        </div>
+        <div
+          className="list-container"
+          style={{
+            height: collapse ? "0px" : "200px",
+            transition: "height 0.5s ease-in",
+          }}
+          class={
+            collapse
+              ? "flex grid grid-flow-col grid-rows-5 gap-4 truncate pl-4"
+              : "flex grid grid-flow-col grid-rows-5 gap-4 pl-4"
+          }
+        >
+          {IngredientList.map((item, index) => (
+            <div key={index} className="flex items-center">
+              <input
+                value={item}
+                type="checkbox"
+                onChange={handleCheck}
+                checked={checked.includes(item)}
+                class="mr-2"
+              />
+              <span className={isChecked(item)}>{item}</span>
+            </div>
+          ))}
+
+          <div />
+        </div>
+        <div className="mt-5 mb-4 flex gap-10">
+          <div>
+            <div>{`Items checked are: ${checkedItems}`}</div>
+          </div>
+        </div>
+        <div>
+          <button
+            type="button"
+            class="mr-5 w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600 "
+            onClick={handleUncheckAll}
+          >
+            Uncheck All
+          </button>
+          <button
+            type="submit"
+            class="w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600"
+            onClick={handleSubmit}
+          >
+            Submit
+          </button>
+          {loading === true && <Spinner></Spinner>}
+        </div>
+
+        <div>
+          {matchedRecipes.length > 0 && unchecked === false && (
+            <div
+              className="matched-recipes"
+              data-cy="matched-recipes"
+              class=" grid-auto-rows mt-4 grid"
+            >
+              <h2 className="flex justify-center text-2xl font-bold">
+                Matched Recipes
+              </h2>
+              <AllRecipes recipes={matchedRecipes} />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

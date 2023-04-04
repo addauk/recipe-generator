@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "../navbar/Navbar";
 
-const UserProfile = ({ user, navigate, userData, storeUserData }) => {
+const UserProfile = ({ user, navigate }) => {
   const [bio, setBio] = useState(user.bio);
   const [editing, setEditing] = useState(false);
-  const [currentUser, setCurrentUser] = useState(user);
 
   // useEffect(() => {
   //   if (!window.localStorage.getItem("token")) {
@@ -39,18 +38,9 @@ const UserProfile = ({ user, navigate, userData, storeUserData }) => {
     setBio(event.target.value);
   };
 
-  const handleLogout = () => {
-    console.log("LOGGING OUT");
-    window.localStorage.removeItem("token");
-    window.localStorage.removeItem("userData");
-    setCurrentUser(null);
-    navigate("/login");
-    console.log("Successful logout");
-  };
-
   return (
     <div>
-      <Navbar navigate={navigate} currentUser={currentUser} />
+      <Navbar navigate={navigate} />
       <div className="user-profile">
         <h1>{user.userName}</h1>
         <br></br>
@@ -68,7 +58,6 @@ const UserProfile = ({ user, navigate, userData, storeUserData }) => {
             <br></br>
             <button onClick={handleEdit}>Edit Bio</button>
             <br></br>
-            <button onClick={handleLogout}>Logout</button>
           </>
         )}
       </div>

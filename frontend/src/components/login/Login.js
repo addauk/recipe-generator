@@ -4,7 +4,6 @@ const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     if (
@@ -36,7 +35,6 @@ const LogInForm = ({ navigate }) => {
       window.localStorage.setItem("token", data.token);
       window.localStorage.setItem("userData", JSON.stringify(data.user));
       console.log(window.localStorage.getItem("userData"));
-      await setCurrentUser(data.user);
       navigate(`/users/${data.user._id}`);
       console.log("Successful login");
     }

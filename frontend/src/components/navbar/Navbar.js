@@ -8,65 +8,62 @@ const Navbar = ({ navigate }) => {
     if (user) {
       setUser(user);
     }
-    console.log(user);
   }, []);
 
   const logout = () => {
+    console.log("LOGGING OUT");
     window.localStorage.removeItem("token");
     window.localStorage.removeItem("userData");
     setUser(null);
     navigate("/login");
+    console.log("Successful logout");
   };
 
   return (
-    <div>
-      {user !== null ? (
-        <nav className="bg-red-500 flex justify-between">
-          <div>
+    <div className="pb-20 flex bg-orange-200 font-bold">
+      <nav className="z-50 fixed top-0 left-0 right-0 h-16 p2 pt-9 pb-9 mx-auto place-content-between  px-5 bg-amber-600 flex items-center">
+        {user !== null ? (
+          <div className="bg-amber-600 flex">
             <div
-              className="p-3 text-lg cursor-pointer"
+              className="p-3 text-lg cursor-pointer justify-left border rounded-lg bg-yellow-300 hover:bg-yellow-600"
               data-cy="homeButton"
               onClick={() => navigate("/")}
             >
               Home
             </div>
-            <div className="p-3 text-lg" data-cy="username">
+            <div className="p-3 text-lg absolute right-60" data-cy="username">
               {user ? user.userName : ""}
             </div>
             <div
-              className=""
+              className="p-3 text-lg cursor-pointer absolute right-40 border rounded-lg bg-yellow-300 hover:bg-yellow-600"
               data-cy="my-profile"
               onClick={() => navigate(`/users/${user._id}`)}
             >
               Profile
             </div>
             <div
-              className="p-3 text-lg cursor-pointer border rounded-t bg-yellow-300 hover:bg-yellow-600"
+              className="p-3 text-lg cursor-pointer absolute right-5 border rounded-lg bg-yellow-300 hover:bg-yellow-600"
               data-cy="logoutButton"
               onClick={logout}
             >
               Log out
             </div>
           </div>
-        </nav>
-      ) : (
-        <nav className="bg-red-500 flex justify-between">
-          <div
-            className="p-3 text-lg cursor-pointer"
-            data-cy="homeButton"
-            onClick={() => navigate("/")}
-          >
-            Home
+        ) : (
+          <div className="bg-yellow-200 flex justify-right p-3 text-lg cursor-pointer rounded-lg">
+            <div data-cy="homeButton" onClick={() => navigate("/")}>
+              Home
+            </div>
+            <div
+              className="p-3 text-lg cursor-pointer absolute right-5 top-2 border rounded-lg bg-yellow-200 hover:bg-yellow-600"
+              data-cy="loginButton"
+              onClick={() => navigate("/login")}
+            >
+              Log in
+            </div>
           </div>
-          <div
-            className="p-3 text-lg cursor-pointer border rounded-t bg-yellow-300 hover:bg-yellow-600"
-            data-cy="loginButton"
-            onClick={() => navigate("/login")}
-          >
-            Log in
-          </div>
-        </nav>
-      )}
+        )}
+      </nav>
     </div>
   );
 };
