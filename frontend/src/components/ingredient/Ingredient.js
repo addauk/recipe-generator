@@ -87,7 +87,7 @@ const Ingredient = ({ navigate }) => {
     setCollapse(!collapse);
   };
   return (
-    <div class="bg-body-background">
+    <div>
       <div className="recipe-generator"></div>
       <div
         className="ingredient-header"
@@ -107,8 +107,8 @@ const Ingredient = ({ navigate }) => {
         }}
         class={
           collapse
-            ? "flex grid grid-flow-col grid-rows-5 gap-4 truncate pl-4"
-            : "flex grid grid-flow-col grid-rows-5 gap-4 pl-4"
+            ? "flex grid grid-flow-col grid-rows-5 gap-4 truncate pl-4 font-bold"
+            : "flex grid grid-flow-col grid-rows-5 gap-4 pl-4 font-bold"
         }
       >
         {IngredientList.map((item, index) => (

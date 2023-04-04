@@ -61,17 +61,19 @@ const SignUpForm = ({ navigate }) => {
   };
 
   return (
-    <div class="p-8">
-      <div>
-        <div class="pb-4">
-          <h2 class="text-2xl font-bold">Sign Up</h2>
+    <div className="bg-cover bg-no-repeat min-h-screen bg-body-background2 p-8">
+      <div className="w-1/2 mx-auto p-8 rounded-lg">
+        <div className="flex min-h-full pb-4">
+          <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-orange-600">
+            Sign Up
+          </h2>
         </div>
         <div>
           <form onSubmit={handleSubmit}>
             <div>
               <div class="pb-4">
                 <input
-                  class="border border-gray-300 rounded-md px-4 py-2 w-75"
+                  className="shadow appearance-none border rounded-lg w-full text-center py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   placeholder="Username"
                   id="userName"
                   type="text"
@@ -81,7 +83,7 @@ const SignUpForm = ({ navigate }) => {
               </div>
               <div class="pb-4">
                 <input
-                  class="border border-gray-300 rounded-md px-4 py-2 w-75"
+                  className="shadow appearance-none border rounded-lg w-full text-center py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   placeholder="Email"
                   id="email"
                   type="text"
@@ -92,7 +94,7 @@ const SignUpForm = ({ navigate }) => {
             </div>
             <div class="pb-4">
               <input
-                class="border border-gray-300 rounded-md px-4 py-2 w-75"
+                className="shadow appearance-none border rounded-lg w-full text-center py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Password"
                 id="password"
                 type="password"
@@ -100,9 +102,9 @@ const SignUpForm = ({ navigate }) => {
                 onChange={handlePasswordChange}
               />
             </div>
-            <div>
+            <div className="flex justify-center pt-4">
               <input
-                class="inline-flex rounded-lg justify-center px-4 py-1 w-20 h-8 border border-black font-semibold text-sm mb-8"
+                class="w-full rounded-md w-1/2 bg-orange-300 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
                 id="submit"
                 type="submit"
                 value="Submit"

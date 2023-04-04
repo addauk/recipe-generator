@@ -56,11 +56,14 @@ const LogInForm = ({ navigate }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="log-in" class="p-8">
-        <div class="pb-4">
-          <label htmlFor="email"></label>
+      <div className="w-full max-w-md mx-auto p-8">
+        <div className="eatgpt-1" class="pb-4">
+          <label
+            className="block text-gray-700 font-bold eatgpt-1"
+            htmlFor="email"
+          ></label>
           <input
-            class="border border-gray-300 rounded-md px-4 py-2 w-75"
+            className="shadow appearance-none border rounded-lg w-full text-center py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="email"
             type="text"
             placeholder="Email"
@@ -68,10 +71,10 @@ const LogInForm = ({ navigate }) => {
             onChange={handleEmailChange}
           />
         </div>
-        <div class="pb-4">
+        <div className="eatgpt-2 pb-4">
           <label htmlFor="password"></label>
           <input
-            class="border border-gray-300 rounded-md px-4 py-2 w-75"
+            class="shadow appearance-none border text-center rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
             type="password"
             placeholder="Password"
@@ -79,18 +82,18 @@ const LogInForm = ({ navigate }) => {
             onChange={handlePasswordChange}
           />
         </div>
-        <div class="pt-4">
+        <div className="flex justify-center pt-4">
           <input
-            class="inline-flex rounded-lg justify-center px-4 py-1 w-20 h-8 border border-black font-semibold text-sm mb-8"
+            class="w-full rounded-md w-1/2 bg-orange-300 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
             role="submit-button"
             id="submit"
             type="submit"
             value="Log In"
           />
         </div>
-        <div>
+        <div className="flex justify-center pt-4">
           <input
-            class="inline-flex rounded-lg justify-center px-4 py-1 w-20 h-8 border border-black font-semibold text-sm mb-8"
+            class="w-full rounded-md w-1/2 bg-orange-300 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
             role="signup-button"
             id="signup"
             type="button"
