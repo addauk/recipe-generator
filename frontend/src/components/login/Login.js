@@ -56,52 +56,54 @@ const LogInForm = ({ navigate }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="w-full max-w-md mx-auto p-8">
-        <div className="eatgpt-1" class="pb-4">
-          <label
-            className="block text-gray-700 font-bold eatgpt-1"
-            htmlFor="email"
-          ></label>
-          <input
-            className="shadow appearance-none border rounded-lg w-full text-center py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="email"
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={handleEmailChange}
-          />
+      <div className="bg-cover bg-no-repeat min-h-screen bg-background-body p-8">
+        <div className="bg-orange-300 w-full max-w-md mx-auto p-8 mt-12 rounded-lg">
+          <div className="eatgpt-1" class="pb-4">
+            <label
+              className="block text-gray-700 font-bold eatgpt-1"
+              htmlFor="email"
+            ></label>
+            <input
+              className="shadow appearance-none border rounded-lg w-full text-center py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="email"
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={handleEmailChange}
+            />
+          </div>
+          <div className="eatgpt-2 pb-4">
+            <label htmlFor="password"></label>
+            <input
+              class="shadow appearance-none border text-center rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="password"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </div>
+          <div className="flex justify-center pt-4">
+            <input
+              class="w-full rounded-md w-1/2 bg-orange-600 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
+              role="submit-button"
+              id="submit"
+              type="submit"
+              value="Log In"
+            />
+          </div>
+          <div className="flex justify-center pt-4">
+            <input
+              class="w-full rounded-md w-1/2 bg-orange-600 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
+              role="signup-button"
+              id="signup"
+              type="button"
+              value="Sign Up"
+              onClick={handleSignUp}
+            />
+          </div>
+          {errorMessage && <p role="error">{errorMessage}</p>}
         </div>
-        <div className="eatgpt-2 pb-4">
-          <label htmlFor="password"></label>
-          <input
-            class="shadow appearance-none border text-center rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="password"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </div>
-        <div className="flex justify-center pt-4">
-          <input
-            class="w-full rounded-md w-1/2 bg-orange-300 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
-            role="submit-button"
-            id="submit"
-            type="submit"
-            value="Log In"
-          />
-        </div>
-        <div className="flex justify-center pt-4">
-          <input
-            class="w-full rounded-md w-1/2 bg-orange-300 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
-            role="signup-button"
-            id="signup"
-            type="button"
-            value="Sign Up"
-            onClick={handleSignUp}
-          />
-        </div>
-        {errorMessage && <p role="error">{errorMessage}</p>}
       </div>
     </form>
   );

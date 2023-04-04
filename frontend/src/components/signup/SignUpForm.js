@@ -61,10 +61,10 @@ const SignUpForm = ({ navigate }) => {
   };
 
   return (
-    <div className="bg-cover bg-no-repeat min-h-screen bg-body-background2 p-8">
-      <div className="w-1/2 mx-auto p-8 rounded-lg">
+    <div className="bg-cover bg-no-repeat min-h-screen bg-background-body p-8">
+      <div className="bg-orange-300 w-1/2 mx-auto p-8 mt-12 rounded-lg">
         <div className="flex min-h-full pb-4">
-          <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-orange-600">
+          <h2 class="mt-2 text-center text-3xl font-bold tracking-tight text-orange-600">
             Sign Up
           </h2>
         </div>
@@ -104,7 +104,7 @@ const SignUpForm = ({ navigate }) => {
             </div>
             <div className="flex justify-center pt-4">
               <input
-                class="w-full rounded-md w-1/2 bg-orange-300 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
+                class="w-full rounded-md w-1/2 bg-orange-600 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
                 id="submit"
                 type="submit"
                 value="Submit"

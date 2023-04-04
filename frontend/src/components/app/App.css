@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .backgroundImage {
-  background-body: url('../../../public/Images/vegetableBackground.jpg')
+  background-body: url('../../../public/Images/background.png')
 }
 
 .App {
