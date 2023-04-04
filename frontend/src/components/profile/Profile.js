@@ -41,12 +41,16 @@ const UserProfile = ({ user, navigate }) => {
   return (
     <div>
       <Navbar navigate={navigate} />
-      <div className="user-profile">
+      <div className="user-profile p-6 text-lg font-bold">
         <h1>{user.userName}</h1>
         <br></br>
         {editing ? (
           <>
-            <textarea value={bio} onChange={handleBioChange} />
+            <textarea
+              value={bio}
+              onChange={handleBioChange}
+              className="border rounded-lg"
+            />
             <div className="buttons">
               <button onClick={handleSave}>Save</button> <br></br>
               <button onClick={handleCancel}>Cancel</button>

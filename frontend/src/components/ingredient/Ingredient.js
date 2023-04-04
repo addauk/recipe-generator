@@ -94,13 +94,13 @@ const Ingredient = ({ navigate }) => {
       <div class="bg-orange-200">
         <div>
           <div className="ingredient-header">
-            <h1 class="mb-4 flex justify-left text-2xl font-bold">
+            <h1 class="mb-4 flex justify-center text-2xl font-bold">
               Ingredients
             </h1>
           </div>
 
           <p
-            class="ml-auto flex "
+            class="ml-auto flex justify-center"
             style={{ cursor: "pointer" }}
             onClick={onclick}
           >
@@ -111,17 +111,17 @@ const Ingredient = ({ navigate }) => {
         <div
           className="list-container"
           style={{
-            height: collapse ? "0px" : "200px",
-            transition: "height 0.5s ease-in",
+            height: collapse ? "0px" : "500px",
+            transition: "height 0.2s ease-in",
           }}
           class={
             collapse
-              ? "flex grid grid-flow-col grid-rows-5 gap-4 truncate pl-4"
-              : "flex grid grid-flow-col grid-rows-5 gap-4 pl-4"
+              ? "flex grid grid-flow-row grid-cols-5 grid-rows-15 truncate pl-4"
+              : "flex grid grid-flow-row grid-cols-5 grid-rows-15 pl-4"
           }
         >
           {IngredientList.map((item, index) => (
-            <div key={index} className="flex items-center">
+            <div key={index}>
               <input
                 value={item}
                 type="checkbox"
@@ -135,22 +135,22 @@ const Ingredient = ({ navigate }) => {
 
           <div />
         </div>
-        <div className="mt-5 mb-4 flex gap-10">
+        <div className="mt-5 mb-4 flex gap-10 justify-center">
           <div>
             <div>{`Items checked are: ${checkedItems}`}</div>
           </div>
         </div>
-        <div>
+        <div className="justify-center">
           <button
             type="button"
-            class="mr-5 w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600 "
+            class="w-40 rounded-lg border shadow-2xl bg-yellow-300 hover:bg-yellow-600 justify-center flex font-bold"
             onClick={handleUncheckAll}
           >
             Uncheck All
           </button>
           <button
             type="submit"
-            class="w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600"
+            class="w-40 rounded-lg border shadow-2xl bg-yellow-300 hover:bg-yellow-600 justify-center font-bold"
             onClick={handleSubmit}
           >
             Submit
