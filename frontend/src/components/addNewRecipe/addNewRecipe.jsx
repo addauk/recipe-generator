@@ -15,7 +15,7 @@ class AddNewRecipe extends Component {
     Ingredients: [],
     inputValue: "",
     IngredientQuantities: [],
-    Instructions: '',
+    Instructions: [],
     AuthorName: '',
     CookTime: '',
     PrepTime: '',
@@ -26,10 +26,12 @@ class AddNewRecipe extends Component {
    }
 
    handleAddIngredient = () => {
-    const newIngredient = this.state.inputValue.trim();
+    const newIngredient = this.state.inputValue.trim().toLocaleLowerCase();
     if (newIngredient !== "" && !this.state.Ingredients.includes(newIngredient)) {
+      const newIngredientQuantity = "";
       this.setState(prevState => ({
         Ingredients: [...prevState.Ingredients, newIngredient],
+        IngredientQuantities: [...prevState.IngredientQuantities, newIngredientQuantity],
         inputValue: ""
       }));
     }
@@ -54,7 +56,7 @@ class AddNewRecipe extends Component {
           Ingredients: [],
           inputValue: "",
           IngredientQuantities: [],
-          Instructions: '',
+          Instructions: [],
           AuthorName: '',
           CookTime: '',
           PrepTime: '',
@@ -86,18 +88,38 @@ class AddNewRecipe extends Component {
             {this.state.Ingredients.map((ingredient, index) => (
               <div className="addedIngedientItem" key={index}>
                 <li>
-                {ingredient}
-                <button className="removeIngredientButton" onClick={() => this.handleRemoveIngredient(index)}>Remove Ingredient</button>
+                  <a className="ingredient">{ingredient}</a>
+                  <input
+                    required
+                    className="ingredientQtyTextbox"
+                    type="text"
+                    id={`ingredient-quantities-${index}`}
+                    name={`ingredient-quantities-${index}`}
+                    value={this.state.IngredientQuantities[index]}
+                    onChange={(event) => {
+                      const newIngredientQuantities = [...this.state.IngredientQuantities];
+                      newIngredientQuantities[index] = event.target.value;
+                      this.setState({ IngredientQuantities: newIngredientQuantities });
+                    }}
+                    placeholder="Qty"
+                  />
+                  <button 
+                  className="addInstructionsButton"
+                  onClick={() => this.handleOpenModal(index)}>Add Instructions</button>
+                  <button
+                    className="removeIngredientButton"
+                    onClick={() => this.handleRemoveIngredient(index)}
+                  >
+                    Remove Ingredient
+                  </button>
                 </li>
-
+                <br />
+                <hr />
               </div>
             ))}
           </div>
           <input className="addIngredientTextbox" type="text" id="ingredients" name="ingredients" value={this.state.inputValue} onChange={(event) => this.setState({inputValue: event.target.value})} placeholder="Add Ingredient Here"/><br/>
           <button className="addIngredientButton" onClick={this.handleAddIngredient}>Add Ingredient</button>
-
-          <label htmlFor="ingredient-quantities">Ingredient Quantities:</label><br/>
-          <input required type="text" id="ingredient-quantities" name="ingredient-quantities" value={this.state.IngredientQuantities} onChange={(event) => this.setState({IngredientQuantities: event.target.value})}/><br/>
 
           <label htmlFor="instructions">Instructions:</label><br/>
           <textarea required id="instructions" name="instructions" value={this.state.searchValue} onChange={this.handleSearchInputChange} onKeyPress={this.handleSearchInputKeyPress}></textarea><br/>
