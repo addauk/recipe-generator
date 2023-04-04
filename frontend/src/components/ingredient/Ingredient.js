@@ -75,7 +75,7 @@ const Ingredient = ({ navigate }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (checked.length === 0) {
-      throw "No Items Checked";
+      alert("No Items Checked");
     } else {
       getRecipes();
 
@@ -90,7 +90,7 @@ const Ingredient = ({ navigate }) => {
   return (
     <div>
       <Navbar navigate={navigate} />
-      <div className="recipe-generator bg-amber-600"></div>
+      <div className="recipe-generator bg-orange-600"></div>
       <div class="bg-orange-200">
         <div>
           <div className="ingredient-header">
@@ -112,7 +112,7 @@ const Ingredient = ({ navigate }) => {
           className="list-container"
           style={{
             height: collapse ? "0px" : "500px",
-            transition: "height 0.2s ease-in",
+            transition: "height 0.5s ease-in",
           }}
           class={
             collapse
