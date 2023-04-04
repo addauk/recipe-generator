@@ -88,7 +88,7 @@ const Ingredient = ({ navigate }) => {
   };
   return (
     <div className="bg-cover bg-scroll h-screen bg-background-body">
-      <div className="bg-orange-200 ml-10 mr-10 rounded-lg">
+      <div className="bg-orange-200 ml-10 mr-10 rounded-lg shadow-xl">
         <div className="recipe-generator"></div>
         <div
           className="ingredient-header"
@@ -131,20 +131,20 @@ const Ingredient = ({ navigate }) => {
         </div>
         <div className="mt-5 mb-4 flex gap-10">
           <div>
-            <div className="ml-5">{`Items checked are: ${checkedItems}`}</div>
+            <div className="bg-orange-600 text-white rounded-lg py-2 px-2 ml-5 w-auto text-sm font-semibold">{`Items checked are: ${checkedItems}`}</div>
           </div>
         </div>
         <div>
           <button
             type="button"
-            class="w-40 ml-5 mb-5 mr-5 rounded-md w-1/2 bg-orange-600 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
+            class="w-40 ml-5 mb-5 mr-5 rounded-md w-1/2 bg-orange-600 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
             onClick={handleUncheckAll}
           >
             Uncheck All
           </button>
           <button
             type="submit"
-            class="w-40 mb-5 rounded-md w-1/2 bg-orange-600 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
+            class="w-40 mb-5 rounded-md w-1/2 bg-orange-600 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
             onClick={handleSubmit}
           >
             Submit
