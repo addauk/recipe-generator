@@ -11,15 +11,29 @@ form {
 
 label {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: -20px;
+}
+
+li {
+  position: relative;
+  font-weight: medium;
+  margin-top: 5px;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+h1 {
+  font-weight: bolder;
+  font-size: 15px;
+  font-style: italic;
 }
 
 input[type="text"],
 textarea {
+  margin-top: 10px;
   padding: 10px;
-  border: 2px solid #ddd;
+  border: 2px solid #aeadad;
   border-radius: 5px;
-  margin-bottom: 10px;
   font-size: 16px;
 }
 
@@ -49,4 +63,71 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: #0077A2;
+}
+
+.addedIngredients {
+  display: inline-block;
+  padding: 2%;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.432);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 5px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.addIngredientTextbox {
+  width: 30%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.removeIngredientButton {
+  position: relative;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #dc7575;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  float: right;
+}
+
+.removeIngredientButton:hover {
+  background-color: #9e1919;
+}
+
+.addIngredientButton {
+  display: inline-block;
+  width: 20%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #33bc6a;
+  color: #fff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.addIngredientButton:hover {
+  background-color: #169c33;
+}
+
+.addedIngedientItem {
+  display:inline;
+  padding: 10px;
+  width: 50%;
 }

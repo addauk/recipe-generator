@@ -9,7 +9,7 @@ const AddNewRecipeSchema = new Schema({
     type: String,
   },
   Ingredients: {
-    type: String,
+    type: Array,
   },
   IngredientQuantities: {
     type: Array,
