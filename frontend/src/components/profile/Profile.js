@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const UserProfile = ({ user, navigate }) => {
+const UserProfile = ({ user }) => {
+  const navigate = useNavigate();
   const [bio, setBio] = useState(user.bio);
   const [editing, setEditing] = useState(false);
   const [currentUser, setCurrentUser] = useState(user);
@@ -53,19 +55,32 @@ const UserProfile = ({ user, navigate }) => {
       <br></br>
       {editing ? (
         <>
-          <textarea value={bio} onChange={handleBioChange} />
+          <textarea
+            data-cy="handle-bio"
+            value={bio}
+            onChange={handleBioChange}
+          />
           <div className="buttons">
-            <button onClick={handleSave}>Save</button> <br></br>
-            <button onClick={handleCancel}>Cancel</button>
+            <button data-cy="save-btn" onClick={handleSave}>
+              Save
+            </button>{" "}
+            <br></br>
+            <button data-cy="cancel-btn" onClick={handleCancel}>
+              Cancel
+            </button>
           </div>
         </>
       ) : (
         <>
           <p>{bio}</p>
           <br></br>
-          <button onClick={handleEdit}>Edit Bio</button>
+          <button data-cy="edit-bio" onClick={handleEdit}>
+            Edit Bio
+          </button>
           <br></br>
-          <button onClick={handleLogout}>Logout</button>
+          <button data-cy="logout-btn" onClick={handleLogout}>
+            Logout
+          </button>
         </>
       )}
     </div>

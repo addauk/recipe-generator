@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AllRecipes from "../allRecipes/AllRecipes";
 import Spinner from "../spinner/spinner";
 import IngredientList from "../ingredientList/IngredientList";
+import "../app/App.css";
 
 const Ingredient = ({ navigate }) => {
   const [checked, setChecked] = useState([]);

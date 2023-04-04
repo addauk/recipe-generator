@@ -49,7 +49,7 @@ describe("Ingredient", () => {
   //   cy.get(".matched-recipes").contains("Chicken Casserole");
   // });
 
-  it.only("generates recipes that match the ingredients selected", () => {
+  it("generates recipes that match the ingredients selected", () => {
     const recipeList = [
       { Name: "Chicken Casserole", CookingTime: "PT1H23M", Calories: "503" },
       { Name: "Afredo Pasta", CookingTime: "PT1H3M", Calories: "489" },
