@@ -19,7 +19,8 @@ const Pagination = (props) => {
           {pages.map((element, index) => {
             return (
               <li key={element}>
-                <a href="#" className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" onClick={() => handleClick((index + 1)*10)} > {index + 1}</a>
+                <button type="button" data-cy="pagination" class="rounded-lg bg-orange-100 focus:bg-blue-400 px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white active:bg-slate-600" onClick={() => handleClick((index + 1)*10)}> {index + 1}</button>
+
               </li>
             );
           })}
