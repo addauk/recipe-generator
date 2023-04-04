@@ -14,21 +14,13 @@ label {
   margin-bottom: -20px;
 }
 
-li {
-  display: flexbox;
-  font-weight: medium;
-  margin-left: 10%;
-  margin-right: 10%;
-}
-
-.ingredient {
+h2 {
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
-}
-
-h1 {
-  font-weight: bolder;
-  font-size: 15px;
+  font-size: 17px;
   font-style: italic;
+  margin: 2% auto;
 }
 
 input[type="text"],
@@ -37,7 +29,7 @@ textarea {
   padding: 10px;
   border: 2px solid #aeadad;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 select {
@@ -68,34 +60,21 @@ input[type="submit"]:hover {
   background-color: #0077A2;
 }
 
-.addedIngredients {
-  display: flexbox;
-  padding: 1.5%;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.432);
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  margin-bottom: 5px;
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2%;
-  margin-bottom: 2%;
-}
-
 .addIngredientTextbox {
-  width: 30%;
+  width: 40%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
 
 .removeIngredientButton {
-  margin-top: -45px;
-  float: right;
+  max-width: auto;
   padding: 10px 20px;
   border: none;
-  border-radius: 25px;
-  background-color: #dc7575;
+  border-radius: 10px;
+  background-color: #de5b5b;
   color: #fff;
   text-align: center;
   font-size: 14px;
@@ -109,15 +88,15 @@ input[type="submit"]:hover {
 }
 
 .addIngredientButton {
-  display: inline-block;
-  width: 20%;
+  display: flexbox;
+  max-width: 40%;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
   background-color: #33bc6a;
   color: #fff;
   text-align: center;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -131,32 +110,48 @@ input[type="submit"]:hover {
   background-color: #169c33;
 }
 
-.addedIngedientItem {
-  display:inline;
-  padding: 10px;
-  width: 50%;
-}
-
 .ingredientQtyTextbox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 20%;
+  max-width: 20%;
   text-align: center;
+  margin: 2% auto;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .addInstructionsButton {
   display: flexbox;
-  margin-top: 5%;
-  width: auto;
+  max-width: auto;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
   background-color: #3d7adc;
   color: #fff;
   text-align: center;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-right: 5%;
+}
+
+.addInstructionsButton:hover {
+  background-color: #4660b6;
+}
+
+.addedIngedientContainer {
+  width: 100%;
+  overflow: hidden;
+}
+
+.buttonContainer {
+  margin-right: 5%;
+  float: right;
+}
+
+.ingredientsAdded {
+  float: left;
+  margin-top: 2%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: larger;
+  margin-left: 5%;
 }
