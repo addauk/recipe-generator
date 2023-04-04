@@ -87,7 +87,7 @@ const Ingredient = ({ navigate }) => {
     setCollapse(!collapse);
   };
   return (
-    <div class="bg-orange-200">
+    <div class="bg-body-background">
       <div className="recipe-generator"></div>
       <div
         className="ingredient-header"
