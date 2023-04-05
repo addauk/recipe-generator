@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Navbar from "../navbar/Navbar";
 
 const RecipeDetail = ({ navigate }) => {
   const [recipe, setRecipe] = useState();
@@ -104,6 +105,7 @@ const RecipeDetail = ({ navigate }) => {
     return (
       <>
         <div className="recipe-container" class="flex p-12">
+          <Navbar navigate={navigate} />
           <div>
             <div className="recipeHeader" class="flex mt-8 mb-8 ">
               <div>
