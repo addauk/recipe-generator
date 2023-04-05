@@ -93,6 +93,12 @@ const UserProfile = ({ user, navigate }) => {
                   >
                     Edit
                   </button>
+                  <button
+                    class="w-50 ml-5 mr-5 rounded-md w-1/2 bg-orange-500 mt-2 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
+                    onClick={handleNewRecipe}
+                  >
+                    Add recipe
+                  </button>
                 </div>
                 <br></br>
               </>

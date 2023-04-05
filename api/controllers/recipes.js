@@ -26,7 +26,7 @@ const RecipesController = {
           RecipeId: 1,
           Name: 1,
           Calories: 1,
-          CookTime: 1,
+          TotalTime: 1,
           ImageLinks: 1,
           Ingredients: 1,
           _id: 1,

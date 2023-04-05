@@ -18,7 +18,8 @@ class AddNewRecipe extends Component {
     IngredientQuantities: [],
     instructionInputValue: "",
     Instructions: [],
-    AuthorName: '',
+    AuthorId: `${JSON.parse(window.localStorage.getItem('userData'))._id}`,
+    AuthorName: `${JSON.parse(window.localStorage.getItem('userData')).userName}`,
     CookTime: '',
     PrepTime: '',
     TotalTime: '',
@@ -66,10 +67,16 @@ class AddNewRecipe extends Component {
   async handleSubmit(event) {
     event.preventDefault();
 
-    const userName = JSON.parse(window.localStorage.getItem('userData')).userName;
-    console.log(userName);
-    this.setState({AuthorName: userName});
-    console.log(this.state);
+    // const userName = JSON.parse(window.localStorage.getItem('userData')).userName;
+    // if (userName !== "" && !this.state.AuthorName.includes(userName)) {
+    //   const userName = "";
+    //   this.setState(prevState => ({
+    //     AuthorName: [...prevState.AuthorName, userName]
+    //   }));
+    // }
+    // console.log(`Username: ${userName}`);
+    // this.setState({AuthorName: `${userName}`});
+    // console.log(this.state);
 
     await axios.post("/recipe/new", this.state)
       .then(response => {

@@ -17,6 +17,9 @@ const AddNewRecipeSchema = new Schema({
   Instructions: {
     type: Array,
   },
+  AuthorId: {
+    type: String,
+  },
   AuthorName: {
     type: String,
   },
