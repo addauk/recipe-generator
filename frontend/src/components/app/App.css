@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.backgroundImage {
+  background-body: url('../../../public/Images/background2.jpg')
+}
+
 .App {
   text-align: center;
   background-color: #ffffff;
