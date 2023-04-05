@@ -20,14 +20,67 @@ class AddNewRecipe extends Component {
     Instructions: [],
     AuthorId: `${JSON.parse(window.localStorage.getItem('userData'))._id}`,
     AuthorName: `${JSON.parse(window.localStorage.getItem('userData')).userName}`,
+    CookTimeMinutes: '',
+    CookTimeHours: '',
     CookTime: '',
+    PrepTimeMinutes: '',
+    PrepTimeHours: '',
     PrepTime: '',
+    TotalTimeMinutes: '',
+    TotalTimeHours: '',
     TotalTime: '',
     RecipeCategory: 'Breakfast',
     RecipeServings: '',
     ImageLinks: [],
     showModal: false,
    }
+
+   handleCookTime = () => {
+    console.log(`PT${this.state.CookTimeHours}H${this.state.CookTimeMinutes}M`);
+    const resultCookTime = `PT${this.state.CookTimeHours}H${this.state.CookTimeMinutes}M`
+    this.setState(() => ({
+      CookTime: resultCookTime
+    }));
+   }
+
+   handlePrepTime = () => {
+    console.log(`PT${this.state.PrepTimeHours}H${this.state.PrepTimeMinutes}M`);
+    const resultPrepTime = `PT${this.state.PrepTimeHours}H${this.state.PrepTimeMinutes}M`
+    this.setState(() => ({
+      PrepTime: resultPrepTime
+    }));
+
+    const resultMinutes = this.state.CookTimeMinutes + this.state.PrepTimeMinutes;
+    const resultHours = this.state.CookTimeHours + this.state.PrepTimeHours;
+
+    const resultTotalTime = `PT${resultHours}H${resultMinutes}M`;
+    this.setState({TotalTime: resultTotalTime });
+    console.log(resultTotalTime);
+
+   }
+   
+   handleTotalTime = () => {
+    // Creates the strings for regex
+    const resultCookTime = `PT${this.state.CookTimeHours}H${this.state.CookTimeMinutes}M`
+    const resultPrepTime = `PT${this.state.PrepTimeHours}H${this.state.PrepTimeMinutes}M`
+  
+    const resultTotalMinutes = this.state.CookTimeMinutes + this.state.PrepTimeMinutes;
+    const resultTotalHoursMins = (this.state.CookTimeHours * 60) + (this.state.PrepTimeHours * 60);
+    const resultTotalHours = Math.floor(resultTotalHoursMins / 60);
+    const totalMinutes = resultTotalMinutes % 60;
+    const resultTotalTime = `PT${resultTotalHours}H${totalMinutes}M`;
+  
+    this.setState(() => ({
+      CookTime: resultCookTime,
+      PrepTime: resultPrepTime,
+      TotalTime: resultTotalTime,
+      CookTimeMinutes: "",
+      CookTimeHours: "",
+      PrepTimeMinutes: "",
+      PrepTimeHours: ""
+    }));
+    alert('Successfully added cooking and prep times')
+  }
 
    handleAddIngredient = () => {
     const newIngredient = this.state.ingredientInputValue.trim().toLocaleLowerCase();
@@ -155,21 +208,31 @@ class AddNewRecipe extends Component {
           ))}
 
           <input className="addInstructionsTextbox" type="text" id="instructions" name="instructions" value={this.state.instructionInputValue} onChange={(event) => this.setState({instructionInputValue: event.target.value})} placeholder="Add Instructions Here"/><br/>
-          <button className="addInstructionsButton" onClick={this.handleAddInstruction}>Add Ingredient</button>
-
-{/* 
-          <label htmlFor="author-name">Author Name:</label><br/>
-          <input required type="text" id="author-name" name="author-name" value={this.state} onChange={(event) => this.setState({AuthorName: event.target.value})}/><br/> */}
-
-          <label htmlFor="cooking-time">Cooking Time:</label><br/>
-          <input required type="text" id="cooking-time" name="cooking-time" value={this.state.CookTime} onChange={(event) => this.setState({CookTime: event.target.value})}/><br/>
-
-          <label htmlFor="preparation-time">Preparation Time:</label><br/>
-          <input required type="text" id="preparation-time" name="preparation-time" value={this.state.PrepTime} onChange={(event) => this.setState({PrepTime: event.target.value})}/><br/>
-
-          <label htmlFor="total-time">Total Time:</label><br/>
-          <input required type="text" id="total-time" name="total-time" value={this.state.TotalTime} onChange={(event) => this.setState({TotalTime: event.target.value})}/><br/>
-
+          <button className="addInstructionsButton" onClick={this.handleAddInstruction}>Add Instruction</button>
+          <br></br>
+          <hr />
+          <br />
+          {/* Cooking time container */}
+          <div className="cooking-time-container">
+            <label htmlFor="cooking-time">Cooking Time:</label><br/>
+            <input required type="text" id="cooking-time-hours" name="cooking-time-hours" value={this.state.CookTimeHours} onChange={(event) => this.setState({CookTimeHours: event.target.value})} placeholder="Cook Time Minutes"/><br/>
+            <input required type="text" id="cooking-time-minutes" name="cooking-time-minutes" value={this.state.CookTimeMinutes} onChange={(event) => this.setState({CookTimeMinutes: event.target.value})} placeholder="Cook Time Hours"/><br/>
+          </div>
+            <br></br>
+          {/* Preparation time container */}
+          <div className="preparation-time-container">
+            <label htmlFor="preparation-time">Preparation Time:</label><br/>
+            <input required type="text" id="preparation-time-hours" name="preparation-time-hours" value={this.state.PrepTimeHours} onChange={(event) => this.setState({PrepTimeHours: event.target.value})} placeholder="Prep Time Minutes"/><br/>
+            <input required type="text" id="preparation-time-minutes" name="preparation-time-minutes" value={this.state.PrepTimeMinutes} onChange={(event) => this.setState({PrepTimeMinutes: event.target.value})} placeholder="Prep Time Hours"/><br/>
+          </div>
+          <br></br>
+          {/* Total time container */}
+          <div className="calculate-totalTime-container">
+            <button className="calculate-totalTime-button" onClick={this.handleTotalTime}>Calculate Total Time</button>
+          </div>
+          <br />
+          <hr />
+          <br></br>
           <label htmlFor="recipe-category">Recipe Category:</label><br/>
           <select required id="recipe-category" name="recipe-category" value={this.state.RecipeCategory} onChange={(event) => this.setState({RecipeCategory: event.target.value})}>
             <option value="breakfast">Breakfast</option>

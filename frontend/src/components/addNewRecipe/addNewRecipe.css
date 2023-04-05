@@ -1,10 +1,17 @@
+body {
+  background-image: url("../../../public/Images/background2.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 form {
   display: flex;
   flex-direction: column;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: #ffcc80;
   border-radius: 10px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
@@ -46,7 +53,7 @@ input[type="file"] {
 }
 
 input[type="submit"] {
-  background-color: #008CBA;
+  background-color: #fb8c00;
   color: #fff;
   padding: 10px;
   border: none;
@@ -57,7 +64,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  background-color: #0077A2;
+  background-color: #ff9800;
 }
 
 .addIngredientTextbox {
@@ -95,8 +102,8 @@ input[type="submit"]:hover {
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
-  background-color: #33bc6a;
-  color: #fff;
+  background-color: #fb8c00;
+  color: #ffff;
   text-align: center;
   font-size: 17px;
   font-weight: bold;
@@ -109,7 +116,7 @@ input[type="submit"]:hover {
 }
 
 .addIngredientButton:hover {
-  background-color: #169c33;
+  background-color: #ef6c00;
 }
 
 .ingredientQtyTextbox {
@@ -126,18 +133,18 @@ input[type="submit"]:hover {
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
-  background-color: #3d7adc;
+  background-color: #fb8c00;
   color: #fff;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-right: 5%;
+  margin-bottom: 2%;
 }
 
 .addInstructionsButton:hover {
-  background-color: #4660b6;
+  background-color: #ef6c00;
 }
 
 .addedIngedientContainer {
@@ -162,4 +169,36 @@ input[type="submit"]:hover {
 
 .ingredientsLabel {
   margin-bottom: 3%;
+}
+
+.cooking-time-container {
+  display: flexbox;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.preparation-time-container {
+  display: flexbox;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.calculate-totalTime-container {
+  display: flexbox;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.calculate-totalTime-button {
+  width: 200px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff9800;
+  color: #fff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
