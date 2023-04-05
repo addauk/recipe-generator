@@ -18,6 +18,7 @@ const Recipe = (props) => {
         }}
         alt="Error"
         class="mt-3 border border-red-700 w-60 h-60"
+        data-cy="recipe-image"
       ></img>
       <h1
         class="mt-2 w-40 rounded-md  font-bold text-red-800 truncate"
@@ -28,7 +29,7 @@ const Recipe = (props) => {
       <p class="font-bold text-red-800" data-cy="foodTime">
         Cooking Time: {props.cookingTime}
       </p>
-      <p class="font-bold text-red-800" data-cy="rating">
+      <p class="font-bold text-red-800" data-cy="calories">
         Calories: {props.calories}
       </p>
       <button
