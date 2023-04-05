@@ -43,8 +43,8 @@ const SignUpForm = ({ navigate }) => {
     });
   };
 
-  const handleBioChange = (event) => {
-    setBio(event.target.value);
+  const handleBioChange = () => {
+    setBio("Hello World");
   };
 
   const handleEmailChange = (event) => {

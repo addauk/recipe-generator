@@ -34,8 +34,8 @@ const UserProfile = ({ user, navigate }) => {
     setEditing(false);
   };
 
-  const handleBioChange = (event) => {
-    setBio(event.target.value);
+  const handleBioChange = () => {
+    setBio("Hello World");
   };
 
   const handleNewRecipe = () => {
