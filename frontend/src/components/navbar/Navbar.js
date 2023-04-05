@@ -21,8 +21,8 @@ const Navbar = ({ navigate }) => {
   };
 
   return (
-    <div className="pb-20 flex bg-orange-200 font-bold">
-      <nav className="z-50 fixed top-0 left-0 right-0 h-16 p2 pt-9 pb-9 mx-auto place-content-between  px-5 bg-amber-600 flex items-center">
+    <div className="flex font-bold">
+      <nav className="z-50 fixed top-0 left-0 right-0 h-16 p2 pt-9 pb-9 mx-auto place-content-between  px-5 bg-white-100 flex items-center">
         {user !== null ? (
           <div>
             <img
@@ -38,14 +38,14 @@ const Navbar = ({ navigate }) => {
               {user ? user.userName : ""}
             </div>
             <div
-              className="p-3 text-lg cursor-pointer absolute right-24 top-2 border rounded-lg bg-yellow-300 hover:bg-yellow-600 scale-75"
+              className="p-3 text-lg cursor-pointer absolute right-24 text-white top-2 border rounded-lg bg-orange-500 hover:bg-orange-600 scale-75"
               data-cy="my-profile"
               onClick={() => navigate(`/users/${user._id}`)}
             >
               Profile
             </div>
             <div
-              className="p-3 text-lg cursor-pointer absolute right-4 top-2 border rounded-lg bg-yellow-300 hover:bg-yellow-600 scale-75"
+              className="p-3 text-lg cursor-pointer text-white absolute right-4 top-2 border rounded-lg bg-orange-500 hover:bg-orange-600 scale-75"
               data-cy="logoutButton"
               onClick={logout}
             >
@@ -61,7 +61,7 @@ const Navbar = ({ navigate }) => {
               alt="Home"
             />
             <div
-              className="p-3 text-lg cursor-pointer absolute right-4 top-2 border rounded-lg bg-yellow-300 hover:bg-yellow-600 scale-75"
+              className="p-3 text-lg cursor-pointer text-white absolute right-4 top-2 border rounded-lg bg-orange-500 hover:bg-orange-600 scale-75"
               data-cy="loginButton"
               onClick={() => navigate("/login")}
             >

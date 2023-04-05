@@ -14,6 +14,7 @@ const Ingredient = ({ navigate }) => {
   const [loading, setLoading] = useState(false);
   const [unchecked, setUnchecked] = useState(true);
   const [pageAmount, setPageAmount] = useState();
+  const [search, setSearch] = useState();
 
   const getRecipes = async (skip) => {
     setLoading(true);
@@ -24,9 +25,9 @@ const Ingredient = ({ navigate }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          targetIngredients: searchIngredients,
+          targetIngredients: search,
           skip: skip,
-          limit: 10,
+          limit: 12,
         }),
       });
       if (!response.ok) {
@@ -58,7 +59,8 @@ const Ingredient = ({ navigate }) => {
       updatedList.splice(checked.indexOf(event.target.value), 1);
     }
     setChecked(updatedList);
-    setSearchIngredients(lowerCaseList);
+    setSearch(lowerCaseList);
+    setSearchIngredients([]);
   };
 
   const handleUncheckAll = () => {
@@ -95,8 +97,8 @@ const Ingredient = ({ navigate }) => {
   return (
     <div>
       <Navbar navigate={navigate} />
-      <div className="bg-cover bg-repeat h-screen bg-background-body">
-        <div className="bg-orange-200 ml-10 mr-10 mt-10 rounded-lg shadow-xl">
+      <div className="bg-cover bg-repeat h-screen bg-background-body pt-16">
+        <div className="bg-orange-200 mx-auto mt-4 ml-10 mr-10 rounded-lg shadow-xl">
           <div className="recipe-generator"></div>
           <div
             className="ingredient-header"
@@ -113,13 +115,13 @@ const Ingredient = ({ navigate }) => {
           <div
             className="list-container"
             style={{
-              height: collapse ? "0px" : "200px",
+              height: collapse ? "0px" : "500px",
               transition: "height 0.5s ease-in",
             }}
             class={
               collapse
-                ? "flex grid grid-flow-col grid-rows-5 gap-4 truncate pl-4 font-bold"
-                : "flex grid grid-flow-col grid-rows-5 gap-4 pl-4 font-bold"
+                ? "flex grid grid-flow-row grid-cols-7 grid-rows-15 truncate pl-4 font-bold"
+                : "flex grid grid-flow-row grid-cols-7 grid-rows-15 pl-4 font-bold"
             }
           >
             {IngredientList.map((item, index) => (
@@ -167,10 +169,18 @@ const Ingredient = ({ navigate }) => {
                 data-cy="matched-recipes"
                 class=" grid-auto-rows mt-4 grid"
               >
-                <h2 className="flex justify-center text-2xl font-bold">
-                  Matched Recipes
-                </h2>
+                <div class="mx-auto w-30 mb-5 rounded-md w-1/2 bg-orange-500 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2">
+                  <h2 className="flex justify-center text-2xl font-[5000]-cursive">
+                    Matched Recipes
+                  </h2>
+                </div>
                 <AllRecipes recipes={matchedRecipes} />
+                <div class="mx-auto">
+                  <Pagination
+                    amount={pageAmount.toString()}
+                    handleClick={getRecipes}
+                  ></Pagination>
+                </div>
               </div>
             )}
           </div>

@@ -104,142 +104,165 @@ const RecipeDetail = ({ navigate }) => {
   if (recipe) {
     return (
       <>
-        <div className="bg-cover bg-repeat h-screen bg-background-body">
+        <div className="bg-cover bg-repeat bg-background-body">
           <div className="recipe-container" class="flex p-12">
             <Navbar navigate={navigate} />
-            <div className="bg-orange-200 w-1/2 mx-auto p-8 mt-12 rounded-lg shadow-xl">
-              <div className="recipeHeader" class=" mt-8 mb-8 ">
+            <div className="bg-orange-200 w-1/2 mx-auto p-8 rounded-lg shadow-xl">
+              <div className="recipeHeader" class=" mt-8 mb-4 ">
                 <div>
                   <h1
                     className="recipeTitle"
-                    class="flex text-orange-600 text-3xl font-bold ml-10"
+                    class="flex justify-center text-orange-600 font-bold text-3xl font-[5000]-cursive"
                   >
                     {recipe.Name}
                   </h1>
                 </div>
-                <div className="recipe-image" class=" flex mt-16 ">
-                  {Array.isArray(recipe.ImageLinks) &&
-                  recipe.ImageLinks[0] !== "" ? (
-                    <img
-                      className="recipeImage w-1/2 h-auto"
-                      src={recipe.ImageLinks[0]}
-                      alt=""
-                    />
-                  ) : (
-                    <img
-                      className="recipeImage"
-                      src="https://img.freepik.com/premium-vector/404-error-design-with-donut_76243-30.jpg"
-                      alt="error"
-                    />
-                  )}
-                </div>
-              </div>
-              <div>
-                <h3
-                  className="recipeSubtitle"
-                  class="flex mb-4 text-xl font-semibold"
-                >
-                  {recipe.RecipeCategory}
-                </h3>
-              </div>
-              <div>
-                <p className="recipeDescription" class="flex mb-4 text-justify">
-                  {recipe.Description}
-                </p>
-              </div>
-              <div className="recipe-info">
-                <p className="servings">Serves: {recipe.RecipeServings}</p>
-                <div className="dietTags">
-                  <ul>
-                    {recipe.Tags && recipe.Tags.map((tag) => <li>{tag}</li>)}
-                  </ul>
-                </div>
-                <div className="nutrition" class="">
+                <div class="">
+                  <div
+                    className="recipe-image justify-center"
+                    class="flex mt-3"
+                  >
+                    {Array.isArray(recipe.ImageLinks) &&
+                    recipe.ImageLinks[0] !== "" ? (
+                      <img
+                        class="mx-auto flex w-1/2 shadow-lg"
+                        className="recipeImage"
+                        src={recipe.ImageLinks[0]}
+                        alt=""
+                      />
+                    ) : (
+                      <img
+                        className="recipeImage"
+                        src="https://img.freepik.com/premium-vector/404-error-design-with-donut_76243-30.jpg"
+                        alt="error"
+                      />
+                    )}
+                  </div>
+                  <div className="dietTags" class="flex justify-right">
+                    <ul>
+                      {recipe.Tags && <li class="mt-5">{recipe.Tags}</li>}
+                    </ul>
+                  </div>
+                  <div className="nutrition" class="flex justify-between">
+                    <div class="shadow-lg">
+                      <table class="border-separate border-spacing-2 table-fixed w-full h-26">
+                        <thead>
+                          <tr>
+                            <th class="bg-orange-300 font-sm font-light px-6 w-1/9">
+                              Kcal
+                            </th>
+                            <th class="bg-orange-300 font-sm font-light px-3 w-1/9">
+                              Fat
+                            </th>
+                            <th class="bg-orange-300 font-sm font-light px-3 w-1/9">
+                              Saturates
+                            </th>
+                            <th class="bg-orange-300 font-sm font-light px-0.5 w-1/9">
+                              Cholesterol
+                            </th>
+                            <th class="bg-orange-300 font-sm font-light px-3 w-1/9">
+                              Salt
+                            </th>
+                            <th class="bg-orange-300 font-sm font-light px-3 w-1/9">
+                              Carbs
+                            </th>
+                            <th class="bg-orange-300 font-sm font-light px-3 w-1/9">
+                              Fibre
+                            </th>
+                            <th class="bg-orange-300 font-sm font-light px-3 w-1/9">
+                              Sugar
+                            </th>
+                            <th class="bg-orange-300 font-sm font-light px-3 w-1/9">
+                              Protein
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="bg-orange-300 font-sm font-light px-3 w-1/9 text-center">
+                              {recipe.Calories}
+                            </td>
+
+                            <td class="bg-orange-300 font-sm font-light px-3 w-1/9 text-center">
+                              {recipe.FatContent}
+                            </td>
+
+                            <td class="bg-orange-300 font-sm font-light px-3 w-1/9 text-center">
+                              {recipe.SaturatedFatContent}
+                            </td>
+
+                            <td class="bg-orange-300 font-sm font-light px-3 w-1/9 text-center">
+                              {recipe.CholesterolContent}
+                            </td>
+
+                            <td class="bg-orange-300 font-sm font-light px-3 w-1/9 text-center">
+                              {recipe.SodiumContent}
+                            </td>
+
+                            <td class="bg-orange-300 font-sm font-light px-3 w-1/9 text-center">
+                              {recipe.CarbohydrateContent}
+                            </td>
+
+                            <td class="bg-orange-300 font-sm font-light px-3 w-1/9 text-center">
+                              {recipe.FiberContent}
+                            </td>
+
+                            <td class="bg-orange-300 font-sm font-light px-3 w-1/9 text-center">
+                              {recipe.SugarContent}
+                            </td>
+
+                            <td class="bg-orange-300 font-sm font-light px-3 w-1/9 text-center">
+                              {recipe.ProteinContent}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="mb-4 mt-5 rounded-md w-40 bg-orange-500 py-2 px-2 text-sm font-semibold text-white shadow-lg hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2">
+                    <h2 class="text-xl font-semibold"> My Inspiration</h2>
+                  </div>
                   <div>
-                    <table class="mb-8 rounded-lg border-separate border-spacing-2 border border-slate-500 ...">
-                      <thead>
-                        <tr>
-                          <th class="border bg-slate-200 border-slate-600 ...">
-                            kcal
-                          </th>
-                          <th class="border rounded -full border-slate-600 ...">
-                            fat
-                          </th>
-                          <th class="border border-slate-600 ...">saturates</th>
-                          <th class="border border-slate-600 ...">
-                            cholesterol
-                          </th>
-                          <th class="border border-slate-600 ...">salt</th>
-                          <th class="border border-slate-600 ...">carbs</th>
-                          <th class="border border-slate-600 ...">fibre</th>
-                          <th class="border border-slate-600 ...">sugar</th>
-                          <th class="border border-slate-600 ...">protein</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="border border-slate-700 ...">
-                            {recipe.Calories}
-                          </td>
-
-                          <td class="border border-slate-700 ...">
-                            {recipe.FatContent}
-                          </td>
-
-                          <td class="border border-slate-700 ...">
-                            {recipe.SaturatedFatContent}
-                          </td>
-
-                          <td class="border border-slate-700 ...">
-                            {recipe.CholesterolContent}
-                          </td>
-
-                          <td class="border border-slate-700 ...">
-                            {recipe.SodiumContent}
-                          </td>
-
-                          <td class="border border-slate-700 ...">
-                            {recipe.CarbohydrateContent}
-                          </td>
-
-                          <td class="border border-slate-700 ...">
-                            {recipe.FiberContent}
-                          </td>
-
-                          <td class="border border-slate-700 ...">
-                            {recipe.SugarContent}
-                          </td>
-
-                          <td class="border border-slate-700 ...">
-                            {recipe.ProteinContent}
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <p
+                      className="recipeDescription mt-4"
+                      class="flex mb-4 text-justify"
+                    >
+                      {recipe.Description}
+                    </p>
+                  </div>
+                  <div className="recipe-info">
+                    <p className="servings">Serves: {recipe.RecipeServings}</p>
                   </div>
                   <div className="rating"></div>
                 </div>
               </div>
               <div className="mainRecipe">
-                <div className="ingredients">
-                  <h2 class="flex mb-4 text-xl font-semibold">Ingredients</h2>
+                <div className="ingredients bg-orange-100 w-1/3 shadow-md rounded-lg">
+                  <div class="mb-4 rounded-md w-40 bg-orange-500 py-2 px-2 text-sm font-semibold text-white shadow-lg hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2">
+                    <h2 class=" text-xl font-semibold justify-center">
+                      Ingredients
+                    </h2>
+                  </div>
                   <ul>
                     {recipe.Ingredients &&
                       recipe.Ingredients.map((ingredient, index) => (
-                        <li className="ingredient">
+                        <li className="ingredient ml-3">
                           {recipe.IngredientQuantities[index]} {ingredient}
                         </li>
                       ))}
                   </ul>
                 </div>
-                <div className="method">
-                  <h2 class="flex ml-10 mt-4 mb-4 text-xl font-semibold">
-                    Method
-                  </h2>
+                <div
+                  className="method"
+                  class=" mt-5 bg-orange-100  shadow-md rounded-lg"
+                >
+                  <div class="mb-4 rounded-md w-40 bg-orange-500 py-2 px-2 text-sm font-semibold text-white shadow-lg hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2">
+                    <h2 class="text-xl font-semibold">Method</h2>
+                  </div>
                   <ol
                     type="1"
                     start="1"
-                    class="ml-10"
+                    class="ml-7"
                     style={{ listStyleType: "decimal" }}
                   >
                     {recipe.Instructions &&
