@@ -38,6 +38,10 @@ const UserProfile = ({ user, navigate }) => {
     setBio(event.target.value);
   };
 
+  const handleNewRecipe = () => {
+    navigate("/recipe/new");
+  };
+
   return (
     <div>
       <Navbar navigate={navigate} />
@@ -64,6 +68,7 @@ const UserProfile = ({ user, navigate }) => {
             <br></br>
           </>
         )}
+        <button onClick={handleNewRecipe}>Add new recipe</button>
       </div>
     </div>
   );
