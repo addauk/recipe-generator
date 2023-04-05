@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import Navbar from "../navbar/Navbar";
 
 const UserProfile = ({ user, navigate }) => {
   const [bio, setBio] = useState(user.bio);
   const [editing, setEditing] = useState(false);
-  const [currentUser, setCurrentUser] = useState(user);
 
   // useEffect(() => {
   //   if (!window.localStorage.getItem("token")) {
@@ -38,36 +38,33 @@ const UserProfile = ({ user, navigate }) => {
     setBio(event.target.value);
   };
 
-  const handleLogout = () => {
-    console.log("LOGGING OUT");
-    window.localStorage.removeItem("token");
-    window.localStorage.removeItem("userData");
-    setCurrentUser(null);
-    navigate("/login");
-    console.log("Successful logout");
-  };
-
   return (
-    <div className="user-profile">
-      <h1>{user.userName}</h1>
-      <br></br>
-      {editing ? (
-        <>
-          <textarea value={bio} onChange={handleBioChange} />
-          <div className="buttons">
-            <button onClick={handleSave}>Save</button> <br></br>
-            <button onClick={handleCancel}>Cancel</button>
-          </div>
-        </>
-      ) : (
-        <>
-          <p>{bio}</p>
-          <br></br>
-          <button onClick={handleEdit}>Edit Bio</button>
-          <br></br>
-          <button onClick={handleLogout}>Logout</button>
-        </>
-      )}
+    <div>
+      <Navbar navigate={navigate} />
+      <div className="user-profile p-6 text-lg font-bold">
+        <h1>{user.userName}</h1>
+        <br></br>
+        {editing ? (
+          <>
+            <textarea
+              value={bio}
+              onChange={handleBioChange}
+              className="border rounded-lg"
+            />
+            <div className="buttons">
+              <button onClick={handleSave}>Save</button> <br></br>
+              <button onClick={handleCancel}>Cancel</button>
+            </div>
+          </>
+        ) : (
+          <>
+            <p>{bio}</p>
+            <br></br>
+            <button onClick={handleEdit}>Edit Bio</button>
+            <br></br>
+          </>
+        )}
+      </div>
     </div>
   );
 };

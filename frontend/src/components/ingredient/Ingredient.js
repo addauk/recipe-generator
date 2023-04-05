@@ -3,7 +3,8 @@ import Recipe from "../recipe/Recipe";
 import AllRecipes from "../allRecipes/AllRecipes";
 import Spinner from "../spinner/spinner";
 import IngredientList from "../ingredientList/IngredientList";
-import Pagination from "../pagination/pagination"
+import Navbar from "../navbar/Navbar";
+import Pagination from "../pagination/pagination";
 
 const Ingredient = ({ navigate }) => {
   const [checked, setChecked] = useState([]);
@@ -12,8 +13,7 @@ const Ingredient = ({ navigate }) => {
   const [collapse, setCollapse] = useState(false);
   const [loading, setLoading] = useState(false);
   const [unchecked, setUnchecked] = useState(true);
-  const [pageAmount, setPageAmount] = useState()
-
+  const [pageAmount, setPageAmount] = useState();
 
   const getRecipes = async (skip) => {
     setLoading(true);
@@ -33,7 +33,7 @@ const Ingredient = ({ navigate }) => {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      setPageAmount(Math.ceil(data.totalMatches/10))
+      setPageAmount(Math.ceil(data.totalMatches / 10));
       // if (!Array.isArray(data.result)) {
       //   throw new Error("Data is not an array");
       // }
@@ -51,7 +51,6 @@ const Ingredient = ({ navigate }) => {
   const handleCheck = (event) => {
     let updatedList = [...checked];
     let lowerCaseList = [...searchIngredients];
-
     if (event.target.checked) {
       updatedList = [...checked, event.target.value];
       lowerCaseList = [...searchIngredients, event.target.value.toLowerCase()];
@@ -81,7 +80,7 @@ const Ingredient = ({ navigate }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (checked.length === 0) {
-      throw "No Items Checked";
+      alert("No Items Checked");
     } else {
       getRecipes();
 
@@ -94,82 +93,94 @@ const Ingredient = ({ navigate }) => {
     setCollapse(!collapse);
   };
   return (
-    <div class="bg-orange-200">
-      <div className="recipe-generator"></div>
-      <div
-        className="ingredient-header"
-        class="mt-16 mb-8 flex justify-center text-2xl font-bold"
-      >
-        <h1 class="mx-auto">Ingredients</h1>
-        <p class="ml-auto" style={{ cursor: "pointer" }} onClick={onclick}>
-          {" "}
-          {collapse ? "+" : "-"}{" "}
-        </p>
-      </div>
-      <div
-        className="list-container"
-        style={{
-          height: collapse ? "0px" : "200px",
-          transition: "height 0.5s ease-in",
-        }}
-        class={
-          collapse
-            ? "flex grid grid-flow-col grid-rows-5 gap-4 truncate pl-4"
-            : "flex grid grid-flow-col grid-rows-5 gap-4 pl-4"
-        }
-      >
-        {IngredientList.map((item, index) => (
-          <div key={index} className="flex items-center">
-            <input
-              value={item}
-              type="checkbox"
-              onChange={handleCheck}
-              checked={checked.includes(item)}
-              class="mr-2"
-            />
-            <span className={isChecked(item)}>{item}</span>
-          </div>
-        ))}
-
-        <div />
-      </div>
-      <div className="mt-5 mb-4 flex gap-10">
+    <div>
+      <Navbar navigate={navigate} />
+      <div className="recipe-generator bg-orange-600"></div>
+      <div class="bg-orange-200">
         <div>
-          <div>{`Items checked are: ${checkedItems}`}</div>
+          <div className="ingredient-header">
+            <h1 class="mb-4 flex justify-center text-2xl font-bold">
+              Ingredients
+            </h1>
+          </div>
+
+          <p
+            class="ml-auto flex justify-center"
+            style={{ cursor: "pointer" }}
+            onClick={onclick}
+          >
+            {" "}
+            {collapse ? "+" : "-"}{" "}
+          </p>
+        </div>
+        <div
+          className="list-container"
+          style={{
+            height: collapse ? "0px" : "500px",
+            transition: "height 0.5s ease-in",
+          }}
+          class={
+            collapse
+              ? "flex grid grid-flow-row grid-cols-7 grid-rows-15 truncate pl-4"
+              : "flex grid grid-flow-row grid-cols-7 grid-rows-15 pl-4"
+          }
+        >
+          {IngredientList.map((item, index) => (
+            <div key={index}>
+              <input
+                value={item}
+                type="checkbox"
+                onChange={handleCheck}
+                checked={checked.includes(item)}
+                class="mr-2"
+              />
+              <span className={isChecked(item)}>{item}</span>
+            </div>
+          ))}
         </div>
       </div>
-      <div>
-        <button
-          type="button"
-          class="mr-5 w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600 "
-          onClick={handleUncheckAll}
-        >
-          Uncheck All
-        </button>
-        <button
-          type="submit"
-          class="w-40 rounded-lg border border-pink-700 bg-orange-200 hover:bg-orange-600"
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>
-        {loading === true && <Spinner></Spinner>}
-      </div>
+      <div className="mt-5 mb-4 flex gap-5 justify-center">
+        <div>
+          <div>{`Items checked are: ${checkedItems}`}</div>
 
-      <div>
-        {matchedRecipes.length > 0 && unchecked === false && (
-          <div
-            className="matched-recipes"
-            data-cy="matched-recipes"
-            class=" grid-auto-rows mt-4 grid"
-          >
-            <h2 className="flex justify-center text-2xl font-bold">
-              Matched Recipes
-            </h2>
-            <AllRecipes recipes={matchedRecipes} />
-            <Pagination amount={pageAmount.toString()} handleClick={getRecipes}></Pagination>
+          <div className="flex justify-center p-3">
+            <button
+              type="button"
+              class="w-40 rounded-lg border shadow-2xl bg-yellow-300 hover:bg-yellow-600 justify-center font-bold"
+              onClick={handleUncheckAll}
+            >
+              Uncheck All
+            </button>
+            <button
+              type="submit"
+              class="w-40 rounded-lg border shadow-2xl bg-yellow-300 hover:bg-yellow-600 justify-center font-bold"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+            <br></br>
+            {loading === true && <Spinner></Spinner>}
           </div>
-        )}
+
+          <div>
+            {matchedRecipes.length > 0 && unchecked === false && (
+              <div
+                className="matched-recipes"
+                data-cy="matched-recipes"
+                class=" grid-auto-rows mt-4 grid"
+              >
+                <h2 className="flex justify-center text-2xl font-bold">
+                  Matched Recipes
+                </h2>
+                <AllRecipes recipes={matchedRecipes} />
+                <Pagination
+                  amount={pageAmount.toString()}
+                  handleClick={getRecipes}
+                ></Pagination>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
