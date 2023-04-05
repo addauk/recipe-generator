@@ -15,16 +15,13 @@ const RecipesController = {
     try {
       console.log("Connected to MongoDB server");
 
-      let targetIngredients = req.body.targetIngredients;
-      if (Array.isArray(targetIngredients)) {
-        targetIngredients = targetIngredients.join(",");
-      }
+      let { targetIngredients } = req.body;
 
       const skip = parseInt(req.body.skip);
       const limit = parseInt(req.body.limit);
 
       const recipes = await Recipe.find(
-        { Ingredients: { $all: [targetIngredients] } },
+        { Ingredients: { $all: targetIngredients } },
         {
           RecipeId: 1,
           Name: 1,
@@ -39,7 +36,7 @@ const RecipesController = {
         .limit(limit);
 
       const totalMatches = await Recipe.countDocuments({
-        Ingredients: { $all: [targetIngredients] },
+        Ingredients: { $all: targetIngredients },
       }).limit(200);
 
       res.status(200).json({ totalMatches, recipes });
