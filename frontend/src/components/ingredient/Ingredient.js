@@ -4,7 +4,7 @@ import AllRecipes from "../allRecipes/AllRecipes";
 import Spinner from "../spinner/spinner";
 import IngredientList from "../ingredientList/IngredientList";
 import Navbar from "../navbar/Navbar";
-import Pagination from "../pagination/pagination"
+import Pagination from "../pagination/pagination";
 
 const Ingredient = ({ navigate }) => {
   const [checked, setChecked] = useState([]);
@@ -13,8 +13,7 @@ const Ingredient = ({ navigate }) => {
   const [collapse, setCollapse] = useState(false);
   const [loading, setLoading] = useState(false);
   const [unchecked, setUnchecked] = useState(true);
-  const [pageAmount, setPageAmount] = useState()
-
+  const [pageAmount, setPageAmount] = useState();
 
   const getRecipes = async (skip) => {
     setLoading(true);
@@ -34,7 +33,7 @@ const Ingredient = ({ navigate }) => {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      setPageAmount(Math.ceil(data.totalMatches/10))
+      setPageAmount(Math.ceil(data.totalMatches / 10));
       // if (!Array.isArray(data.result)) {
       //   throw new Error("Data is not an array");
       // }
@@ -139,46 +138,51 @@ const Ingredient = ({ navigate }) => {
               <span className={isChecked(item)}>{item}</span>
             </div>
           ))}
-          <div />
         </div>
-        <div className="mt-5 mb-4 flex gap-5 justify-center">
-          <div>
-            <div>{`Items checked are: ${checkedItems}`}</div>
-     
-        <div className="flex justify-center p-3">
-          <button
-            type="button"
-            class="w-40 rounded-lg border shadow-2xl bg-yellow-300 hover:bg-yellow-600 justify-center font-bold"
-            onClick={handleUncheckAll}
-          >
-            Uncheck All
-          </button>
-          <button
-            type="submit"
-            class="w-40 rounded-lg border shadow-2xl bg-yellow-300 hover:bg-yellow-600 justify-center font-bold"
-            onClick={handleSubmit}
-          >
-            Submit
-          </button>
-          <br></br>
-          {loading === true && <Spinner></Spinner>}
-        </div>
+      </div>
+      <div className="mt-5 mb-4 flex gap-5 justify-center">
+        <div>
+          <div>{`Items checked are: ${checkedItems}`}</div>
 
-         <div>
-        {matchedRecipes.length > 0 && unchecked === false && (
-          <div
-            className="matched-recipes" 
-            data-cy="matched-recipes"
-            class=" grid-auto-rows mt-4 grid"
-          >
-            <h2 className="flex justify-center text-2xl font-bold">
-              Matched Recipes
-            </h2>
-            <AllRecipes recipes={matchedRecipes} />
-            <Pagination amount={pageAmount.toString()} handleClick={getRecipes}></Pagination>
+          <div className="flex justify-center p-3">
+            <button
+              type="button"
+              class="w-40 rounded-lg border shadow-2xl bg-yellow-300 hover:bg-yellow-600 justify-center font-bold"
+              onClick={handleUncheckAll}
+            >
+              Uncheck All
+            </button>
+            <button
+              type="submit"
+              class="w-40 rounded-lg border shadow-2xl bg-yellow-300 hover:bg-yellow-600 justify-center font-bold"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+            <br></br>
+            {loading === true && <Spinner></Spinner>}
+          </div>
+
+          <div>
+            {matchedRecipes.length > 0 && unchecked === false && (
+              <div
+                className="matched-recipes"
+                data-cy="matched-recipes"
+                class=" grid-auto-rows mt-4 grid"
+              >
+                <h2 className="flex justify-center text-2xl font-bold">
+                  Matched Recipes
+                </h2>
+                <AllRecipes recipes={matchedRecipes} />
+                <Pagination
+                  amount={pageAmount.toString()}
+                  handleClick={getRecipes}
+                ></Pagination>
+              </div>
+            )}
           </div>
         </div>
-      
+      </div>
     </div>
   );
 };
