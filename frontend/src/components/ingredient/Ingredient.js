@@ -51,7 +51,6 @@ const Ingredient = ({ navigate }) => {
   const handleCheck = (event) => {
     let updatedList = [...checked];
     let lowerCaseList = [...searchIngredients];
-
     if (event.target.checked) {
       updatedList = [...checked, event.target.value];
       lowerCaseList = [...searchIngredients, event.target.value.toLowerCase()];
