@@ -45,30 +45,60 @@ const UserProfile = ({ user, navigate }) => {
   return (
     <div>
       <Navbar navigate={navigate} />
-      <div className="user-profile p-6 text-lg font-bold">
-        <h1>{user.userName}</h1>
-        <br></br>
-        {editing ? (
-          <>
-            <textarea
-              value={bio}
-              onChange={handleBioChange}
-              className="border rounded-lg"
-            />
-            <div className="buttons">
-              <button onClick={handleSave}>Save</button> <br></br>
-              <button onClick={handleCancel}>Cancel</button>
-            </div>
-          </>
-        ) : (
-          <>
-            <p>{bio}</p>
+      <div className="bg-cover bg-no-repeat min-h-screen bg-background-body p-8">
+        <div
+          className="user-profile"
+          class="p-8 bg-orange-200 w-1/2 mx-auto mt-12 rounded-lg shadow-xl"
+        >
+          <div class="mt-2 text-center font-bold tracking-tight text-orange-600">
+            <h1 class="text-3xl">{user.userName}</h1>
             <br></br>
-            <button onClick={handleEdit}>Edit Bio</button>
-            <br></br>
-          </>
-        )}
-        <button onClick={handleNewRecipe}>Add new recipe</button>
+            {editing ? (
+              <>
+                <div>
+                  <textarea
+                    class="border border-black"
+                    value={bio}
+                    onChange={handleBioChange}
+                  />
+                </div>
+                <div className="save-btn" data-cy="save-btn">
+                  <button
+                    class="w-50 mb-5 ml-5 mr-5 rounded-md w-1/2 bg-orange-500 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
+                    onClick={handleSave}
+                  >
+                    Save
+                  </button>{" "}
+                  <br></br>
+                </div>
+                <div className="cancel-btn" data-cy="cancel-btn">
+                  <button
+                    class="w-50 ml-5 mr-5 rounded-md w-1/2 bg-orange-500 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
+                    onClick={handleCancel}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div>
+                  <p>{bio}</p>
+                  <br></br>
+                </div>
+                <div className="edit-button" data-cy="edit-button">
+                  <button
+                    class="w-50 ml-5 mr-5 rounded-md w-1/2 bg-orange-500 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
+                    onClick={handleEdit}
+                  >
+                    Edit
+                  </button>
+                </div>
+                <br></br>
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

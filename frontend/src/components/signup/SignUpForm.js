@@ -43,8 +43,8 @@ const SignUpForm = ({ navigate }) => {
     });
   };
 
-  const handleBioChange = () => {
-    setBio("Tell us about yourself!");
+  const handleBioChange = (event) => {
+    setBio(event.target.value);
   };
 
   const handleEmailChange = (event) => {
@@ -60,16 +60,19 @@ const SignUpForm = ({ navigate }) => {
   };
 
   return (
-    <div>
-      <div>
-        <div>
-          <h2>Sign Up</h2>
+    <div className="bg-cover bg-no-repeat min-h-screen bg-background-body p-8">
+      <div className="bg-orange-200 w-1/2 mx-auto p-8 mt-12 rounded-lg shadow-xl">
+        <div className="flex min-h-full pb-4">
+          <h2 class="mt-2 text-center text-3xl font-bold tracking-tight text-orange-600">
+            Sign Up
+          </h2>
         </div>
         <div>
           <form onSubmit={handleSubmit}>
             <div>
-              <div>
+              <div class="pb-4">
                 <input
+                  className="shadow appearance-none border rounded-lg w-full text-center py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   placeholder="Username"
                   id="userName"
                   type="text"
@@ -77,8 +80,9 @@ const SignUpForm = ({ navigate }) => {
                   onChange={handleUserNameChange}
                 />
               </div>
-              <div>
+              <div class="pb-4">
                 <input
+                  className="shadow appearance-none border rounded-lg w-full text-center py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   placeholder="Email"
                   id="email"
                   type="text"
@@ -87,8 +91,9 @@ const SignUpForm = ({ navigate }) => {
                 />
               </div>
             </div>
-            <div>
+            <div class="pb-4">
               <input
+                className="shadow appearance-none border rounded-lg w-full text-center py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Password"
                 id="password"
                 type="password"
@@ -96,8 +101,13 @@ const SignUpForm = ({ navigate }) => {
                 onChange={handlePasswordChange}
               />
             </div>
-            <div>
-              <input id="submit" type="submit" value="Submit" />
+            <div className="flex justify-center pt-4">
+              <input
+                class="w-full rounded-md w-1/2 bg-orange-500 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
+                id="submit"
+                type="submit"
+                value="Submit"
+              />
             </div>
           </form>
           {errorMessage && <p role="error">{errorMessage}</p>}
