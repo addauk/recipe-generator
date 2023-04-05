@@ -104,7 +104,7 @@ const SignUpForm = ({ navigate }) => {
             </div>
             <div className="flex justify-center pt-4">
               <input
-                class="w-full rounded-md w-1/2 bg-yellow-600 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
+                class="w-full rounded-md w-1/2 bg-orange-500 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
                 id="submit"
                 type="submit"
                 value="Submit"

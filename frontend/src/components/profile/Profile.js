@@ -67,7 +67,7 @@ const UserProfile = ({ user, navigate }) => {
               </div>
               <div className="save-btn" data-cy="save-btn">
                 <button
-                  class="w-50 mb-5 ml-5 mr-5 rounded-md w-1/2 bg-yellow-600 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
+                  class="w-50 mb-5 ml-5 mr-5 rounded-md w-1/2 bg-orange-500 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
                   onClick={handleSave}
                 >
                   Save
@@ -76,7 +76,7 @@ const UserProfile = ({ user, navigate }) => {
               </div>
               <div className="cancel-btn" data-cy="cancel-btn">
                 <button
-                  class="w-50 ml-5 mr-5 rounded-md w-1/2 bg-yellow-600 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
+                  class="w-50 ml-5 mr-5 rounded-md w-1/2 bg-orange-500 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
                   onClick={handleCancel}
                 >
                   Cancel
@@ -91,7 +91,7 @@ const UserProfile = ({ user, navigate }) => {
               </div>
               <div className="edit-button" data-cy="edit-button">
                 <button
-                  class="w-50 ml-5 mr-5 rounded-md w-1/2 bg-orange-600 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-yellow-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
+                  class="w-50 ml-5 mr-5 rounded-md w-1/2 bg-orange-500 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
                   onClick={handleEdit}
                 >
                   Edit
@@ -100,7 +100,7 @@ const UserProfile = ({ user, navigate }) => {
               <br></br>
               <div className="logout-btn" data-cy="logout-btn">
                 <button
-                  class="w-50 ml-5 mr-5 rounded-md w-1/2 bg-orange-600 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-yellow-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
+                  class="w-50 ml-5 mr-5 rounded-md w-1/2 bg-orange-500 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
                   onClick={handleLogout}
                 >
                   Logout
