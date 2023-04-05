@@ -1,6 +1,9 @@
 import { Component } from "react";
 import '../addNewRecipe/addNewRecipe.css'
 import axios from "axios";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 class AddNewRecipe extends Component {
   constructor(props) {
     super(props);
@@ -11,8 +14,9 @@ class AddNewRecipe extends Component {
     Name: '',
     Description: '',
     Ingredients: [],
-    inputValue: "",
+    ingredientInputValue: "",
     IngredientQuantities: [],
+    instructionInputValue: "",
     Instructions: [],
     AuthorName: '',
     CookTime: '',
@@ -21,34 +25,36 @@ class AddNewRecipe extends Component {
     RecipeCategory: 'Breakfast',
     RecipeServings: '',
     ImageLinks: [],
-    isModalOpen: false,
-    selectedIngredientIndex: null
-   }
-
-   handleOpenModal = (index) => {
-    this.setState({
-      isModalOpen: true,
-      selectedIngredientIndex: index
-    });
-   };
-
-   handleCloseModal = () => {
-    this.setState({
-      isModalOpen: false,
-      selectedIngredientIndex: null,
-    })
+    showModal: false
    }
 
    handleAddIngredient = () => {
-    const newIngredient = this.state.inputValue.trim().toLocaleLowerCase();
+    const newIngredient = this.state.ingredientInputValue.trim().toLocaleLowerCase();
     if (newIngredient !== "" && !this.state.Ingredients.includes(newIngredient)) {
       const newIngredientQuantity = "";
       this.setState(prevState => ({
         Ingredients: [...prevState.Ingredients, newIngredient],
         IngredientQuantities: [...prevState.IngredientQuantities, newIngredientQuantity],
-        inputValue: ""
+        ingredientInputValue: ""
       }));
     }
+   }
+
+   handleAddInstruction = () => {
+    const newInstruction = this.state.instructionInputValue.trim();
+    if (newInstruction !== "" && !this.state.Instructions.includes(newInstruction)) {
+      const newInstruction = "";
+      this.setState(prevState => ({
+        Instructions: [...prevState.Instructions, newInstruction],
+        instructionInputValue: ""
+      }));
+    }
+   }
+
+   handleRemoveInstruction = (index) => {
+    const newInstruction = [...this.state.Instructions];
+    newInstruction.splice(index, 1);
+    this.setState({ instructions: newInstruction });
    }
 
    handleRemoveIngredient = (index) => {
@@ -68,7 +74,7 @@ class AddNewRecipe extends Component {
           Name: '',
           Description: '',
           Ingredients: [],
-          inputValue: "",
+          ingredientInputValue: "",
           IngredientQuantities: [],
           Instructions: [],
           AuthorName: '',
@@ -96,11 +102,12 @@ class AddNewRecipe extends Component {
           <label htmlFor="recipe-description">Recipe Description:</label><br/>
           <textarea required id="recipe-description" name="recipe-description" value={this.state.Description} onChange={(event) => this.setState({Description: event.target.value})}></textarea><br/>
           
-          <label htmlFor="ingredients">Ingredients:</label><br/>
+          {/* Add Ingredients */}
+          <label className="ingredientsLabel" htmlFor="ingredients">Ingredients:</label><br/>
           {this.state.Ingredients.map((ingredient, index) => (
                 <div className="addedIngedientContainer" key={index}>
                   <div className="ingredientsAdded">
-                    <label className="ingredientName">{ingredient}</label>
+                    <li className="ingredientName">{ingredient}</li>
                   </div>
                   <div className="buttonContainer">
                     <input
@@ -116,44 +123,29 @@ class AddNewRecipe extends Component {
                       this.setState({ IngredientQuantities: newIngredientQuantities });
                     }}
                     placeholder="Qty"/>
-                    <button className="addInstructionsButton" onClick={() => this.handleOpenModal(index)}>Add Instructions</button>
                     <button className="removeIngredientButton" onClick={() => this.handleRemoveIngredient(index)}>Remove Ingredient</button>
                   </div>
                 </div>
             ))}
-          {/* <div className="addedIngredients">
-            <h2>Your Current Ingredients:</h2>
-            <hr />
-            {this.state.Ingredients.map((ingredient, index) => (
-              <div className="addedIngedientItem" key={index}>
-                <ul>
-                  <li className="ingredient">{ingredient}</li>
-                  <input
-                    required
-                    className="ingredientQtyTextbox"
-                    type="text"
-                    id={`ingredient-quantities-${index}`}
-                    name={`ingredient-quantities-${index}`}
-                    value={this.state.IngredientQuantities[index]}
-                    onChange={(event) => {
-                      const newIngredientQuantities = [...this.state.IngredientQuantities];
-                      newIngredientQuantities[index] = event.target.value;
-                      this.setState({ IngredientQuantities: newIngredientQuantities });
-                    }}
-                    placeholder="Qty"
-                  />
-                  <button className="addInstructionsButton" onClick={() => this.handleOpenModal(index)}>Add Instructions</button>
-                  <button className="removeIngredientButton" onClick={() => this.handleRemoveIngredient(index)}>Remove Ingredient</button>
-                </ul>
-                <hr />
-              </div>
-            ))}
-          </div> */}
-          <input className="addIngredientTextbox" type="text" id="ingredients" name="ingredients" value={this.state.inputValue} onChange={(event) => this.setState({inputValue: event.target.value})} placeholder="Add Ingredient Here"/><br/>
+          <input className="addIngredientTextbox" type="text" id="ingredients" name="ingredients" value={this.state.ingredientInputValue} onChange={(event) => this.setState({ingredientInputValue: event.target.value})} placeholder="Add Ingredient Here"/><br/>
           <button className="addIngredientButton" onClick={this.handleAddIngredient}>Add Ingredient</button>
 
-          <label htmlFor="instructions">Instructions:</label><br/>
-          <textarea required id="instructions" name="instructions" value={this.state.searchValue} onChange={this.handleSearchInputChange} onKeyPress={this.handleSearchInputKeyPress}></textarea><br/>
+
+          {/* Add Instructions */}
+          <label className="instructionLabel" htmlFor="instructions">Instructions:</label><br/>
+          {this.state.Instructions.map((instruction, index) => (
+            <div className="addedInstructionsContainer" key={index}>
+              <div className="instrcutionsAdded">
+                <li className="instructionName">{instruction}</li>
+              </div>
+                <button className="removeInstructionButton" onClick={() => this.handleRemoveInstruction(index)}>Remove Instruction</button>
+              </div>
+          ))}
+
+          <input className="addInstructionsTextbox" type="text" id="instructions" name="instructions" value={this.state.instructionInputValue} onChange={(event) => this.setState({instructionInputValue: event.target.value})} placeholder="Add Instructions Here"/><br/>
+          <button className="addInstructionsButton" onClick={this.handleAddInstruction}>Add Ingredient</button>
+
+
 
           <label htmlFor="author-name">Author Name:</label><br/>
           <input required type="text" id="author-name" name="author-name" value={this.state.AuthorName} onChange={(event) => this.setState({AuthorName: event.target.value})}/><br/>
