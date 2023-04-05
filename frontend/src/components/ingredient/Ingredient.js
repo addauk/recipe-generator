@@ -14,6 +14,7 @@ const Ingredient = ({ navigate }) => {
   const [loading, setLoading] = useState(false);
   const [unchecked, setUnchecked] = useState(true);
   const [pageAmount, setPageAmount] = useState();
+  const [search, setSearch] = useState();
 
   const getRecipes = async (skip) => {
     setLoading(true);
@@ -24,9 +25,9 @@ const Ingredient = ({ navigate }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          targetIngredients: searchIngredients,
+          targetIngredients: search,
           skip: skip,
-          limit: 10,
+          limit: 12,
         }),
       });
       if (!response.ok) {
@@ -58,7 +59,8 @@ const Ingredient = ({ navigate }) => {
       updatedList.splice(checked.indexOf(event.target.value), 1);
     }
     setChecked(updatedList);
-    setSearchIngredients(lowerCaseList);
+    setSearch(lowerCaseList);
+    setSearchIngredients([]);
   };
 
   const handleUncheckAll = () => {
@@ -95,70 +97,68 @@ const Ingredient = ({ navigate }) => {
   return (
     <div>
       <Navbar navigate={navigate} />
-      <div className="recipe-generator bg-orange-600"></div>
-      <div class="bg-orange-200">
-        <div>
-          <div className="ingredient-header">
-            <h1 class="mb-4 flex justify-center text-2xl font-bold">
-              Ingredients
-            </h1>
-          </div>
-
-          <p
-            class="ml-auto flex justify-center"
-            style={{ cursor: "pointer" }}
-            onClick={onclick}
+      <div className="bg-cover bg-repeat h-screen bg-background-body pt-16">
+        <div className="bg-orange-200 mx-auto mt-4 ml-10 mr-10 rounded-lg shadow-xl">
+          <div className="recipe-generator"></div>
+          <div
+            className="ingredient-header"
+            class="mb-8 flex justify-center text-3xl font-[5000]-cursive"
           >
-            {" "}
-            {collapse ? "+" : "-"}{" "}
-          </p>
-        </div>
-        <div
-          className="list-container"
-          style={{
-            height: collapse ? "0px" : "500px",
-            transition: "height 0.5s ease-in",
-          }}
-          class={
-            collapse
-              ? "flex grid grid-flow-row grid-cols-7 grid-rows-15 truncate pl-4"
-              : "flex grid grid-flow-row grid-cols-7 grid-rows-15 pl-4"
-          }
-        >
-          {IngredientList.map((item, index) => (
-            <div key={index}>
-              <input
-                value={item}
-                type="checkbox"
-                onChange={handleCheck}
-                checked={checked.includes(item)}
-                class="mr-2"
-              />
-              <span className={isChecked(item)}>{item}</span>
+            <div className="mt-5 ml-5">
+              <h1 class="text-orange-600">What's in your Fridge?</h1>
             </div>
-          ))}
-        </div>
-      </div>
-      <div className="mt-5 mb-4 flex gap-5 justify-center">
-        <div>
-          <div>{`Items checked are: ${checkedItems}`}</div>
+            <p class="ml-auto" style={{ cursor: "pointer" }} onClick={onclick}>
+              {" "}
+              {collapse ? "+" : "-"}{" "}
+            </p>
+          </div>
+          <div
+            className="list-container"
+            style={{
+              height: collapse ? "0px" : "500px",
+              transition: "height 0.5s ease-in",
+            }}
+            class={
+              collapse
+                ? "flex grid grid-flow-row grid-cols-7 grid-rows-15 truncate pl-4 font-bold"
+                : "flex grid grid-flow-row grid-cols-7 grid-rows-15 pl-4 font-bold"
+            }
+          >
+            {IngredientList.map((item, index) => (
+              <div key={index} className="flex items-center">
+                <input
+                  value={item}
+                  type="checkbox"
+                  onChange={handleCheck}
+                  checked={checked.includes(item)}
+                  class="ml-10 mr-2"
+                />
+                <span className={isChecked(item)}>{item}</span>
+              </div>
+            ))}
 
-          <div className="flex justify-center p-3">
+            <div />
+          </div>
+          <div className="mt-5 mb-4 flex gap-10">
+            <div>
+              <div className="bg-orange-500 text-white rounded-lg shadow-lg py-2 px-2 ml-5 w-auto text-sm font-semibold">{`Items checked: ${checkedItems}`}</div>
+            </div>
+          </div>
+          <div>
             <button
               type="button"
-              class="w-40 rounded-lg border shadow-2xl bg-yellow-300 hover:bg-yellow-600 justify-center font-bold"
+              class="w-40 ml-5 mb-5 mr-5 rounded-md w-1/2 bg-orange-500 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
               onClick={handleUncheckAll}
             >
               Uncheck All
             </button>
             <button
               type="submit"
-              class="w-40 rounded-lg border shadow-2xl bg-yellow-300 hover:bg-yellow-600 justify-center font-bold"
+              class="w-40 mb-5 rounded-md w-1/2 bg-orange-500 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
               onClick={handleSubmit}
             >
               Submit
             </button>
-            <br></br>
             {loading === true && <Spinner></Spinner>}
           </div>
 
@@ -169,14 +169,18 @@ const Ingredient = ({ navigate }) => {
                 data-cy="matched-recipes"
                 class=" grid-auto-rows mt-4 grid"
               >
-                <h2 className="flex justify-center text-2xl font-bold">
-                  Matched Recipes
-                </h2>
+                <div class="mx-auto w-30 mb-5 rounded-md w-1/2 bg-orange-500 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2">
+                  <h2 className="flex justify-center text-2xl font-[5000]-cursive">
+                    Matched Recipes
+                  </h2>
+                </div>
                 <AllRecipes recipes={matchedRecipes} />
-                <Pagination
-                  amount={pageAmount.toString()}
-                  handleClick={getRecipes}
-                ></Pagination>
+                <div class="mx-auto">
+                  <Pagination
+                    amount={pageAmount.toString()}
+                    handleClick={getRecipes}
+                  ></Pagination>
+                </div>
               </div>
             )}
           </div>
