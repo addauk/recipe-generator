@@ -25,7 +25,7 @@ class AddNewRecipe extends Component {
     RecipeCategory: 'Breakfast',
     RecipeServings: '',
     ImageLinks: [],
-    showModal: false
+    showModal: false,
    }
 
    handleAddIngredient = () => {
@@ -65,6 +65,11 @@ class AddNewRecipe extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
+
+    const userName = JSON.parse(window.localStorage.getItem('userData')).userName;
+    console.log(userName);
+    this.setState({AuthorName: userName});
+    console.log(this.state);
 
     await axios.post("/recipe/new", this.state)
       .then(response => {
@@ -145,10 +150,9 @@ class AddNewRecipe extends Component {
           <input className="addInstructionsTextbox" type="text" id="instructions" name="instructions" value={this.state.instructionInputValue} onChange={(event) => this.setState({instructionInputValue: event.target.value})} placeholder="Add Instructions Here"/><br/>
           <button className="addInstructionsButton" onClick={this.handleAddInstruction}>Add Ingredient</button>
 
-
-
+{/* 
           <label htmlFor="author-name">Author Name:</label><br/>
-          <input required type="text" id="author-name" name="author-name" value={this.state.AuthorName} onChange={(event) => this.setState({AuthorName: event.target.value})}/><br/>
+          <input required type="text" id="author-name" name="author-name" value={this.state} onChange={(event) => this.setState({AuthorName: event.target.value})}/><br/> */}
 
           <label htmlFor="cooking-time">Cooking Time:</label><br/>
           <input required type="text" id="cooking-time" name="cooking-time" value={this.state.CookTime} onChange={(event) => this.setState({CookTime: event.target.value})}/><br/>
