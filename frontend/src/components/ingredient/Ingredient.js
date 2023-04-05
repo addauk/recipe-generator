@@ -87,15 +87,15 @@ const Ingredient = ({ navigate }) => {
     setCollapse(!collapse);
   };
   return (
-    <div className="bg-cover bg-scroll h-screen bg-background-body">
-      <div className="bg-orange-200 ml-10 mr-10 rounded-lg shadow-xl">
+    <div className="bg-cover bg-repeat h-screen bg-background-body">
+      <div className="bg-orange-200 ml-10 mr-10 mt-10 rounded-lg shadow-xl">
         <div className="recipe-generator"></div>
         <div
           className="ingredient-header"
-          class="mt-16 mb-8 flex justify-center text-2xl font-bold"
+          class="mb-8 flex justify-center text-3xl font-[5000]-cursive"
         >
           <div className="mt-5 ml-5">
-            <h1 class="mx-auto text-orange-600">Ingredients</h1>
+            <h1 class="text-orange-600">What's in your Fridge?</h1>
           </div>
           <p class="ml-auto" style={{ cursor: "pointer" }} onClick={onclick}>
             {" "}
@@ -121,7 +121,7 @@ const Ingredient = ({ navigate }) => {
                 type="checkbox"
                 onChange={handleCheck}
                 checked={checked.includes(item)}
-                class="mr-2"
+                class="ml-10 mr-2"
               />
               <span className={isChecked(item)}>{item}</span>
             </div>
@@ -131,20 +131,20 @@ const Ingredient = ({ navigate }) => {
         </div>
         <div className="mt-5 mb-4 flex gap-10">
           <div>
-            <div className="bg-orange-600 text-white rounded-lg py-2 px-2 ml-5 w-auto text-sm font-semibold">{`Items checked are: ${checkedItems}`}</div>
+            <div className="bg-yellow-600 text-white rounded-lg shadow-lg py-2 px-2 ml-5 w-auto text-sm font-semibold">{`Items checked are: ${checkedItems}`}</div>
           </div>
         </div>
         <div>
           <button
             type="button"
-            class="w-40 ml-5 mb-5 mr-5 rounded-md w-1/2 bg-orange-600 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
+            class="w-40 ml-5 mb-5 mr-5 rounded-md w-1/2 bg-yellow-600 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
             onClick={handleUncheckAll}
           >
             Uncheck All
           </button>
           <button
             type="submit"
-            class="w-40 mb-5 rounded-md w-1/2 bg-orange-600 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
+            class="w-40 mb-5 rounded-md w-1/2 bg-yellow-600 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
             onClick={handleSubmit}
           >
             Submit

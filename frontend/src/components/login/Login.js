@@ -57,7 +57,7 @@ const LogInForm = ({ navigate }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="bg-cover bg-no-repeat min-h-screen bg-background-body p-8">
-        <div className="bg-orange-300 w-full max-w-md mx-auto p-8 mt-12 rounded-lg">
+        <div className="bg-orange-200 w-1/2 mx-auto p-8 mt-12 rounded-lg shadow-xl">
           <div className="eatgpt-1" class="pb-4">
             <label
               className="block text-gray-700 font-bold eatgpt-1"
@@ -85,7 +85,7 @@ const LogInForm = ({ navigate }) => {
           </div>
           <div className="flex justify-center pt-4">
             <input
-              class="w-full rounded-md w-1/2 bg-orange-600 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
+              class="w-full rounded-md w-1/2 bg-yellow-600 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
               role="submit-button"
               id="submit"
               type="submit"
@@ -94,7 +94,7 @@ const LogInForm = ({ navigate }) => {
           </div>
           <div className="flex justify-center pt-4">
             <input
-              class="w-full rounded-md w-1/2 bg-orange-600 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
+              class="w-full rounded-md w-1/2 bg-yellow-600 py-2 px-3 text-sm font-semibold text-white shadow hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 eatgpt-2"
               role="signup-button"
               id="signup"
               type="button"

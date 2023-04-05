@@ -48,61 +48,68 @@ const UserProfile = ({ user, navigate }) => {
   };
 
   return (
-    <div className="user-profile" class="p-8">
-      <h1>{user.userName}</h1>
-      <br></br>
-      {editing ? (
-        <>
-          <div>
-            <textarea
-              class="border border-black"
-              value={bio}
-              onChange={handleBioChange}
-            />
-          </div>
-          <div className="save-btn" data-cy="save-btn">
-            <button
-              class="inline-flex rounded-lg justify-center px-4 py-1 w-20 h-8 border border-black font-semibold text-sm mb-8"
-              onClick={handleSave}
-            >
-              Save
-            </button>{" "}
-            <br></br>
-          </div>
-          <div className="cancel-btn" data-cy="cancel-btn">
-            <button
-              class="inline-flex rounded-lg justify-center px-4 py-1 w-20 h-8 border border-black font-semibold text-sm"
-              onClick={handleCancel}
-            >
-              Cancel
-            </button>
-          </div>
-        </>
-      ) : (
-        <>
-          <div>
-            <p>{bio}</p>
-            <br></br>
-          </div>
-          <div className="edit-button" data-cy="edit-button">
-            <button
-              class="inline-flex rounded-lg justify-center px-4 py-1 w-20 h-8 border border-black font-semibold text-sm"
-              onClick={handleEdit}
-            >
-              Edit
-            </button>
-          </div>
+    <div className="bg-cover bg-no-repeat min-h-screen bg-background-body p-8">
+      <div
+        className="user-profile"
+        class="p-8 bg-orange-200 w-1/2 mx-auto mt-12 rounded-lg shadow-xl"
+      >
+        <div class="mt-2 text-center font-bold tracking-tight text-orange-600">
+          <h1 class="text-3xl">{user.userName}</h1>
           <br></br>
-          <div className="logout-btn" data-cy="logout-btn">
-            <button
-              class="inline-flex rounded-lg justify-center px-4 py-1 w-20 h-8 border border-black font-semibold text-sm"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
-          </div>
-        </>
-      )}
+          {editing ? (
+            <>
+              <div>
+                <textarea
+                  class="border border-black"
+                  value={bio}
+                  onChange={handleBioChange}
+                />
+              </div>
+              <div className="save-btn" data-cy="save-btn">
+                <button
+                  class="w-50 mb-5 ml-5 mr-5 rounded-md w-1/2 bg-yellow-600 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
+                  onClick={handleSave}
+                >
+                  Save
+                </button>{" "}
+                <br></br>
+              </div>
+              <div className="cancel-btn" data-cy="cancel-btn">
+                <button
+                  class="w-50 ml-5 mr-5 rounded-md w-1/2 bg-yellow-600 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
+                  onClick={handleCancel}
+                >
+                  Cancel
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <p>{bio}</p>
+                <br></br>
+              </div>
+              <div className="edit-button" data-cy="edit-button">
+                <button
+                  class="w-50 ml-5 mr-5 rounded-md w-1/2 bg-orange-600 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-yellow-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
+                  onClick={handleEdit}
+                >
+                  Edit
+                </button>
+              </div>
+              <br></br>
+              <div className="logout-btn" data-cy="logout-btn">
+                <button
+                  class="w-50 ml-5 mr-5 rounded-md w-1/2 bg-orange-600 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-yellow-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
