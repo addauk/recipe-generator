@@ -22,6 +22,7 @@ app.set("port", port);
  **/
 
 var mongoDbUrl = process.env.DB_CONNECT;
+
 mongoose.connect(
   mongoDbUrl,
   {

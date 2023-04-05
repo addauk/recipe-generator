@@ -12,8 +12,7 @@ const SignUpForm = ({ navigate }) => {
       window.localStorage.getItem("token") &&
       window.localStorage.getItem("token") !== "undefined"
     ) {
-      navigate("/signup");
-      // This will need to change to navigate to the homepage when a token is present
+      navigate("/");
     }
   }, [navigate]);
 

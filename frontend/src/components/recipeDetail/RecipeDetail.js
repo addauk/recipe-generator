@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Navbar from "../navbar/Navbar";
 
 const RecipeDetail = ({ navigate }) => {
   const [recipe, setRecipe] = useState();
@@ -105,6 +106,7 @@ const RecipeDetail = ({ navigate }) => {
       <>
         <div className="bg-cover bg-repeat h-screen bg-background-body">
           <div className="recipe-container" class="flex p-12">
+            <Navbar navigate={navigate} />
             <div className="bg-orange-200 w-1/2 mx-auto p-8 mt-12 rounded-lg shadow-xl">
               <div className="recipeHeader" class=" mt-8 mb-8 ">
                 <div>
