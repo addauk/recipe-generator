@@ -2,14 +2,16 @@ body {
   background-image: url("../../../public/Images/background2.jpg");
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
 }
 
 form {
   display: flex;
   flex-direction: column;
   max-width: 800px;
-  margin: 0 auto;
+  margin:0 auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
   padding: 20px;
   background-color: #ffcc80;
   border-radius: 10px;
@@ -98,21 +100,19 @@ input[type="submit"]:hover {
 
 .addIngredientButton {
   display: flexbox;
-  max-width: 40%;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
   background-color: #fb8c00;
   color: #ffff;
   text-align: center;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 2px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 5%;
+  width: 200px;
 }
 
 .addIngredientButton:hover {
@@ -125,22 +125,6 @@ input[type="submit"]:hover {
   margin: 2% auto;
   margin-left: 5%;
   margin-right: 5%;
-}
-
-.addInstructionsButton {
-  display: flexbox;
-  max-width: auto;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  background-color: #fb8c00;
-  color: #fff;
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-bottom: 2%;
 }
 
 .addInstructionsButton:hover {
@@ -175,12 +159,31 @@ input[type="submit"]:hover {
   display: flexbox;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+}
+
+.cooking-time-container label {
+  display: flexbox;
+}
+
+.cooking-time-container input {
+  text-align: center;
 }
 
 .preparation-time-container {
   display: flexbox;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+
+}
+
+.preparation-time-container label {
+  display: flexbox;
+}
+
+.preparation-time-container input {
+  text-align: center;
 }
 
 .calculate-totalTime-container {
@@ -201,4 +204,79 @@ input[type="submit"]:hover {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.submit-button-container {
+  display: flexbox;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.submit-button-container button {
+  display: flexbox;
+  max-width: auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #fb8c00;
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20%;
+}
+
+.recipe-category-container {
+  display: flexbox;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recipe-servings-container {
+  display: flexbox;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recipe-servings {
+  display: flexbox;
+  margin-left: 20%;
+  text-align: center;
+}
+
+.add-instructions-container {
+  display: flexbox;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add-instructions-container input {
+  width: 450px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.add-instructions-container button {
+  display: flexbox;
+  width: 300px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff9800;
+  color: #fff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 18%;
+}
+
+.add-instruction-item {
+  display: flexbox;
+  font-weight: bold;
+  margin-left: 20%;
 }
