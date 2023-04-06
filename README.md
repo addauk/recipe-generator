@@ -86,13 +86,13 @@ You can now navigate to http://localhost:<port> in your browser to use the app.
 
 eatGPT is built on the MERN stack, which consists of the following technologies:
 
-MongoDB: a NoSQL database used to store user data and recipes <br>
-Express: a Node.js framework used to create the server and handle HTTP requests <br>
-React: a JavaScript library used to create the user interface <br>
-Node.js: a JavaScript runtime used to run the server-side code <br>
-Axios: a Promise-based HTTP client used to make requests to the external recipe API <br>
-JSON Web Token (JWT): a method of securely transmitting information between parties as a JSON object <br>
-Tailwind CSS: a front-end framework used to create a responsive design for the app <br>
+**MongoDB:** A NoSQL database used to store user data and recipes <br>
+**Express:** A Node.js framework used to create the server and handle HTTP requests <br>
+**React:** A JavaScript library used to create the user interface <br>
+**Node.js:** A JavaScript runtime used to run the server-side code <br>
+**Axios:** A Promise-based HTTP client used to make requests to the external recipe API <br>
+**JSON Web Token (JWT):** A method of securely transmitting information between parties as a JSON object <br>
+**Tailwind CSS:** A front-end framework used to create a responsive design for the app <br>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
