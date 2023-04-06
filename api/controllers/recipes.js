@@ -20,7 +20,7 @@ const RecipesController = {
       const limit = parseInt(req.body.limit);
 
       const recipes = await Recipe.find(
-        { Ingredients: { $all: targetIngredients } },
+        { Ingredients: { $all: targetIngredients }, ImageLinks: { $ne: "" } },
         {
           RecipeId: 1,
           Name: 1,

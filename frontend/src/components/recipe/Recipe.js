@@ -26,7 +26,7 @@ const Recipe = (props) => {
         >
           {props.title}
         </h1>
-        <p class=" text-orange-600" data-cy="foodTime">
+        <p class=" text-orange-600 truncate" data-cy="foodTime">
           Cooking Time: {props.cookingTime}
         </p>
         <p class="text-orange-600" data-cy="rating">
@@ -35,7 +35,7 @@ const Recipe = (props) => {
       </div>
       <button
         type="press"
-        class="w-40 mt-5 ml-5 mb-5 mr-5 rounded-md w-1/2 bg-orange-500 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2"
+        class="w-40 mt-5 ml-5 mb-5 mr-5 rounded-md w-1/2 bg-orange-500 py-2 px-3 text-sm font-semibold text-white shadow-lg hover:bg-orange-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 eatgpt-2 "
         data-cy="press"
         onClick={handlePress}
       >
