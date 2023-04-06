@@ -104,7 +104,7 @@ const Ingredient = ({ navigate }) => {
     <div>
       <Navbar navigate={navigate} />
       <div className="bg-cover bg-repeat h-screen bg-background-body pt-16">
-        <div className="bg-orange-200 mx-auto mt-4 ml-10 mr-10 rounded-lg shadow-xl">
+        <div className="sticky top-16 bg-orange-200 mx-auto mt-4 ml-10 mr-10 rounded-lg shadow-xl">
           <div className="recipe-generator"></div>
           <div
             className="ingredient-header"
