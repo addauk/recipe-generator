@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import img from "../../eatGPT.png";
+import Logo from "../logo/Logo";
 
 const Navbar = ({ navigate }) => {
   const [user, setUser] = useState(null);
@@ -25,12 +25,7 @@ const Navbar = ({ navigate }) => {
       <nav className="z-50 fixed top-0 left-0 right-0 h-16 p2 pt-9 pb-9 mx-auto place-content-between  px-5 bg-white-100 flex items-center">
         {user !== null ? (
           <div>
-            <img
-              src={img}
-              className="cursor-pointer flex rounded-lg border absolute left-0.5 top-0.5 scale-75"
-              onClick={() => navigate("/")}
-              alt="Home"
-            />
+            <Logo onClick={() => navigate("/")} />
             <div
               className="p-3 text-lg absolute right-44 top-2"
               data-cy="username"
@@ -54,12 +49,7 @@ const Navbar = ({ navigate }) => {
           </div>
         ) : (
           <div>
-            <img
-              src={img}
-              className="cursor-pointer flex rounded-lg border absolute left-0.5 top-0.5 scale-75"
-              onClick={() => navigate("/")}
-              alt="Home"
-            />
+            <Logo onClick={() => navigate("/")} />
             <div
               className="p-3 text-lg cursor-pointer text-white absolute right-4 top-2 border rounded-lg bg-orange-500 hover:bg-orange-600 scale-75"
               data-cy="loginButton"
