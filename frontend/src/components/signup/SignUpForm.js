@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Logo from "../logo/Logo";
 
 const SignUpForm = ({ navigate }) => {
   const [userName, setUserName] = useState("");
@@ -44,7 +45,7 @@ const SignUpForm = ({ navigate }) => {
   };
 
   const handleBioChange = () => {
-    setBio("Hello World");
+    setBio("Tell us about yourself");
   };
 
   const handleEmailChange = (event) => {
@@ -61,6 +62,9 @@ const SignUpForm = ({ navigate }) => {
 
   return (
     <div className="bg-cover bg-no-repeat min-h-screen bg-background-body p-8">
+      <div>
+        <Logo onClick={() => navigate("/")} />
+      </div>
       <div className="bg-orange-200 w-1/2 mx-auto p-8 mt-12 rounded-lg shadow-xl">
         <div className="flex min-h-full pb-4">
           <h2 class="mt-2 text-center text-3xl font-bold tracking-tight text-orange-600">

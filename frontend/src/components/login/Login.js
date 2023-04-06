@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Logo from "../logo/Logo";
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -55,6 +56,7 @@ const LogInForm = ({ navigate }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="bg-cover bg-no-repeat h-screen bg-background-body p-8">
+        <Logo onClick={() => navigate("/")} />
         <div className="bg-orange-200 w-1/2 mx-auto p-8 mt-12 rounded-lg shadow-xl">
           <div className="eatgpt-1" class="pb-4">
             <label

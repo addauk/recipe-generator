@@ -13,7 +13,7 @@ const Pagination = (props) => {
         <li>
           <a
             href="#"
-            className="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            className="block px-3 py-2 ml-0 leading-tight text-orange-500 bg-white border border-orange-600 rounded-l-lg hover:bg-orange-600 hover:text-orange-600 dark:bg-orange-400 dark:border-orange-600 dark:text-orange-500 dark:hover:bg-orange-600 dark:hover:text-white"
           >
             <span className="sr-only">Previous</span>
             <svg
@@ -37,7 +37,7 @@ const Pagination = (props) => {
               <button
                 type="button"
                 data-cy="pagination"
-                class="rounded-lg bg-orange-100 focus:bg-blue-400 px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white active:bg-slate-600"
+                class="rounded-lg bg-white-100 focus:bg-orange-600 px-3 py-2 leading-tight text-orange-500 bg-white border border-orange-500 hover:bg-orange-600 hover:text-orange-600 dark:bg-orange-400 dark:border-orange-600 dark:text-orange-600 dark:hover:bg-orange-600 dark:hover:text-white active:bg-orange-600"
                 onClick={() => handleClick((index + 1) * 12)}
               >
                 {" "}
@@ -50,7 +50,7 @@ const Pagination = (props) => {
         <li>
           <a
             href="#"
-            className="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            className="block px-3 py-2 leading-tight text-orange-500 bg-white border border-orange-600 rounded-r-lg hover:bg-orange-600 hover:text-orange-600 dark:bg-orange-400 dark:border-orange-600 dark:text-orange-500 dark:hover:bg-orange-600 dark:hover:text-white"
           >
             <span className="sr-only">Next</span>
             <svg
