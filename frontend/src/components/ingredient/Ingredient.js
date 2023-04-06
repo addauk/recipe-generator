@@ -25,7 +25,7 @@ const Ingredient = ({ navigate }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          targetIngredients: search,
+          targetIngredients: searchIngredients,
           skip: skip,
           limit: 12,
         }),
@@ -40,9 +40,7 @@ const Ingredient = ({ navigate }) => {
       // }
 
       await setMatchedRecipes(data.recipes);
-      console.log(matchedRecipes);
       setLoading(false);
-      // setSearchIngredients([]);
       setChecked([]);
     } catch (error) {
       console.error("Error fetching data: ", error);
@@ -56,11 +54,19 @@ const Ingredient = ({ navigate }) => {
       updatedList = [...checked, event.target.value];
       lowerCaseList = [...searchIngredients, event.target.value.toLowerCase()];
     } else {
-      updatedList.splice(checked.indexOf(event.target.value), 1);
+      const index = updatedList.indexOf(event.target.value);
+      if (index !== -1) {
+        updatedList.splice(index, 1);
+      }
+      const lowerCaseIndex = lowerCaseList.indexOf(
+        event.target.value.toLowerCase()
+      );
+      if (lowerCaseIndex !== -1) {
+        lowerCaseList.splice(lowerCaseIndex, 1);
+      }
     }
     setChecked(updatedList);
-    setSearch(lowerCaseList);
-    setSearchIngredients([]);
+    setSearchIngredients(lowerCaseList);
   };
 
   const handleUncheckAll = () => {
@@ -85,7 +91,6 @@ const Ingredient = ({ navigate }) => {
       alert("No Items Checked");
     } else {
       getRecipes();
-
       setCollapse(true);
       setUnchecked(false);
     }
@@ -93,6 +98,7 @@ const Ingredient = ({ navigate }) => {
 
   const onclick = () => {
     setCollapse(!collapse);
+    setSearchIngredients([]);
   };
   return (
     <div>

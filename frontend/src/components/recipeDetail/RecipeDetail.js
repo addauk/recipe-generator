@@ -22,6 +22,23 @@ const RecipeDetail = ({ navigate }) => {
     setRecipe(data);
   }
 
+  function extractTime(str) {
+    const regex = /PT(?:(\d+)H)?(\d+)M/;
+    const matches = str.match(regex);
+    if (matches) {
+      const hours = matches[1] ? parseInt(matches[1]) : 0;
+      const minutes = parseInt(matches[2]);
+      if (hours === 0) {
+        return `${minutes} minutes`;
+      } else if (minutes === 0) {
+        return `${hours} hours`;
+      } else {
+        return `${hours} hours, ${minutes} minutes`;
+      }
+    }
+    return "Unknown";
+  }
+
   // async function fetchRecipe() {
   //setRecipe(location.state.recipe);
   // setRecipe({
@@ -140,7 +157,14 @@ const RecipeDetail = ({ navigate }) => {
                   </div>
                   <div className="dietTags" class="flex justify-right">
                     <ul>
-                      {recipe.Tags && <li class="mt-5">{recipe.Tags}</li>}
+                      {recipe.Tags && (
+                        <li class="mt-5">
+                          Prep time: {extractTime(recipe.PrepTime)} Cooking
+                          time:
+                          {extractTime(recipe.CookTime)} Serves:{" "}
+                          {recipe.RecipeServings}
+                        </li>
+                      )}
                     </ul>
                   </div>
                   <div className="nutrition" class="flex justify-between">
@@ -148,31 +172,31 @@ const RecipeDetail = ({ navigate }) => {
                       <table class="border-separate border-spacing-2 table-fixed w-full h-26">
                         <thead>
                           <tr>
-                            <th class="bg-orange-300 font-sm font-light px-6 w-1/9">
+                            <th class="bg-orange-300 font-sm font-light px-3 w-1/9">
                               Kcal
                             </th>
                             <th class="bg-orange-300 font-sm font-light px-3 w-1/9">
                               Fat
                             </th>
                             <th class="bg-orange-300 font-sm font-light px-3 w-1/9">
-                              Saturates
+                              Sat
                             </th>
                             <th class="bg-orange-300 font-sm font-light px-0.5 w-1/9">
-                              Cholesterol
+                              Chol
                             </th>
                             <th class="bg-orange-300 font-sm font-light px-3 w-1/9">
                               Salt
                             </th>
-                            <th class="bg-orange-300 font-sm font-light px-3 w-1/9">
+                            <th class="bg-orange-300 font-sm font-light px-2 w-1/9">
                               Carbs
                             </th>
-                            <th class="bg-orange-300 font-sm font-light px-3 w-1/9">
+                            <th class="bg-orange-300 font-sm font-light px-2 w-1/9">
                               Fibre
                             </th>
                             <th class="bg-orange-300 font-sm font-light px-3 w-1/9">
                               Sugar
                             </th>
-                            <th class="bg-orange-300 font-sm font-light px-3 w-1/9">
+                            <th class="bg-orange-300 font-sm font-light px-1.5 w-1/9">
                               Protein
                             </th>
                           </tr>
