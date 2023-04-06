@@ -37,7 +37,7 @@ const Pagination = (props) => {
               <button
                 type="button"
                 data-cy="pagination"
-                class="rounded-lg bg-white-100 focus:bg-orange-600 px-3 py-2 leading-tight text-orange-500 bg-white border border-orange-500 hover:bg-orange-600 hover:text-orange-600 dark:bg-orange-500 dark:border-orange-600 dark:text-orange-400 dark:hover:bg-orange-600 dark:hover:text-white active:bg-orange-600"
+                class="rounded-lg bg-white-100 focus:bg-orange-600 px-3 py-2 leading-tight text-orange-500 bg-white border border-orange-500 hover:bg-orange-600 hover:text-orange-600 dark:bg-orange-400 dark:border-orange-600 dark:text-orange-600 dark:hover:bg-orange-600 dark:hover:text-white active:bg-orange-600"
                 onClick={() => handleClick((index + 1) * 12)}
               >
                 {" "}
