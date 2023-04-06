@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import img from "../../eatGPT.png";
 import Logo from "../logo/Logo";
 
 const Navbar = ({ navigate }) => {
