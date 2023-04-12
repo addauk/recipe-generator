@@ -1,0 +1,282 @@
+body {
+  background-image: url("../../../public/Images/background2.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: repeat;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin:0 auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding: 20px;
+  background-color: #ffcc80;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: -20px;
+}
+
+h2 {
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 17px;
+  font-style: italic;
+  margin: 2% auto;
+}
+
+input[type="text"],
+textarea {
+  margin-top: 10px;
+  padding: 10px;
+  border: 2px solid #aeadad;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+select {
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+input[type="file"] {
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  background-color: #fb8c00;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: #ff9800;
+}
+
+.addIngredientTextbox {
+  display: flexbox;
+  width: 40%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+.removeIngredientButton {
+  max-width: auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #de5b5b;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.removeIngredientButton:hover {
+  background-color: #9e1919;
+}
+
+.addIngredientButton {
+  display: flexbox;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #fb8c00;
+  color: #ffff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+}
+
+.addIngredientButton:hover {
+  background-color: #ef6c00;
+}
+
+.ingredientQtyTextbox {
+  max-width: 20%;
+  text-align: center;
+  margin: 2% auto;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.addInstructionsButton:hover {
+  background-color: #ef6c00;
+}
+
+.addedIngedientContainer {
+  width: 100%;
+  overflow: hidden;
+  margin-top: -5%;
+  margin-bottom: 5%;
+}
+
+.buttonContainer {
+  float: right;
+}
+
+.ingredientsAdded {
+  float: left;
+  margin-top: 2%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: larger;
+  font-weight: bold;
+  margin-left: 10%;
+}
+
+.ingredientsLabel {
+  margin-bottom: 3%;
+}
+
+.cooking-time-container {
+  display: flexbox;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.cooking-time-container label {
+  display: flexbox;
+}
+
+.cooking-time-container input {
+  text-align: center;
+}
+
+.preparation-time-container {
+  display: flexbox;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+}
+
+.preparation-time-container label {
+  display: flexbox;
+}
+
+.preparation-time-container input {
+  text-align: center;
+}
+
+.calculate-totalTime-container {
+  display: flexbox;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.calculate-totalTime-button {
+  width: 200px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff9800;
+  color: #fff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button-container {
+  display: flexbox;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.submit-button-container button {
+  display: flexbox;
+  max-width: auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #fb8c00;
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20%;
+}
+
+.recipe-category-container {
+  display: flexbox;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recipe-servings-container {
+  display: flexbox;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recipe-servings {
+  display: flexbox;
+  margin-left: 20%;
+  text-align: center;
+}
+
+.add-instructions-container {
+  display: flexbox;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add-instructions-container input {
+  width: 450px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.add-instructions-container button {
+  display: flexbox;
+  width: 300px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff9800;
+  color: #fff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 18%;
+}
+
+.add-instruction-item {
+  display: flexbox;
+  font-weight: bold;
+  margin-left: 20%;
+}

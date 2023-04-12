@@ -5,6 +5,7 @@ import LoginForm from "../login/Login";
 import SignUpForm from "../signup/SignUpForm";
 import UserPage from "../profile/UserPage";
 import RecipeDetail from "../recipeDetail/RecipeDetail";
+import AddNewRecipe from "../addNewRecipe/addNewRecipe";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         path="/recipe/:id"
         element={<RecipeDetail navigate={useNavigate()} />}
       />
+      <Route path="/recipe/new" element={<AddNewRecipe navigate={useNavigate()}/>}/>
     </Routes>
   );
 }

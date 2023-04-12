@@ -43,6 +43,7 @@ const tokenChecker = (req, res, next) => {
 app.use("/recipes", recipesRouter);
 app.use("/tokens", tokensRouter);
 app.use("/users", usersRouter);
+app.use("/recipe", recipesRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

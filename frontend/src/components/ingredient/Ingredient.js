@@ -78,8 +78,8 @@ const Ingredient = ({ navigate }) => {
 
   let checkedItems = checked.length
     ? checked.reduce((total, item) => {
-        return total + ", " + item;
-      })
+      return total + ", " + item;
+    })
     : "";
 
   let isChecked = (item) =>
@@ -193,6 +193,7 @@ const Ingredient = ({ navigate }) => {
         </div>
       </div>
     </div>
+
   );
 };
 
